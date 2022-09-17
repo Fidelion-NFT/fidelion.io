@@ -16,6 +16,7 @@ export const MenuPage = ({}: MenuPageProps) => {
       <SideMenu />
       <Slider
         ref={carouselRef}
+        vertical={false}
         slidesToShow={1}
         infinite={false}
         dots={false}
@@ -35,6 +36,8 @@ export const MenuPage = ({}: MenuPageProps) => {
 };
 
 const Container = styled.div`
+  position: relative;
+
   width: 100vw;
   height: 100vh;
 

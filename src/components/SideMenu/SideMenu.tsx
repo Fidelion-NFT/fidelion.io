@@ -12,7 +12,7 @@ export const SideMenu = ({}: SideMenuProps) => {
 };
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   left: 0px;
   top: 0px;
 

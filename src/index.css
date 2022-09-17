@@ -4,3 +4,29 @@ body {
 
   background: black;
 }
+
+.fade-exit {
+  filter: grayscale(0);
+}
+.fade-exit-active {
+  filter: grayscale(1);
+  transition: filter 3500ms;
+}
+.fade-enter {
+  opacity: 0;
+  filter: grayscale(1);
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  filter: grayscale(0);
+  transition: opacity 3500ms ease-in, filter 3500ms ease-in;
+}
+
+.router {
+  position: relative;
+}
+
+.router > div {
+  position: absolute;
+}
