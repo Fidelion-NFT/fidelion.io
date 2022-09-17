@@ -20,7 +20,12 @@ body {
 .fade-enter.fade-enter-active {
   opacity: 1;
   filter: grayscale(0);
-  transition: opacity 3500ms ease-in, filter 3500ms ease-in;
+  transition: opacity 3500ms ease-in, filter 6000ms ease-in;
+}
+.fade-enter-done {
+  opacity: 1;
+  filter: grayscale(0);
+  transition: opacity 3500ms ease-in, filter 6000ms ease-in;
 }
 
 .router {

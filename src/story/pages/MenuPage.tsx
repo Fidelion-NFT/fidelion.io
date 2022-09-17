@@ -1,3 +1,4 @@
+import Image3 from "../../assets/intro/bg.webp";
 import { SideMenu } from "../../components/SideMenu";
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
@@ -48,7 +49,9 @@ const MenuContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: yellow;
+  background: url(${Image3});
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 
   display: flex !important;
   flex-direction: column;

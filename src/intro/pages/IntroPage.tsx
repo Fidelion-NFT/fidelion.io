@@ -1,5 +1,6 @@
 import Image1 from "../../assets/intro/img1.jpg";
 import Image2 from "../../assets/intro/img2.jpg";
+import Image3 from "../../assets/intro/img3.jpg";
 import LogoImage from "../../assets/intro/logo.png";
 import MaskImage from "../../assets/intro/mask.png";
 import { ThreeImage } from "../components/ThreeImage";
@@ -41,10 +42,10 @@ export const IntroPage = ({}: IntroPageProps) => {
         <pointLight position={[10, 10, 10]} />
 
         <ThreeImage position={new THREE.Vector3(-60, 20, -20)} src={Image1} />
-        <ThreeImage position={new THREE.Vector3(60, -20, -30)} src={Image1} />
+        <ThreeImage position={new THREE.Vector3(60, -20, -40)} src={Image3} />
 
         <ThreeImage position={new THREE.Vector3(80, 40, -150)} src={Image1} />
-        <ThreeImage position={new THREE.Vector3(-80, -40, -160)} src={Image1} />
+        <ThreeImage position={new THREE.Vector3(-80, -40, -180)} src={Image1} />
 
         <ThreeImage position={new THREE.Vector3(10, 0, -320)} src={Image1} />
         <ThreeImage position={new THREE.Vector3(0, 0, -480)} src={Image2} />
