@@ -8,7 +8,7 @@ import { ScrollOffsetContext } from "../contexts";
 import { Slide1 } from "../slides";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useScroll, motion } from "framer-motion";
-import React, { useMemo, useState, WheelEvent } from "react";
+import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
 import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
@@ -65,6 +65,10 @@ interface ControlsProps {
 const Controls = ({ pos = new THREE.Vector3() }: ControlsProps) => {
   const camera = useThree((state) => state.camera);
   const gl = useThree((state) => state.gl);
+
+  useLayoutEffect(() => {
+    camera.position.set(pos.x, pos.y, pos.z);
+  }, []);
 
   return useFrame((state, delta) => {
     state.camera.position.lerp(pos, 0.03);
