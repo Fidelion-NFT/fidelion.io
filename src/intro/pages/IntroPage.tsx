@@ -1,6 +1,10 @@
-import Image1 from "../../assets/intro/img1.jpg";
-import Image2 from "../../assets/intro/img2.jpg";
-import Image3 from "../../assets/intro/img3.jpg";
+import Slide1Text from "../../assets/intro/1.svg";
+import Slide2Left from "../../assets/intro/2l.png";
+import Slide2Right from "../../assets/intro/2r.png";
+import Slide3Left from "../../assets/intro/3l.png";
+import Slide3Right from "../../assets/intro/3r.png";
+import Slide4Left from "../../assets/intro/4l.png";
+import Slide4Right from "../../assets/intro/4r.png";
 import LogoImage from "../../assets/intro/logo.png";
 import MaskImage from "../../assets/intro/mask.png";
 import { ThreeImage } from "../components/ThreeImage";
@@ -25,15 +29,73 @@ export const IntroPage = ({}: IntroPageProps) => {
     triggerOnce: false,
   });
 
+  const [slides, setSlides] = useState([
+    {
+      x: 0,
+      y: 0,
+      z: -20,
+      width: 100,
+      src: "/intro/1.svg",
+    },
+    {
+      x: 40,
+      y: 0,
+      z: -215,
+      width: 65,
+      src: "/intro/2l.png",
+    },
+    {
+      x: -40,
+      y: 0,
+      z: -200,
+      width: 65,
+      src: "/intro/2r.png",
+    },
+    {
+      x: 40,
+      y: 0,
+      z: -415,
+      width: 65,
+      src: "/intro/3l.png",
+    },
+    {
+      x: -40,
+      y: 0,
+      z: -400,
+      width: 65,
+      src: "/intro/3r.png",
+    },
+    {
+      x: 40,
+      y: 0,
+      z: -615,
+      width: 65,
+      src: "/intro/4l.png",
+    },
+    {
+      x: -40,
+      y: 0,
+      z: -600,
+      width: 65,
+      src: "/intro/4r.png",
+    },
+  ]);
+
   const onWheel = (e: WheelEvent) => {
     setY((prev) => Math.max(-200, prev + e.deltaY * 0.05));
 
-    if (y >= 600) {
+    if (y >= 1500) {
       history.push("/story");
     }
   };
-
   console.log(y);
+
+  useLayoutEffect(() => {
+    // @ts-ignore
+    window.setSlides = (slides: any[]) => {
+      setSlides(slides);
+    };
+  }, []);
 
   return (
     <Container onWheel={onWheel}>
@@ -41,19 +103,27 @@ export const IntroPage = ({}: IntroPageProps) => {
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
 
-        <ThreeImage position={new THREE.Vector3(-60, 20, -20)} src={Image1} />
-        <ThreeImage position={new THREE.Vector3(60, -20, -40)} src={Image3} />
+        {slides.map((x: any, index) => (
+          <ThreeImage
+            width={x.width}
+            key={index}
+            position={new THREE.Vector3(x.x, x.y, x.z)}
+            src={x.src}
+          />
+        ))}
 
-        <ThreeImage position={new THREE.Vector3(80, 40, -150)} src={Image1} />
-        <ThreeImage position={new THREE.Vector3(-80, -40, -180)} src={Image1} />
+        <ThreeImage
+          width={100}
+          position={new THREE.Vector3(0, 0, -990)}
+          src={LogoImage}
+        />
+        <ThreeImage
+          width={100}
+          position={new THREE.Vector3(0, 0, -1000)}
+          src={MaskImage}
+        />
 
-        <ThreeImage position={new THREE.Vector3(10, 0, -320)} src={Image1} />
-        <ThreeImage position={new THREE.Vector3(0, 0, -480)} src={Image2} />
-
-        <ThreeImage position={new THREE.Vector3(0, 0, -590)} src={LogoImage} />
-        <ThreeImage position={new THREE.Vector3(0, 0, -600)} src={MaskImage} />
-
-        <Controls pos={new THREE.Vector3(0, 0, -Math.min(500, y))} />
+        <Controls pos={new THREE.Vector3(0, 0, -Math.min(1500, y))} />
       </Canvas>
     </Container>
   );

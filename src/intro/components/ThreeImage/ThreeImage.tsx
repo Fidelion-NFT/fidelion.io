@@ -5,9 +5,10 @@ import { MeshBasicMaterial } from "three";
 
 interface ThreeImageProps {
   position: THREE.Vector3;
+  width: number;
   src: string;
 }
-export const ThreeImage = ({ position, src }: ThreeImageProps) => {
+export const ThreeImage = ({ position, width, src }: ThreeImageProps) => {
   const texture = useLoader(THREE.TextureLoader, src);
   const camera = useThree((state) => state.camera);
   const ref = useRef<MeshBasicMaterial>(null);
@@ -24,7 +25,7 @@ export const ThreeImage = ({ position, src }: ThreeImageProps) => {
 
   return (
     <mesh position={position}>
-      <planeBufferGeometry attach="geometry" args={[100, 100 * ratio]} />
+      <planeBufferGeometry attach="geometry" args={[width, width * ratio]} />
       <meshBasicMaterial
         transparent
         ref={ref}
