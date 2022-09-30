@@ -7,6 +7,7 @@ import Slide4Left from "../../assets/intro/4l.png";
 import Slide4Right from "../../assets/intro/4r.png";
 import LogoImage from "../../assets/intro/logo.png";
 import MaskImage from "../../assets/intro/mask.png";
+import { TimeBar } from "../components";
 import { ThreeImage } from "../components/ThreeImage";
 import { ScrollOffsetContext } from "../contexts";
 import { Slide1 } from "../slides";
@@ -82,7 +83,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   ]);
 
   const onWheel = (e: WheelEvent) => {
-    setY((prev) => Math.max(-200, prev + e.deltaY * 0.05));
+    setY((prev) => Math.max(-200, prev + e.deltaY * 0.085));
 
     if (y >= 1500) {
       history.push("/story");
@@ -125,6 +126,8 @@ export const IntroPage = ({}: IntroPageProps) => {
 
         <Controls pos={new THREE.Vector3(0, 0, -Math.min(1500, y))} />
       </Canvas>
+
+      <TimeBar offset={y} />
     </Container>
   );
 };

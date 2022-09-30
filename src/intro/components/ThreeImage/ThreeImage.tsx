@@ -16,7 +16,8 @@ export const ThreeImage = ({ position, width, src }: ThreeImageProps) => {
 
   useFrame(() => {
     const dist = camera.position.z - position.z;
-    const opacity = dist > 250 ? 0 : Math.sin((dist - 50) * 0.02);
+    //const opacity = 1; //dist > 250 ? 0 : Math.sin((dist - 50) * 0.02);
+    const opacity = (200 - dist) / 100;
 
     if (ref.current) {
       ref.current.opacity = opacity;
