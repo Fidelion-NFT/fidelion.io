@@ -18,6 +18,7 @@ import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import * as THREE from "three";
+import TinyGesture from "tinygesture";
 
 interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
@@ -82,24 +83,34 @@ export const IntroPage = ({}: IntroPageProps) => {
     },
   ]);
 
-  const onWheel = (e: WheelEvent) => {
-    setY((prev) => Math.max(-200, prev + e.deltaY * 0.085));
+  const move = (amount: number) => {
+    setY((prev) => Math.max(-200, prev + amount));
 
     if (y >= 1500) {
       history.push("/story");
     }
   };
-  console.log(y);
+
+  const onWheel = (e: WheelEvent) => {
+    move(e.deltaY * 0.085);
+  };
 
   useLayoutEffect(() => {
     // @ts-ignore
     window.setSlides = (slides: any[]) => {
       setSlides(slides);
     };
+
+    const target = document.getElementById("container");
+    const gesture = new TinyGesture(target!, {});
+
+    gesture.on("panmove", (event) => {
+      move(-gesture.velocityY! * 0.65);
+    });
   }, []);
 
   return (
-    <Container onWheel={onWheel}>
+    <Container id="container" onWheel={onWheel}>
       <Canvas style={{ width: "100%", height: "100%" }}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />

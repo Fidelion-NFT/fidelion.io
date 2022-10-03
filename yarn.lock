@@ -1463,6 +1463,11 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.3:
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
+tinygesture@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/tinygesture/-/tinygesture-2.0.0.tgz#e310711abb1737109d859ff5fd6212e27b185aab"
+  integrity sha512-Xhpo6tCvUOyVq7BmJh/WDi+9qFh5AtuUqbKoMG5vpG+PT6JLPGE9D5hl9kZlj1ZqsgHuGb1OrNAXoHh8qIDpjA==
+
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
