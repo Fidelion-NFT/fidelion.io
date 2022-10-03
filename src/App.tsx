@@ -1,7 +1,6 @@
 import { TimeBar } from "./intro/components";
 import { IntroPage } from "./intro/pages/IntroPage";
 import { Act1Page, MenuPage } from "./story/pages";
-import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,6 +12,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import "inobounce";
 
 const App = () => {
   return (
