@@ -4,6 +4,15 @@ body {
 
   background: black;
 }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+html {
+  overflow: hidden;
+}
 
 .fade-exit {
   filter: grayscale(0);
