@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Years = [...new Array(24)].map((_, index) => index + 22);
+// 22~37 / 66 ~ 80
+const Years1 = [...new Array(16)].map((_, index) => index + 22);
+const Years2 = [...new Array(15)].map((_, index) => index + 66);
 
 interface TimeBarProps {
   offset: number;
@@ -11,8 +13,14 @@ export const TimeBar = ({ offset }: TimeBarProps) => {
     <Container>
       <VerticalBar />
 
-      {Years.map((x, index) => (
-        <YearText key={x} style={{ top: `${index * 20}px` }}>
+      {Years1.map((x, index) => (
+        <YearText key={x} style={{ top: `${10 + index * 15}px` }}>
+          {x}
+        </YearText>
+      ))}
+
+      {Years2.map((x, index) => (
+        <YearText key={x} style={{ top: `${265 + index * 15}px` }}>
           {x}
         </YearText>
       ))}
@@ -49,5 +57,5 @@ const YearText = styled.div`
 
   color: white;
 
-  font-size: 20px;
+  font-size: 16px;
 `;
