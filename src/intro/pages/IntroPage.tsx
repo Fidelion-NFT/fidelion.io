@@ -16,7 +16,7 @@ import { useScroll, motion } from "framer-motion";
 import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
 import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
@@ -32,6 +32,8 @@ export const IntroPage = ({}: IntroPageProps) => {
     threshold: 0.5,
     triggerOnce: false,
   });
+
+  const shouldFadeOut = y >= MaxDistance;
 
   const [slides, setSlides] = useState([
     {
@@ -140,9 +142,11 @@ export const IntroPage = ({}: IntroPageProps) => {
         <Controls pos={new THREE.Vector3(0, 0, -Math.min(MaxDistance, y))} />
       </Canvas>
 
-      <TimeBar offset={y} />
+      <InfoContainer fadeOut={shouldFadeOut}>
+        <TimeBar offset={y} />
 
-      <BottomText>58 YEARS OF DUST80</BottomText>
+        <BottomText>58 YEARS OF DUST80</BottomText>
+      </InfoContainer>
     </Container>
   );
 };
@@ -167,6 +171,27 @@ const Controls = ({ pos = new THREE.Vector3() }: ControlsProps) => {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+
+  overflow: hidden;
+`;
+
+const InfoContainer = styled.div<{ fadeOut: boolean }>`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+
+  will-change: transform;
+  transition: all 3.2s ease;
+
+  ${({ fadeOut }) =>
+    fadeOut
+      ? css`
+          opacity: 0;
+          transform: scale(2);
+        `
+      : css``}
 `;
 
 const BottomText = styled.div`
