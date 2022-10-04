@@ -20,6 +20,8 @@ import styled from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
+const MaxDistance = 950;
+
 interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
   const history = useHistory();
@@ -86,7 +88,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   const move = (amount: number) => {
     setY((prev) => Math.max(-200, prev + amount));
 
-    if (y >= 1500) {
+    if (y >= MaxDistance + 200) {
       history.push("/story");
     }
   };
@@ -135,7 +137,7 @@ export const IntroPage = ({}: IntroPageProps) => {
           src={MaskImage}
         />
 
-        <Controls pos={new THREE.Vector3(0, 0, -Math.min(1500, y))} />
+        <Controls pos={new THREE.Vector3(0, 0, -Math.min(MaxDistance, y))} />
       </Canvas>
 
       <TimeBar offset={y} />
