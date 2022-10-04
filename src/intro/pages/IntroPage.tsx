@@ -139,6 +139,8 @@ export const IntroPage = ({}: IntroPageProps) => {
       </Canvas>
 
       <TimeBar offset={y} />
+
+      <BottomText>58 YEARS OF DUST80</BottomText>
     </Container>
   );
 };
@@ -163,4 +165,16 @@ const Controls = ({ pos = new THREE.Vector3() }: ControlsProps) => {
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+`;
+
+const BottomText = styled.div`
+  position: fixed;
+  left: 0%;
+  bottom: 24px;
+  width: 100%;
+
+  color: white;
+
+  font-size: 20px;
+  text-align: center;
 `;
