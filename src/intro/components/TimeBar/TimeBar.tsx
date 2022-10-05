@@ -7,20 +7,29 @@ const Years2 = [...new Array(15)].map((_, index) => index + 66);
 
 interface TimeBarProps {
   offset: number;
+  onClick: (index: number) => void;
 }
-export const TimeBar = ({ offset }: TimeBarProps) => {
+export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
   return (
     <Container>
       <VerticalBar />
 
       {Years1.map((x, index) => (
-        <YearText key={x} style={{ top: `${10 + index * 15}px` }}>
+        <YearText
+          key={x}
+          style={{ top: `${10 + index * 15}px` }}
+          onClick={() => onClick(index)}
+        >
           {x}
         </YearText>
       ))}
 
       {Years2.map((x, index) => (
-        <YearText key={x} style={{ top: `${265 + index * 15}px` }}>
+        <YearText
+          key={x}
+          style={{ top: `${265 + index * 15}px` }}
+          onClick={() => onClick(index + Years1.length)}
+        >
           {x}
         </YearText>
       ))}
@@ -58,4 +67,6 @@ const YearText = styled.div`
   color: white;
 
   font-size: 16px;
+
+  cursor: pointer;
 `;

@@ -14,6 +14,7 @@ import { Slide1 } from "../slides";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useScroll, motion } from "framer-motion";
 import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
+import AnimatedNumbers from "react-animated-numbers";
 import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
@@ -21,6 +22,8 @@ import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
 const MaxDistance = 950;
+
+let wheelSpeed = 0.092;
 
 interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
@@ -95,14 +98,23 @@ export const IntroPage = ({}: IntroPageProps) => {
     }
   };
 
+  const moveTo = (to: number) => {
+    setY(to);
+  };
+
   const onWheel = (e: WheelEvent) => {
-    move(e.deltaY * 0.085);
+    move(e.deltaY * wheelSpeed);
   };
 
   useLayoutEffect(() => {
     // @ts-ignore
     window.setSlides = (slides: any[]) => {
       setSlides(slides);
+    };
+
+    // @ts-ignore
+    window.setSpeed = (speed: number) => {
+      wheelSpeed = speed;
     };
 
     const target = document.getElementById("container");
@@ -112,6 +124,8 @@ export const IntroPage = ({}: IntroPageProps) => {
       move(-gesture.velocityY! * 0.65);
     });
   }, []);
+
+  console.log(Math.floor(y / 50));
 
   return (
     <Container id="container" onWheel={onWheel}>
@@ -143,7 +157,9 @@ export const IntroPage = ({}: IntroPageProps) => {
       </Canvas>
 
       <InfoContainer fadeOut={shouldFadeOut}>
-        <TimeBar offset={y} />
+        <YearText>{Math.floor(y / 50)}</YearText>
+
+        <TimeBar offset={y} onClick={(index) => moveTo(index * 50)} />
 
         <BottomText>58 YEARS OF DUST80</BottomText>
       </InfoContainer>
@@ -192,6 +208,16 @@ const InfoContainer = styled.div<{ fadeOut: boolean }>`
           transform: scale(2);
         `
       : css``}
+`;
+
+const YearText = styled.div`
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+
+  color: white;
+
+  font-size: 20px;
 `;
 
 const BottomText = styled.div`
