@@ -1,6 +1,6 @@
-import Portrait from "../../../assets/story/portrait.png";
-import Text1 from "../../../assets/story/text1.png";
-import Text2 from "../../../assets/story/text2.png";
+import Portrait from "../@/assets/story/portrait.png";
+import Text1 from "../@/assets/story/text1.png";
+import Text2 from "../@/assets/story/text2.png";
 import { useScroll, motion, useTransform, useMotionValue } from "framer-motion";
 import React from "react";
 import { useInView } from "react-intersection-observer";
