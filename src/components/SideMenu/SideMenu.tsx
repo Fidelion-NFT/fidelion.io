@@ -1,12 +1,16 @@
 import DustLogo from "@/assets/dust.svg";
 import MenuIcon from "@/assets/menu.svg";
+import { useStores } from "@/story/stores";
+import { observer } from "mobx-react";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface SideMenuProps {}
-export const SideMenu = ({}: SideMenuProps) => {
+export const SideMenu = observer(({}: SideMenuProps) => {
+  const { sideMenuStore } = useStores();
+
   return (
-    <Container>
+    <Container backgroundColor={sideMenuStore.backgroundColor}>
       <div style={{ flex: 1 }} />
       <Logo />
       <div style={{ flex: 1 }} />
@@ -23,9 +27,9 @@ export const SideMenu = ({}: SideMenuProps) => {
       </MenuContainer>
     </Container>
   );
-};
+});
 
-const Container = styled.div`
+const Container = styled.div<{ backgroundColor: string }>`
   position: absolute;
   left: 0px;
   top: 0px;
@@ -37,14 +41,19 @@ const Container = styled.div`
 
   color: white;
 
-  border: 1px solid white;
+  border-bottom: 1px solid white;
 
   align-items: center;
 
   z-index: 100;
 
+  transition: all 0.3s ease;
   transform: translateX(calc(-50vh + 34px)) translateY(calc(50vh - 35px))
     rotate(-90deg);
+
+  ${({ backgroundColor }) => css`
+    background-color: ${backgroundColor};
+  `}
 `;
 
 const Logo = styled(DustLogo)``;
@@ -56,6 +65,7 @@ const MenuContainer = styled.div`
   height: 100%;
 
   border: 1px solid white;
+  border-right: none;
 
   align-items: center;
   justify-content: center;

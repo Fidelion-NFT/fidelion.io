@@ -5,17 +5,48 @@ import { BattleFieldPage } from "./BattlefieldPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
-import React, { useEffect, useRef, useState, WheelEvent } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  WheelEvent,
+} from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import styled from "styled-components";
 
 interface MenuPageProps {}
 export const MenuPage = ({}: MenuPageProps) => {
   const carouselRef = useRef<Slider>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { hash: page = "#menu" } = useLocation();
+
+  const PageComponent = {
+    menu: MenuHome,
+    act1: Act1Page,
+    battlefield: BattleFieldPage,
+  }[page.substring(1)]!;
+
+  if (!PageComponent) {
+    window.location.hash = "#menu";
+  }
+
+  useEffect(() => {
+    containerRef.current!.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      containerRef.current!.scrollLeft += evt.deltaY * 0.6;
+    });
+  }, []);
 
   return (
     <Container>
       <SideMenu />
+
+      <PageContainer ref={containerRef}>
+        <PageComponent />
+      </PageContainer>
+      {/*}
       <Slider
         ref={carouselRef}
         touchMove={false}
@@ -38,7 +69,22 @@ export const MenuPage = ({}: MenuPageProps) => {
         <Act1Page />
         <BattleFieldPage />
       </Slider>
+  */}
     </Container>
+  );
+};
+
+const MenuHome = () => {
+  const history = useHistory();
+
+  return (
+    <MenuContainer>
+      <MenuItemText onClick={() => history.push("#act1")}>ACT1</MenuItemText>
+      <MenuItemText onClick={() => history.push("#battlefield")}>
+        ACT2
+      </MenuItemText>
+      <MenuItemText>ACT3</MenuItemText>
+    </MenuContainer>
   );
 };
 
@@ -55,9 +101,7 @@ const MenuContainer = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: url(${Image3});
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background: #fae232;
 
   display: flex !important;
   flex-direction: column;
@@ -72,4 +116,19 @@ const MenuItemText = styled.div`
   color: black;
 
   cursor: pointer;
+`;
+
+const PageContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 `;
