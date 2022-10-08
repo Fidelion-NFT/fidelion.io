@@ -3,11 +3,13 @@ import MenuIcon from "@/assets/menu.svg";
 import { useStores } from "@/story/stores";
 import { observer } from "mobx-react";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface SideMenuProps {}
 export const SideMenu = observer(({}: SideMenuProps) => {
   const { sideMenuStore } = useStores();
+  const history = useHistory();
 
   return (
     <Container backgroundColor={sideMenuStore.backgroundColor}>
@@ -23,7 +25,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       <div style={{ flex: 1 }} />
 
       <MenuContainer>
-        <Menu />
+        <Menu onClick={() => history.push("#menu")} />
       </MenuContainer>
     </Container>
   );
@@ -56,6 +58,7 @@ const Container = styled.div<{ backgroundColor: string }>`
   `}
 `;
 
+// @ts-ignore
 const Logo = styled(DustLogo)``;
 
 const MenuContainer = styled.div`
@@ -72,6 +75,7 @@ const MenuContainer = styled.div`
 
   cursor: pointer;
 `;
+// @ts-ignore
 const Menu = styled(MenuIcon)`
   transform: rotate(90deg);
 `;
