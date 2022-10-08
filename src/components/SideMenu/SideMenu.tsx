@@ -7,9 +7,8 @@ interface SideMenuProps {}
 export const SideMenu = ({}: SideMenuProps) => {
   return (
     <Container>
-      <MenuContainer>
-        <Menu />
-      </MenuContainer>
+      <div style={{ flex: 1 }} />
+      <Logo />
       <div style={{ flex: 1 }} />
 
       <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
@@ -17,10 +16,11 @@ export const SideMenu = ({}: SideMenuProps) => {
       <Text80>80</Text80>
       <div style={{ flex: 1 }} />
       <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
+      <div style={{ flex: 1 }} />
 
-      <div style={{ flex: 1 }} />
-      <Logo />
-      <div style={{ flex: 1 }} />
+      <MenuContainer>
+        <Menu />
+      </MenuContainer>
     </Container>
   );
 };
@@ -44,12 +44,10 @@ const Container = styled.div`
   z-index: 100;
 
   transform: translateX(calc(-50vh + 34px)) translateY(calc(50vh - 35px))
-    rotate(90deg);
+    rotate(-90deg);
 `;
 
-const Logo = styled.img.attrs({
-  src: DustLogo,
-})``;
+const Logo = styled(DustLogo)``;
 
 const MenuContainer = styled.div`
   display: flex;
@@ -64,9 +62,9 @@ const MenuContainer = styled.div`
 
   cursor: pointer;
 `;
-const Menu = styled.img.attrs({
-  src: MenuIcon,
-})``;
+const Menu = styled(MenuIcon)`
+  transform: rotate(90deg);
+`;
 
 const TextApocalypse = styled.div`
   font-family: "Helvetica Neue";
