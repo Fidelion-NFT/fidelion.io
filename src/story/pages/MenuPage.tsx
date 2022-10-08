@@ -1,7 +1,9 @@
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
+import { useStores } from "../stores";
 import { Act1Page } from "./Act1Page";
 import { BattleFieldPage } from "./BattlefieldPage";
+import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
@@ -26,6 +28,7 @@ export const MenuPage = ({}: MenuPageProps) => {
     menu: MenuHome,
     act1: Act1Page,
     battlefield: BattleFieldPage,
+    team: TeamPage,
   }[page.substring(1)]!;
 
   if (!PageComponent) {
@@ -76,6 +79,15 @@ export const MenuPage = ({}: MenuPageProps) => {
 
 const MenuHome = () => {
   const history = useHistory();
+  const { sideMenuStore } = useStores();
+
+  useLayoutEffect(() => {
+    sideMenuStore.backgroundColor = "black";
+
+    return () => {
+      sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
+    };
+  }, []);
 
   return (
     <MenuContainer>
@@ -83,7 +95,7 @@ const MenuHome = () => {
       <MenuItemText onClick={() => history.push("#battlefield")}>
         ACT2
       </MenuItemText>
-      <MenuItemText>ACT3</MenuItemText>
+      <MenuItemText onClick={() => history.push("#team")}>ACT3</MenuItemText>
     </MenuContainer>
   );
 };

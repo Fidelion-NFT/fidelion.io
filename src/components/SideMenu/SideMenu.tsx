@@ -41,8 +41,6 @@ const Container = styled.div<{ backgroundColor: string }>`
   width: 100vh;
   height: 70px;
 
-  color: white;
-
   border-bottom: 1px solid white;
 
   align-items: center;
@@ -55,6 +53,13 @@ const Container = styled.div<{ backgroundColor: string }>`
 
   ${({ backgroundColor }) => css`
     background-color: ${backgroundColor};
+
+    color: ${() => {
+      if (backgroundColor === "white") {
+        return "black";
+      }
+      return "white";
+    }};
   `}
 `;
 
