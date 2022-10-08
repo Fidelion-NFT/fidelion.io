@@ -1,9 +1,9 @@
-import { SideMenu } from "../../components/SideMenu";
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { Act1Page } from "./Act1Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import Image3 from "@/assets/intro/bg.webp";
+import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
 import React, { useEffect, useRef, useState, WheelEvent } from "react";
 import Slider from "react-slick";
@@ -18,6 +18,7 @@ export const MenuPage = ({}: MenuPageProps) => {
       <SideMenu />
       <Slider
         ref={carouselRef}
+        touchMove={false}
         vertical={false}
         slidesToShow={1}
         infinite={false}
