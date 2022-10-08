@@ -1,6 +1,6 @@
-import Amblem from "../@/assets/story/amblem.png";
-import Image from "../@/assets/story/image.png";
-import Text1 from "../@/assets/story/text3.png";
+import Amblem from "@/assets/story/amblem.png";
+import Image from "@/assets/story/image.png";
+import Text1 from "@/assets/story/text3.png";
 import { useScroll, motion, useTransform, useMotionValue } from "framer-motion";
 import React from "react";
 import { useInView } from "react-intersection-observer";

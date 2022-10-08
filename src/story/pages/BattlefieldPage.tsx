@@ -7,7 +7,7 @@ import Slide3 from "@/assets/story/battlefield/3.svg";
 import Slide4 from "@/assets/story/battlefield/4.svg";
 import { useScroll, motion } from "framer-motion";
 import React, { useEffect, useRef, useState, WheelEvent } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface BattleFieldPageProps {}
 export const BattleFieldPage = ({}: BattleFieldPageProps) => {
@@ -22,10 +22,14 @@ export const BattleFieldPage = ({}: BattleFieldPageProps) => {
 
   return (
     <Container ref={containerRef}>
-      <Slide src={Slide1} />
-      <Slide src={Slide2} />
-      <Slide src={Slide3} />
-      <Slide src={Slide4} />
+      <SlideContainer>
+        <Slide1 />
+      </SlideContainer>
+      <SlideContainer>
+        <Slide2 />
+      </SlideContainer>
+      <Slide3 />
+      <Slide4 />
     </Container>
   );
 };
@@ -39,7 +43,11 @@ const Container = styled.div`
   overflow: auto;
 `;
 
-const Slide = styled.img`
+const SlideContainer = styled.div`
   width: auto;
   height: 100vh;
+
+  > svg {
+    height: 100%;
+  }
 `;
