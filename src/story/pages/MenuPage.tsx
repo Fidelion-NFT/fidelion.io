@@ -3,6 +3,7 @@ import { SideMenu } from "../../components/SideMenu";
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { Act1Page } from "./Act1Page";
+import { BattleFieldPage } from "./BattlefieldPage";
 import { useScroll, motion } from "framer-motion";
 import React, { useEffect, useRef, useState, WheelEvent } from "react";
 import Slider from "react-slick";
@@ -27,10 +28,14 @@ export const MenuPage = ({}: MenuPageProps) => {
           <MenuItemText onClick={() => carouselRef.current?.slickGoTo(1)}>
             ACT1
           </MenuItemText>
-          <MenuItemText>ACT2</MenuItemText>
+          <MenuItemText onClick={() => carouselRef.current?.slickGoTo(2)}>
+            ACT2
+          </MenuItemText>
           <MenuItemText>ACT3</MenuItemText>
         </MenuContainer>
+
         <Act1Page />
+        <BattleFieldPage />
       </Slider>
     </Container>
   );

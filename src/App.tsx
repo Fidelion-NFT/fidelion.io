@@ -1,6 +1,5 @@
-import { TimeBar } from "./intro/components";
-import { IntroPage } from "./intro/pages/IntroPage";
 import { Act1Page, MenuPage } from "./story/pages";
+import { IntroPage } from "@/intro/pages/IntroPage";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
