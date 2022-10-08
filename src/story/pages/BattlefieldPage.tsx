@@ -20,7 +20,9 @@ export const BattleFieldPage = ({}: BattleFieldPageProps) => {
   useLayoutEffect(() => {
     sideMenuStore.backgroundColor = "rgba(0,0,0,1)";
 
-    return () => (sideMenuStore.backgroundColor = "rgba(0,0,0,0)");
+    return () => {
+      sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
+    };
   }, []);
 
   return (
