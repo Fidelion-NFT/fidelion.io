@@ -9,6 +9,7 @@ import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
 import React, {
+  MutableRefObject,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -21,9 +22,10 @@ import styled from "styled-components";
 
 interface MenuPageProps {}
 export const MenuPage = ({}: MenuPageProps) => {
-  const carouselRef = useRef<Slider>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { hash: page = "#menu" } = useLocation();
+  const pageRefs = useRef<Record<string, HTMLDivElement>>({});
+  const hash = page.substring(1);
 
   const PageComponent = {
     menu: MenuHome,
@@ -31,11 +33,18 @@ export const MenuPage = ({}: MenuPageProps) => {
     battlefield: BattleFieldPage,
     team: TeamPage,
     harrier_registration: HarrierRegistrationPage,
-  }[page.substring(1)]!;
+  }[hash]!;
 
   if (!PageComponent) {
     window.location.hash = "#menu";
   }
+
+  useLayoutEffect(() => {
+    console.log(pageRefs.current[hash]);
+    pageRefs.current[hash]?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }, [hash]);
 
   useEffect(() => {
     containerRef.current!.addEventListener("wheel", (evt) => {
@@ -49,8 +58,10 @@ export const MenuPage = ({}: MenuPageProps) => {
       <SideMenu />
 
       <PageContainer ref={containerRef}>
-        <HarrierRegistrationPage />
-        <BattleFieldPage />
+        <HarrierRegistrationPage
+          ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
+        />
+        <BattleFieldPage ref={(x) => (pageRefs.current["battlefield"] = x!)} />
       </PageContainer>
       {/*}
       <Slider
