@@ -25,7 +25,9 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       <div style={{ flex: 1 }} />
 
       <MenuContainer>
-        <Menu onClick={() => history.push("#menu")} />
+        <Menu
+          onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
+        />
       </MenuContainer>
     </Container>
   );

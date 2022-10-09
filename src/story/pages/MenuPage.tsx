@@ -8,6 +8,7 @@ import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
+import { observer } from "mobx-react";
 import React, {
   MutableRefObject,
   useEffect,
@@ -18,12 +19,13 @@ import React, {
 } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Slider from "react-slick";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface MenuPageProps {}
-export const MenuPage = ({}: MenuPageProps) => {
+export const MenuPage = observer(({}: MenuPageProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { hash: page = "#menu" } = useLocation();
+  const { sideMenuStore } = useStores();
   const pageRefs = useRef<Record<string, HTMLDivElement>>({});
   const hash = page.substring(1);
 
@@ -57,12 +59,18 @@ export const MenuPage = ({}: MenuPageProps) => {
     <Container>
       <SideMenu />
 
-      <PageContainer ref={containerRef}>
-        <HarrierRegistrationPage
-          ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
-        />
-        <BattleFieldPage ref={(x) => (pageRefs.current["battlefield"] = x!)} />
-      </PageContainer>
+      <DrawerContainer showMenu={sideMenuStore.showMenu}>
+        <MenuHome />
+
+        <PageContainer ref={containerRef}>
+          <HarrierRegistrationPage
+            ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
+          />
+          <BattleFieldPage
+            ref={(x) => (pageRefs.current["battlefield"] = x!)}
+          />
+        </PageContainer>
+      </DrawerContainer>
       {/*}
       <Slider
         ref={carouselRef}
@@ -89,7 +97,7 @@ export const MenuPage = ({}: MenuPageProps) => {
   */}
     </Container>
   );
-};
+});
 
 const MenuHome = () => {
   const history = useHistory();
@@ -124,6 +132,53 @@ const Container = styled.div`
   height: 100vh;
 
   overflow: hidden;
+`;
+
+const DrawerContainer = styled.div<{ showMenu: boolean }>`
+  > div {
+    position: absolute;
+    top: 0px;
+
+    will-change: transform;
+    transition: all 0.65s ease;
+
+    &:nth-child(1) {
+      left: -100vw;
+      z-index: 10;
+    }
+    &:nth-child(2) {
+      left: 0px;
+    }
+  }
+
+  transition: all 0.6s ease;
+
+  ${({ showMenu }) =>
+    showMenu
+      ? css`
+          > div {
+            &:nth-child(1) {
+              opacity: 1;
+              transform: translateX(100vw);
+            }
+            &:nth-child(2) {
+              opacity: 0;
+              transform: translateX(100vw);
+            }
+          }
+        `
+      : css`
+          > div {
+            &:nth-child(1) {
+              opacity: 0.5;
+              transform: translateX(0vw);
+            }
+            &:nth-child(2) {
+              opacity: 1;
+              transform: translateX(0vw);
+            }
+          }
+        `}
 `;
 
 const MenuContainer = styled.div`
