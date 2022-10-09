@@ -103,6 +103,14 @@ const MenuHome = () => {
   const history = useHistory();
   const { sideMenuStore } = useStores();
 
+  const navigate = (to: string) => {
+    sideMenuStore.showMenu = false;
+
+    setTimeout(() => {
+      history.push(to);
+    }, 450);
+  };
+
   useLayoutEffect(() => {
     sideMenuStore.backgroundColor = "black";
 
@@ -113,12 +121,10 @@ const MenuHome = () => {
 
   return (
     <MenuContainer>
-      <MenuItemText onClick={() => history.push("#act1")}>ACT1</MenuItemText>
-      <MenuItemText onClick={() => history.push("#battlefield")}>
-        ACT2
-      </MenuItemText>
-      <MenuItemText onClick={() => history.push("#team")}>ACT3</MenuItemText>
-      <MenuItemText onClick={() => history.push("#harrier_registration")}>
+      <MenuItemText onClick={() => navigate("#act1")}>ACT1</MenuItemText>
+      <MenuItemText onClick={() => navigate("#battlefield")}>ACT2</MenuItemText>
+      <MenuItemText onClick={() => navigate("#team")}>ACT3</MenuItemText>
+      <MenuItemText onClick={() => navigate("#harrier_registration")}>
         HARRIER
       </MenuItemText>
     </MenuContainer>
