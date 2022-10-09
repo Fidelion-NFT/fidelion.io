@@ -3,6 +3,7 @@ import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
 import { Act1Page } from "./Act1Page";
 import { BattleFieldPage } from "./BattlefieldPage";
+import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
@@ -29,6 +30,7 @@ export const MenuPage = ({}: MenuPageProps) => {
     act1: Act1Page,
     battlefield: BattleFieldPage,
     team: TeamPage,
+    harrier_registration: HarrierRegistrationPage,
   }[page.substring(1)]!;
 
   if (!PageComponent) {
@@ -47,7 +49,8 @@ export const MenuPage = ({}: MenuPageProps) => {
       <SideMenu />
 
       <PageContainer ref={containerRef}>
-        <PageComponent />
+        <HarrierRegistrationPage />
+        <BattleFieldPage />
       </PageContainer>
       {/*}
       <Slider
@@ -96,6 +99,9 @@ const MenuHome = () => {
         ACT2
       </MenuItemText>
       <MenuItemText onClick={() => history.push("#team")}>ACT3</MenuItemText>
+      <MenuItemText onClick={() => history.push("#harrier_registration")}>
+        HARRIER
+      </MenuItemText>
     </MenuContainer>
   );
 };
