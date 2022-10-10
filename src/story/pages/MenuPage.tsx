@@ -1,7 +1,4 @@
-import { Act1Slide1, Act1Slide2 } from "../slides/act1";
-import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
-import { Act1Page } from "./Act1Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { TeamPage } from "./TeamPage";
@@ -29,25 +26,17 @@ export const MenuPage = observer(({}: MenuPageProps) => {
   const pageRefs = useRef<Record<string, HTMLDivElement>>({});
   const hash = page.substring(1);
 
-  const PageComponent = {
-    menu: MenuHome,
-    act1: Act1Page,
-    battlefield: BattleFieldPage,
-    team: TeamPage,
-    harrier_registration: HarrierRegistrationPage,
-  }[hash]!;
-
-  if (!PageComponent) {
-    window.location.hash = "#menu";
-  }
-
   useLayoutEffect(() => {
-    return;
+    if (sideMenuStore.showMenu) {
+      return;
+    }
 
-    pageRefs.current[hash]?.scrollIntoView({
-      behavior: "smooth",
-    });
-  }, [hash]);
+    setTimeout(() => {
+      pageRefs.current[hash]?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }, 800);
+  }, [hash, sideMenuStore.showMenu]);
 
   useEffect(() => {
     containerRef.current!.addEventListener("wheel", (evt) => {
