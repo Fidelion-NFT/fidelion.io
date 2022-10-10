@@ -12,6 +12,7 @@ import {
 import "./index.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "inobounce";
+import { StoryPage } from "./story/pages/StoryPage";
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const InnerRouter = () => {
         <Switch location={location}>
           <Route exact path="/" component={IntroPage} />
           <Route path="/intro/" component={IntroPage} />
-          <Route path="/story/" component={MenuPage} />
+          <Route path="/story/" component={StoryPage} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

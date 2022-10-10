@@ -1,11 +1,4 @@
 import { useStores } from "../stores";
-import { BattleFieldPage } from "./BattlefieldPage";
-import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
-import { TeamPage } from "./TeamPage";
-import Image3 from "@/assets/intro/bg.webp";
-import { SideMenu } from "@/components/SideMenu";
-import { useScroll, motion } from "framer-motion";
-import { observer } from "mobx-react";
 import React, {
   MutableRefObject,
   useEffect,
@@ -15,81 +8,9 @@ import React, {
   WheelEvent,
 } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import Slider from "react-slick";
 import styled, { css } from "styled-components";
 
-interface MenuPageProps {}
-export const MenuPage = observer(({}: MenuPageProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { hash: page = "#menu" } = useLocation();
-  const { sideMenuStore } = useStores();
-  const pageRefs = useRef<Record<string, HTMLDivElement>>({});
-  const hash = page.substring(1);
-
-  useLayoutEffect(() => {
-    if (sideMenuStore.showMenu) {
-      return;
-    }
-
-    setTimeout(() => {
-      pageRefs.current[hash]?.scrollIntoView({
-        behavior: "smooth",
-      });
-    }, 800);
-  }, [hash, sideMenuStore.showMenu]);
-
-  useEffect(() => {
-    containerRef.current!.addEventListener("wheel", (evt) => {
-      evt.preventDefault();
-      containerRef.current!.scrollLeft += evt.deltaY * 0.6;
-    });
-  }, []);
-
-  return (
-    <Container>
-      <SideMenu />
-
-      <DrawerContainer showMenu={sideMenuStore.showMenu}>
-        <MenuHome />
-
-        <PageContainer ref={containerRef}>
-          <HarrierRegistrationPage
-            ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
-          />
-          <BattleFieldPage
-            ref={(x) => (pageRefs.current["battlefield"] = x!)}
-          />
-        </PageContainer>
-      </DrawerContainer>
-      {/*}
-      <Slider
-        ref={carouselRef}
-        touchMove={false}
-        vertical={false}
-        slidesToShow={1}
-        infinite={false}
-        dots={false}
-        arrows={false}
-      >
-        <MenuContainer>
-          <MenuItemText onClick={() => carouselRef.current?.slickGoTo(1)}>
-            ACT1
-          </MenuItemText>
-          <MenuItemText onClick={() => carouselRef.current?.slickGoTo(2)}>
-            ACT2
-          </MenuItemText>
-          <MenuItemText>ACT3</MenuItemText>
-        </MenuContainer>
-
-        <Act1Page />
-        <BattleFieldPage />
-      </Slider>
-  */}
-    </Container>
-  );
-});
-
-const MenuHome = () => {
+export const MenuPage = () => {
   const history = useHistory();
   const { sideMenuStore } = useStores();
 
@@ -111,71 +32,41 @@ const MenuHome = () => {
 
   return (
     <MenuContainer>
-      <MenuItemText onClick={() => navigate("#act1")}>ACT1</MenuItemText>
-      <MenuItemText onClick={() => navigate("#battlefield")}>ACT2</MenuItemText>
-      <MenuItemText onClick={() => navigate("#team")}>ACT3</MenuItemText>
-      <MenuItemText onClick={() => navigate("#harrier_registration")}>
-        HARRIER
-      </MenuItemText>
+      <Acts>
+        <Row>
+          <NumberText>2</NumberText>
+          <LargeItemText onClick={() => navigate("#act1")}>ACT1</LargeItemText>
+        </Row>
+        <Row>
+          <NumberText>0</NumberText>
+          <LargeItemText onClick={() => navigate("#battlefield")}>
+            ACT2
+          </LargeItemText>
+        </Row>
+        <Row>
+          <NumberText>8</NumberText>
+          <LargeItemText onClick={() => navigate("#team")}>
+            Battlefield
+          </LargeItemText>
+        </Row>
+        <Row>
+          <NumberText>0</NumberText>
+          <LargeItemText onClick={() => navigate("#harrier_registration")}>
+            DUSTIES
+          </LargeItemText>
+        </Row>
+      </Acts>
+
+      <SmallMenu>
+        <SmallItemText>Team</SmallItemText>
+        <SmallItemText>Partners</SmallItemText>
+        <SmallItemText>Gallery</SmallItemText>
+        <SmallItemText>ToS</SmallItemText>
+        <SmallItemText>Q&A</SmallItemText>
+      </SmallMenu>
     </MenuContainer>
   );
 };
-
-const Container = styled.div`
-  position: relative;
-
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-`;
-
-const DrawerContainer = styled.div<{ showMenu: boolean }>`
-  > div {
-    position: absolute;
-    top: 0px;
-
-    will-change: transform;
-    transition: all 0.65s ease;
-
-    &:nth-child(1) {
-      left: -100vw;
-      z-index: 10;
-    }
-    &:nth-child(2) {
-      left: 0px;
-    }
-  }
-
-  transition: all 0.6s ease;
-
-  ${({ showMenu }) =>
-    showMenu
-      ? css`
-          > div {
-            &:nth-child(1) {
-              opacity: 1;
-              transform: translateX(100vw);
-            }
-            &:nth-child(2) {
-              opacity: 0;
-              transform: translateX(100vw);
-            }
-          }
-        `
-      : css`
-          > div {
-            &:nth-child(1) {
-              opacity: 0.5;
-              transform: translateX(0vw);
-            }
-            &:nth-child(2) {
-              opacity: 1;
-              transform: translateX(0vw);
-            }
-          }
-        `}
-`;
 
 const MenuContainer = styled.div`
   width: 100vw;
@@ -185,30 +76,43 @@ const MenuContainer = styled.div`
 
   display: flex !important;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
-const MenuItemText = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-
-  color: black;
+const Acts = styled.div`
+  padding-left: 170px;
+`;
+const SmallMenu = styled.div`
+  position: absolute;
+  right: 56px;
+  bottom: 40px;
+`;
+const Row = styled.div`
+  display: flex;
+  height: 23vh;
 
   cursor: pointer;
 `;
 
-const PageContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+const NumberText = styled.div`
+  font-family: "Arial Black";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 100px;
 
-  display: flex;
+  margin-right: 15vh;
+`;
+const LargeItemText = styled.div`
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18vh;
+`;
+const SmallItemText = styled.div`
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 51px;
 
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  cursor: pointer;
 `;
