@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-three/fiber": "^8.7.4",
     "framer-motion": "^7.3.4",
+    "hamburger-react": "^2.5.0",
     "inobounce": "^0.2.1",
     "lodash-es": "^4.17.21",
     "luxon": "^3.0.3",

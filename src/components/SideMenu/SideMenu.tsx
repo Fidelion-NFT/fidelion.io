@@ -1,6 +1,7 @@
 import DustLogo from "@/assets/dust.svg";
 import MenuIcon from "@/assets/menu.svg";
 import { useStores } from "@/story/stores";
+import Hamburger from "hamburger-react";
 import { observer } from "mobx-react";
 import React from "react";
 import { useHistory } from "react-router-dom";
@@ -24,10 +25,12 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
       <div style={{ flex: 1 }} />
 
-      <MenuContainer>
-        <Menu
-          onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
-        />
+      <MenuContainer
+        onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
+      >
+        <div>
+          <Hamburger />
+        </div>
       </MenuContainer>
     </Container>
   );
@@ -81,10 +84,10 @@ const MenuContainer = styled.div`
   justify-content: center;
 
   cursor: pointer;
-`;
-// @ts-ignore
-const Menu = styled(MenuIcon)`
-  transform: rotate(90deg);
+
+  > div {
+    transform: rotate(90deg);
+  }
 `;
 
 const TextApocalypse = styled.div`

@@ -42,7 +42,8 @@ export const MenuPage = observer(({}: MenuPageProps) => {
   }
 
   useLayoutEffect(() => {
-    console.log(pageRefs.current[hash]);
+    return;
+
     pageRefs.current[hash]?.scrollIntoView({
       behavior: "smooth",
     });
