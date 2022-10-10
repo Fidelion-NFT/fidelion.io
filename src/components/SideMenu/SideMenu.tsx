@@ -29,7 +29,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
         onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
       >
         <div>
-          <Hamburger />
+          <Hamburger toggled={sideMenuStore.showMenu} />
         </div>
       </MenuContainer>
     </Container>
