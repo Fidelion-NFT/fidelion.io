@@ -1,6 +1,6 @@
 import { ViewMarker } from "../components";
 import { useStores } from "../stores";
-import Slide1 from "@/assets/story/harrier_registration/all.svg";
+import Slide1 from "@/assets/story/battlefield/all.svg";
 import { useScroll, motion } from "framer-motion";
 import React, {
   forwardRef,

@@ -6,6 +6,8 @@ import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { useScroll, motion } from "framer-motion";
+// @ts-ignore
+import Impetus from "impetus";
 import { observer } from "mobx-react";
 import React, {
   MutableRefObject,
@@ -18,6 +20,8 @@ import React, {
 import { useHistory, useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import styled, { css } from "styled-components";
+
+let speed = 0;
 
 interface StoryPageProps {}
 export const StoryPage = observer(({}: StoryPageProps) => {
@@ -42,8 +46,21 @@ export const StoryPage = observer(({}: StoryPageProps) => {
   useEffect(() => {
     containerRef.current!.addEventListener("wheel", (evt) => {
       evt.preventDefault();
-      containerRef.current!.scrollLeft += evt.deltaY * 0.6;
+
+      speed = evt.deltaY * 0.19;
     });
+  }, []);
+
+  useLayoutEffect(() => {
+    const run = () => {
+      containerRef.current!.scrollLeft += speed;
+
+      speed = Math.pow(speed * 0.1, 2);
+
+      requestAnimationFrame(run);
+    };
+
+    requestAnimationFrame(run);
   }, []);
 
   return (

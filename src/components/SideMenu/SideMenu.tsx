@@ -69,7 +69,11 @@ const Container = styled.div<{ backgroundColor: string }>`
 `;
 
 // @ts-ignore
-const Logo = styled(DustLogo)``;
+const Logo = styled(DustLogo)`
+  width: 5vw;
+  max-width: 78px;
+  height: auto;
+`;
 
 const MenuContainer = styled.div`
   display: flex;
@@ -101,7 +105,7 @@ const Text80 = styled.div`
   font-family: "Arial Black";
   font-style: normal;
   font-weight: 900;
-  font-size: 30px;
+  font-size: min(30px, 1.65rem);
   line-height: 42px;
   letter-spacing: -0.13em;
 `;

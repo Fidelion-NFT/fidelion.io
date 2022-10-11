@@ -12,7 +12,9 @@ import styled, { css } from "styled-components";
 
 export const MenuPage = () => {
   const history = useHistory();
+  const { hash: page } = useLocation();
   const { sideMenuStore } = useStores();
+  const pageName = page.substring(1);
 
   const navigate = (to: string) => {
     sideMenuStore.showMenu = false;
@@ -33,19 +35,28 @@ export const MenuPage = () => {
   return (
     <MenuContainer>
       <Acts>
-        <Row onClick={() => navigate("#act1")}>
+        <Row active={pageName === "act1"} onClick={() => navigate("#act1")}>
           <NumberText>2</NumberText>
           <LargeItemText>ACT1</LargeItemText>
         </Row>
-        <Row onClick={() => navigate("#battlefield")}>
+        <Row
+          active={pageName === "act12"}
+          onClick={() => navigate("#battlefield")}
+        >
           <NumberText>0</NumberText>
           <LargeItemText>ACT2</LargeItemText>
         </Row>
-        <Row onClick={() => navigate("#team")}>
+        <Row
+          active={pageName === "battlefield"}
+          onClick={() => navigate("#team")}
+        >
           <NumberText>8</NumberText>
           <LargeItemText>Battlefield</LargeItemText>
         </Row>
-        <Row onClick={() => navigate("#harrier_registration")}>
+        <Row
+          active={pageName === "dusties"}
+          onClick={() => navigate("#harrier_registration")}
+        >
           <NumberText>0</NumberText>
           <LargeItemText>DUSTIES</LargeItemText>
         </Row>
@@ -80,11 +91,22 @@ const SmallMenu = styled.div`
   right: 56px;
   bottom: 40px;
 `;
-const Row = styled.div`
+const Row = styled.div<{ active: boolean }>`
   display: flex;
   height: 23vh;
 
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  ${({ active }) =>
+    active
+      ? css`
+          color: #ee220c !important;
+        `
+      : css``}
 `;
 
 const NumberText = styled.div`
