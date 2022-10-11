@@ -33,27 +33,21 @@ export const MenuPage = () => {
   return (
     <MenuContainer>
       <Acts>
-        <Row>
+        <Row onClick={() => navigate("#act1")}>
           <NumberText>2</NumberText>
-          <LargeItemText onClick={() => navigate("#act1")}>ACT1</LargeItemText>
+          <LargeItemText>ACT1</LargeItemText>
         </Row>
-        <Row>
+        <Row onClick={() => navigate("#battlefield")}>
           <NumberText>0</NumberText>
-          <LargeItemText onClick={() => navigate("#battlefield")}>
-            ACT2
-          </LargeItemText>
+          <LargeItemText>ACT2</LargeItemText>
         </Row>
-        <Row>
+        <Row onClick={() => navigate("#team")}>
           <NumberText>8</NumberText>
-          <LargeItemText onClick={() => navigate("#team")}>
-            Battlefield
-          </LargeItemText>
+          <LargeItemText>Battlefield</LargeItemText>
         </Row>
-        <Row>
+        <Row onClick={() => navigate("#harrier_registration")}>
           <NumberText>0</NumberText>
-          <LargeItemText onClick={() => navigate("#harrier_registration")}>
-            DUSTIES
-          </LargeItemText>
+          <LargeItemText>DUSTIES</LargeItemText>
         </Row>
       </Acts>
 
