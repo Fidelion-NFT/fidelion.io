@@ -127,7 +127,7 @@ const DrawerContainer = styled.div<{ showMenu: boolean }>`
               transform: translateX(100vw);
             }
             &:nth-child(2) {
-              opacity: 0;
+              opacity: 1;
               transform: translateX(100vw);
             }
           }
@@ -135,7 +135,7 @@ const DrawerContainer = styled.div<{ showMenu: boolean }>`
       : css`
           > div {
             &:nth-child(1) {
-              opacity: 0.5;
+              opacity: 1;
               transform: translateX(0vw);
             }
             &:nth-child(2) {
