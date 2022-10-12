@@ -15,8 +15,8 @@ import React, {
 } from "react";
 import styled, { css } from "styled-components";
 
-interface Act1PageProps {}
-export const Act1Page = forwardRef<HTMLDivElement>(({}: Act1PageProps, ref) => {
+interface Act2PageProps {}
+export const Act2Page = forwardRef<HTMLDivElement>(({}: Act2PageProps, ref) => {
   const { sideMenuStore } = useStores();
 
   useLayoutEffect(() => {
@@ -29,7 +29,7 @@ export const Act1Page = forwardRef<HTMLDivElement>(({}: Act1PageProps, ref) => {
 
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="act1" />
+      <ViewMarker name="act2" />
       <Slide1 />
     </SlideContainer>
   );

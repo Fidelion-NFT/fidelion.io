@@ -26,11 +26,9 @@ export const TeamPage = ({}: TeamPageProps) => {
   }, []);
 
   return (
-    <>
-      <SlideContainer>
-        <Slide1 />
-      </SlideContainer>
-    </>
+    <SlideContainer>
+      <Slide1 />
+    </SlideContainer>
   );
 };
 

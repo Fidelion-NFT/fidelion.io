@@ -37,11 +37,11 @@ export const MenuPage = () => {
           <NumberText>2</NumberText>
           <LargeItemText>ACT1</LargeItemText>
         </Row>
-        <Row onClick={() => navigate("#battlefield")}>
+        <Row onClick={() => navigate("#act2")}>
           <NumberText>0</NumberText>
           <LargeItemText>ACT2</LargeItemText>
         </Row>
-        <Row onClick={() => navigate("#team")}>
+        <Row onClick={() => navigate("#battlefield")}>
           <NumberText>8</NumberText>
           <LargeItemText>Battlefield</LargeItemText>
         </Row>
