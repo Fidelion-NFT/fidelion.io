@@ -1,4 +1,6 @@
 import { useStores } from "../stores";
+import { Act1Page } from "./Act1Page";
+import { Act2Page } from "./Act2Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
@@ -81,6 +83,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <MenuPage />
 
         <PageContainer ref={containerRef}>
+          <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
+          <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
           <HarrierRegistrationPage
             ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
           />
