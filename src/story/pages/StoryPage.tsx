@@ -44,10 +44,20 @@ export const StoryPage = observer(({}: StoryPageProps) => {
   }, [hash, sideMenuStore.showMenu]);
 
   useEffect(() => {
-    containerRef.current!.addEventListener("wheel", (evt) => {
-      evt.preventDefault();
+    containerRef.current!.addEventListener("wheel", (e) => {
+      e.preventDefault();
 
-      speed = evt.deltaY * 0.19;
+      // @ts-ignore
+      const isTouchPad = e.wheelDeltaY
+        ? // @ts-ignore
+          e.wheelDeltaY === -3 * e.deltaY
+        : e.deltaMode === 0;
+
+      if (isTouchPad) {
+        containerRef.current!.scrollLeft += e.deltaY * 0.6;
+      } else {
+        speed = e.deltaY * 0.06;
+      }
     });
   }, []);
 
@@ -55,7 +65,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
     const run = () => {
       containerRef.current!.scrollLeft += speed;
 
-      speed = Math.pow(speed * 0.1, 2);
+      speed = speed * 0.9056;
 
       requestAnimationFrame(run);
     };
