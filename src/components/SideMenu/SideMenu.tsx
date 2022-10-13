@@ -29,7 +29,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
         onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
       >
         <div>
-          <Hamburger toggled={sideMenuStore.showMenu} />
+          <Menu toggled={sideMenuStore.showMenu} />
         </div>
       </MenuContainer>
     </Container>
@@ -75,6 +75,11 @@ const Logo = styled(DustLogo)`
   height: auto;
 `;
 
+// @ts-ignore
+const Menu = styled(MenuIcon)`
+  transform: rotate(90deg);
+`;
+
 const MenuContainer = styled.div`
   display: flex;
 
@@ -88,10 +93,6 @@ const MenuContainer = styled.div`
   justify-content: center;
 
   cursor: pointer;
-
-  > div {
-    transform: rotate(90deg);
-  }
 `;
 
 const TextApocalypse = styled.div`

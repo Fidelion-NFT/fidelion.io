@@ -1,4 +1,5 @@
 import { useStores } from "../stores";
+import CloseIcon from "@/assets/close.svg";
 import React, {
   MutableRefObject,
   useEffect,
@@ -39,22 +40,19 @@ export const MenuPage = () => {
           <NumberText>2</NumberText>
           <LargeItemText>ACT1</LargeItemText>
         </Row>
-        <Row
-          active={pageName === "act12"}
-          onClick={() => navigate("#battlefield")}
-        >
+        <Row active={pageName === "act2"} onClick={() => navigate("#act2")}>
           <NumberText>0</NumberText>
           <LargeItemText>ACT2</LargeItemText>
         </Row>
         <Row
           active={pageName === "battlefield"}
-          onClick={() => navigate("#team")}
+          onClick={() => navigate("#battlefield")}
         >
           <NumberText>8</NumberText>
           <LargeItemText>Battlefield</LargeItemText>
         </Row>
         <Row
-          active={pageName === "dusties"}
+          active={pageName === "harrier_registration"}
           onClick={() => navigate("#harrier_registration")}
         >
           <NumberText>0</NumberText>
@@ -69,6 +67,8 @@ export const MenuPage = () => {
         <SmallItemText>ToS</SmallItemText>
         <SmallItemText>Q&A</SmallItemText>
       </SmallMenu>
+
+      <CloseButton onClick={() => (sideMenuStore.showMenu = false)} />
     </MenuContainer>
   );
 };
@@ -81,6 +81,15 @@ const MenuContainer = styled.div`
 
   display: flex !important;
   flex-direction: column;
+`;
+
+// @ts-ignore
+const CloseButton = styled(CloseIcon)`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+
+  cursor: pointer;
 `;
 
 const Acts = styled.div`
