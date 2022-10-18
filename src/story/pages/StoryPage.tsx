@@ -7,6 +7,7 @@ import { MenuPage } from "./MenuPage";
 import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
+import { isMac } from "@/utils";
 import { useScroll, motion } from "framer-motion";
 // @ts-ignore
 import Impetus from "impetus";
@@ -58,7 +59,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
       if (isTouchPad) {
         containerRef.current!.scrollLeft += e.deltaY * 0.6;
       } else {
-        speed = e.deltaY * 0.06;
+        speed = e.deltaY * (isMac ? 0.06 : 0.243);
       }
     });
   }, []);
