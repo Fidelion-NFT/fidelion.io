@@ -12,9 +12,9 @@ import Slide4Right from "@/assets/intro/4r.png";
 import LogoImage from "@/assets/intro/logo.png";
 import MaskImage from "@/assets/intro/mask.png";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useScroll, motion } from "framer-motion";
+import { useScroll, motion, AnimatePresence } from "framer-motion";
 import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
-import AnimatedNumbers from "react-animated-numbers";
+import FlipNumbers from "react-flip-numbers";
 import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
@@ -92,6 +92,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   ]);
 
   const move = (amount: number) => {
+    setStarted(true);
     setY((prev) => Math.max(-200, prev + amount));
 
     if (y >= MaxDistance + 200) {
@@ -162,15 +163,25 @@ export const IntroPage = ({}: IntroPageProps) => {
       </Canvas>
 
       <InfoContainer fadeOut={shouldFadeOut}>
-        <YearText>{Math.floor(y / 50)}</YearText>
+        <YearTextContainer>
+          <FlipNumbers
+            play
+            color="white"
+            width={20}
+            height={20}
+            numbers={`${Math.floor(y / 50)}`}
+          />
+        </YearTextContainer>
 
         <TimeBar offset={y} onClick={(index) => moveTo(index * 50)} />
 
-        {started ? (
-          <BottomText>58 YEARS OF DUST80</BottomText>
-        ) : (
-          <SkipText onClick={onSkip}>Skip Intro</SkipText>
-        )}
+        <AnimatePresence>
+          {started ? (
+            <BottomText>58 YEARS OF DUST80</BottomText>
+          ) : (
+            <SkipText onClick={onSkip}>Skip Intro</SkipText>
+          )}
+        </AnimatePresence>
       </InfoContainer>
     </Container>
   );
@@ -219,17 +230,26 @@ const InfoContainer = styled.div<{ fadeOut: boolean }>`
       : css``}
 `;
 
-const YearText = styled.div`
+const YearTextContainer = styled.div`
   position: fixed;
   left: 24px;
   bottom: 24px;
-
-  color: white;
-
-  font-size: 20px;
 `;
 
-const BottomCenterText = styled.div`
+const BottomCenterText = styled(motion.div).attrs({
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.9,
+    },
+  },
+  exit: {
+    opacity: 0,
+  },
+})`
   position: fixed;
   left: 0%;
   bottom: 24px;

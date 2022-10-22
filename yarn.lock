@@ -1782,6 +1782,13 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-flip-numbers@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-flip-numbers/-/react-flip-numbers-3.0.7.tgz#4180c219a5670fc81ccd9b7b16b093e01169d69e"
+  integrity sha512-Jm8IBgwNb5jcwqHteoj+WCtRos+J5O8tWMhjNiGUYlawzgU5BWv++RldseQCLrOJKxPzlACn9y/MkRyo+i0zrA==
+  dependencies:
+    react-simple-animate "^3.0.1"
+
 react-intersection-observer@^8.33.1:
   version "8.34.0"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.34.0.tgz#6f6e67831c52e6233f6b6cc7eb55814820137c42"
@@ -1862,6 +1869,11 @@ react-scroll-parallax@^3.3.1:
   integrity sha512-yduD41rowkw6tRDXEshWK2pV8MKUoc8Err2kRXe2lJEryJ5gFXqBNbuSJfaSZAWqnrkHM/ClKyaQ9AL1fHP5ow==
   dependencies:
     parallax-controller "^1.5.0"
+
+react-simple-animate@^3.0.1:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/react-simple-animate/-/react-simple-animate-3.5.2.tgz#ab08865c8bd47872b92bd1e25902326bf7c695b3"
+  integrity sha512-xLE65euP920QMTOmv5haPlml+hmOPDkbIr5WeF7ADIXWBYt5kW/vwpNfWg8EKMab8aeDxIZ6QjffVh8v2dUyhg==
 
 react-slick@^0.29.0:
   version "0.29.0"
