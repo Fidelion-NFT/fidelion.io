@@ -35,6 +35,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     threshold: 0.5,
     triggerOnce: false,
   });
+  const [started, setStarted] = useState(false);
 
   const shouldFadeOut = y >= MaxDistance;
 
@@ -106,6 +107,10 @@ export const IntroPage = ({}: IntroPageProps) => {
     move(e.deltaY * wheelSpeed);
   };
 
+  const onSkip = () => {
+    history.push("/story");
+  };
+
   useLayoutEffect(() => {
     // @ts-ignore
     window.setSlides = (slides: any[]) => {
@@ -161,7 +166,11 @@ export const IntroPage = ({}: IntroPageProps) => {
 
         <TimeBar offset={y} onClick={(index) => moveTo(index * 50)} />
 
-        <BottomText>58 YEARS OF DUST80</BottomText>
+        {started ? (
+          <BottomText>58 YEARS OF DUST80</BottomText>
+        ) : (
+          <SkipText onClick={onSkip}>Skip Intro</SkipText>
+        )}
       </InfoContainer>
     </Container>
   );
@@ -220,14 +229,23 @@ const YearText = styled.div`
   font-size: 20px;
 `;
 
-const BottomText = styled.div`
+const BottomCenterText = styled.div`
   position: fixed;
   left: 0%;
   bottom: 24px;
   width: 100%;
 
+  text-align: center;
+`;
+const SkipText = styled(BottomCenterText)`
   color: white;
 
   font-size: 20px;
-  text-align: center;
+
+  cursor: pointer;
+`;
+const BottomText = styled(BottomCenterText)`
+  color: white;
+
+  font-size: 20px;
 `;
