@@ -17,7 +17,5 @@ export const ViewMarker = ({ name }: ViewMarketProps) => {
     }
   }, [inView]);
 
-  console.log(inView);
-
   return <div ref={ref} />;
 };

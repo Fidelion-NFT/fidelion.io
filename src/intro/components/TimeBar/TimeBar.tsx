@@ -59,6 +59,8 @@ const CursorBar = styled.div`
   height: 1px;
 
   background: white;
+
+  transition: all 0.25s ease;
 `;
 const YearText = styled.div`
   position: absolute;

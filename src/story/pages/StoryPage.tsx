@@ -1,3 +1,5 @@
+import { Act1Slide1, Act1Slide2 } from "../slides/act1";
+import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
 import { Act1Page } from "./Act1Page";
 import { Act2Page } from "./Act2Page";
@@ -7,6 +9,7 @@ import { MenuPage } from "./MenuPage";
 import { TeamPage } from "./TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
+import { Slide1 } from "@/intro/slides";
 import { isMac } from "@/utils";
 import { useScroll, motion } from "framer-motion";
 // @ts-ignore
@@ -84,6 +87,10 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <MenuPage />
 
         <PageContainer ref={containerRef}>
+          <Act1Slide1 />
+          <Act1Slide2 />
+          <Act1Slide3 />
+
           <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
           <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
           <HarrierRegistrationPage
