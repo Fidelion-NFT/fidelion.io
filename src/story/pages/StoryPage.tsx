@@ -86,10 +86,12 @@ export const StoryPage = observer(({}: StoryPageProps) => {
       <DrawerContainer showMenu={sideMenuStore.showMenu}>
         <MenuPage />
 
-        <PageContainer ref={containerRef}>
-          <Act1Slide1 />
+        <PageContainer id="page-scroll" ref={containerRef}>
           <Act1Slide2 />
           <Act1Slide3 />
+          <Act1Slide3 />
+          <Act1Slide3 />
+          <Act1Slide1 />
 
           <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
           <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
@@ -183,27 +185,6 @@ const DrawerContainer = styled.div<{ showMenu: boolean }>`
             }
           }
         `}
-`;
-
-const MenuContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-
-  background: #fae232;
-
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const MenuItemText = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-
-  color: black;
-
-  cursor: pointer;
 `;
 
 const PageContainer = styled.div`

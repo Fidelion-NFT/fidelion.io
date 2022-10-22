@@ -2,19 +2,25 @@ import Portrait from "@/assets/story/portrait.png";
 import Text1 from "@/assets/story/text1.png";
 import Text2 from "@/assets/story/text2.png";
 import { useScroll, motion, useTransform, useMotionValue } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 
 interface Act1Slide1Props {}
 export const Act1Slide1 = ({}: Act1Slide1Props) => {
-  const { scrollX } = useScroll();
+  const [offsetX, setOffsetX] = useState(0);
+  const { scrollX, scrollYProgress, scrollXProgress } = useScroll({
+    target: { current: document.getElementById("page-scroll") },
+    container: { current: document.getElementById("page-scroll") },
+  });
 
   const [ref, inView, entry] = useInView({
     /* Optional options */
     threshold: 0.2,
     triggerOnce: false,
   });
+
+  console.log(entry?.rootBounds);
 
   const variantsText1 = {
     visible: { opacity: 1, scale: 1, x: 0 },
@@ -31,16 +37,27 @@ export const Act1Slide1 = ({}: Act1Slide1Props) => {
     },
   };
   const variantsPortrait = {
-    visible: { opacity: 1, scale: 1, x: 0 },
+    visible: { opacity: 1, scale: 1 },
     hidden: {
-      opacity: 0,
-      scale: 1.1,
-      x: 150,
+      opacity: 1,
+      scale: 0.5,
     },
   };
 
+  //scrollX.onChange((x) => console.log(x));
+
+  const tf = useTransform(scrollX, [offsetX, offsetX + 1000], [0, -500]);
+  const scale = useTransform(scrollX, [offsetX, offsetX + 1000], [1, 0.7], {
+    clamp: true,
+  });
+
+  console.log(offsetX);
+
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      ref={(x) => setOffsetX(x?.offsetLeft)}
+      style={{ position: "relative" }}
+    >
       <Container ref={ref}>
         <MotionImage
           src={Text1}
@@ -58,10 +75,10 @@ export const Act1Slide1 = ({}: Act1Slide1Props) => {
         />
         <MotionImage
           src={Portrait}
-          animate={inView ? "visible" : "hidden"}
-          variants={variantsPortrait}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.25 }}
-          style={{ right: "50px", bottom: "0px", height: "50vw" }}
+          //animate={inView ? "visible" : "hidden"}
+          //variants={variantsPortrait}
+          //transition={{ duration: 2, ease: "easeOut", delay: 0.25 }}
+          style={{ x: tf, scale, right: "0px", bottom: "0px", height: "50vw" }}
         />
       </Container>
     </div>
@@ -77,4 +94,6 @@ const Container = styled(motion.div)`
 
 const MotionImage = styled(motion.img)`
   position: absolute;
+
+  transform-origin: bottom;
 `;
