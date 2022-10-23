@@ -36,6 +36,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
   const { sideMenuStore } = useStores();
   const pageRefs = useRef<Record<string, HTMLDivElement>>({});
   const hash = page.substring(1);
+  const [ready, setReady] = useState(false);
 
   useLayoutEffect(() => {
     if (sideMenuStore.showMenu) {
@@ -50,6 +51,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
   }, [hash, sideMenuStore.showMenu]);
 
   useEffect(() => {
+    setReady(true);
+
     containerRef.current!.addEventListener("wheel", (e) => {
       e.preventDefault();
 
@@ -87,20 +90,24 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <MenuPage />
 
         <PageContainer id="page-scroll" ref={containerRef}>
-          <Act1Slide2 />
-          <Act1Slide3 />
-          <Act1Slide3 />
-          <Act1Slide3 />
-          <Act1Slide1 />
+          {ready && (
+            <>
+              <Act1Slide2 />
+              <Act1Slide3 />
+              <Act1Slide3 />
+              <Act1Slide3 />
+              <Act1Slide1 />
 
-          <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
-          <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
-          <HarrierRegistrationPage
-            ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
-          />
-          <BattleFieldPage
-            ref={(x) => (pageRefs.current["battlefield"] = x!)}
-          />
+              <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
+              <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
+              <HarrierRegistrationPage
+                ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
+              />
+              <BattleFieldPage
+                ref={(x) => (pageRefs.current["battlefield"] = x!)}
+              />
+            </>
+          )}
         </PageContainer>
       </DrawerContainer>
       {/*}

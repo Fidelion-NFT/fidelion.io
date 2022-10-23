@@ -1,8 +1,8 @@
 import Portrait from "@/assets/story/portrait.png";
 import Text1 from "@/assets/story/text1.png";
-import Text2 from "@/assets/story/text2.png";
+import Text2 from "@/assets/story/text4.png";
 import { useScroll, motion, useTransform, useMotionValue } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 
@@ -44,10 +44,9 @@ export const Act1Slide1 = ({}: Act1Slide1Props) => {
     },
   };
 
-  //scrollX.onChange((x) => console.log(x));
-
-  const tf = useTransform(scrollX, [offsetX, offsetX + 1000], [0, -500]);
-  const scale = useTransform(scrollX, [offsetX, offsetX + 1000], [1, 0.7], {
+  const x = useTransform(scrollX, [offsetX, offsetX + 700], [-70, 0]);
+  const y = useTransform(scrollX, [offsetX, offsetX + 700], [200, -50]);
+  const scale = useTransform(scrollX, [offsetX, offsetX + 700], [1.3, 1], {
     clamp: true,
   });
 
@@ -71,14 +70,21 @@ export const Act1Slide1 = ({}: Act1Slide1Props) => {
           animate={inView ? "visible" : "hidden"}
           variants={variantsText2}
           transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-          style={{ top: "0px", right: "50px" }}
+          style={{ top: "0px", right: "50px", width: "500px" }}
         />
         <MotionImage
           src={Portrait}
           //animate={inView ? "visible" : "hidden"}
           //variants={variantsPortrait}
           //transition={{ duration: 2, ease: "easeOut", delay: 0.25 }}
-          style={{ x: tf, scale, right: "0px", bottom: "0px", height: "50vw" }}
+          style={{
+            x,
+            y,
+            scale,
+            right: "500px",
+            bottom: "0px",
+            height: "90vh",
+          }}
         />
       </Container>
     </div>
@@ -89,7 +95,7 @@ const Container = styled(motion.div)`
   width: 100vw;
   height: 100vh;
 
-  background: red;
+  background: #972618;
 `;
 
 const MotionImage = styled(motion.img)`
