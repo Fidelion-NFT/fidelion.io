@@ -54,7 +54,7 @@ export const Act1Slide1 = ({}: Act1Slide1Props) => {
 
   return (
     <div
-      ref={(x) => setOffsetX(x!.offsetLeft)}
+      ref={(x) => x && setOffsetX(x!.offsetLeft)}
       style={{ position: "relative" }}
     >
       <Container ref={ref}>
