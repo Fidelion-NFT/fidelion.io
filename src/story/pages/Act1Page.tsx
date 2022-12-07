@@ -19,17 +19,9 @@ interface Act1PageProps {}
 export const Act1Page = forwardRef<HTMLDivElement>(({}: Act1PageProps, ref) => {
   const { sideMenuStore } = useStores();
 
-  useLayoutEffect(() => {
-    sideMenuStore.backgroundColor = "white";
-
-    return () => {
-      sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
-    };
-  }, []);
-
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="act1" />
+      <ViewMarker name="act1" color="rgba(0,0,0,0)" />
       <Slide1 />
     </SlideContainer>
   );

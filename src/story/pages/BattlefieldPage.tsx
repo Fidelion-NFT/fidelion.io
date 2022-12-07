@@ -5,32 +5,15 @@ import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
 import Slide1 from "@/assets/story/battlefield/all.svg";
 import { useScroll, motion } from "framer-motion";
-import React, {
-  forwardRef,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  WheelEvent,
-} from "react";
+import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 
 interface BattleFieldPageProps {}
 export const BattleFieldPage = forwardRef<HTMLDivElement>(
   ({}: BattleFieldPageProps, ref) => {
-    const { sideMenuStore } = useStores();
-
-    useLayoutEffect(() => {
-      sideMenuStore.backgroundColor = "rgba(0,0,0,1)";
-
-      return () => {
-        sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
-      };
-    }, []);
-
     return (
       <SlideContainer ref={ref}>
-        <ViewMarker name="battlefield" />
+        <ViewMarker name="battlefield" color="rgba(0,0,0,0)" />
         <Slide1 />
       </SlideContainer>
     );

@@ -16,19 +16,9 @@ import styled, { css } from "styled-components";
 interface HarrierRegistrationPageProps {}
 export const HarrierRegistrationPage = forwardRef<HTMLDivElement>(
   ({}: HarrierRegistrationPageProps, ref) => {
-    const { sideMenuStore } = useStores();
-
-    useLayoutEffect(() => {
-      sideMenuStore.backgroundColor = "rgba(0,0,0,1)";
-
-      return () => {
-        sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
-      };
-    }, []);
-
     return (
       <SlideContainer ref={ref}>
-        <ViewMarker name="harrier_registration" />
+        <ViewMarker name="harrier_registration" color="rgba(0,0,0,0)" />
         <Slide1 />
       </SlideContainer>
     );

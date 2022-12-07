@@ -1,17 +1,13 @@
 import { useStores } from "../stores";
 import CloseIcon from "@/assets/close.svg";
-import React, {
-  MutableRefObject,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  WheelEvent,
-} from "react";
+import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-export const MenuPage = () => {
+interface MenuPageProps {
+  pages?: Record<string, HTMLDivElement>;
+}
+export const MenuPage = ({ pages }: MenuPageProps) => {
   const history = useHistory();
   const { hash: page } = useLocation();
   const { sideMenuStore } = useStores();
@@ -22,15 +18,20 @@ export const MenuPage = () => {
 
     setTimeout(() => {
       history.push(to);
+
+      document.getElementById("page-scroll")!.scrollTo({
+        left: pages[to.substring(1)]?.offsetLeft,
+        behavior: "smooth",
+      });
     }, 450);
   };
 
-  useLayoutEffect(() => {
-    sideMenuStore.backgroundColor = "black";
-
-    return () => {
-      sideMenuStore.backgroundColor = "rgba(0,0,0,0)";
-    };
+  useEffect(() => {
+    setTimeout(() => {
+      document.getElementById("page-scroll")!.scrollTo({
+        left: pages[page.substring(1)]?.offsetLeft,
+      });
+    }, 100);
   }, []);
 
   return (
@@ -61,11 +62,36 @@ export const MenuPage = () => {
       </Acts>
 
       <SmallMenu>
-        <SmallItemText>Team</SmallItemText>
-        <SmallItemText>Partners</SmallItemText>
-        <SmallItemText>Gallery</SmallItemText>
-        <SmallItemText>ToS</SmallItemText>
-        <SmallItemText>Q&A</SmallItemText>
+        <SmallItemText
+          active={pageName === "team"}
+          onClick={() => navigate("#team")}
+        >
+          Team
+        </SmallItemText>
+        <SmallItemText
+          active={pageName === "partners"}
+          onClick={() => navigate("#partners")}
+        >
+          Partners
+        </SmallItemText>
+        <SmallItemText
+          active={pageName === "gallery"}
+          onClick={() => navigate("#gallery")}
+        >
+          Gallery
+        </SmallItemText>
+        <SmallItemText
+          active={pageName === "tos"}
+          onClick={() => navigate("#tos")}
+        >
+          ToS
+        </SmallItemText>
+        <SmallItemText
+          active={pageName === "qna"}
+          onClick={() => navigate("#qna")}
+        >
+          Q&A
+        </SmallItemText>
       </SmallMenu>
 
       <CloseButton onClick={() => (sideMenuStore.showMenu = false)} />
@@ -132,7 +158,7 @@ const LargeItemText = styled.div`
   font-weight: 400;
   font-size: 18vh;
 `;
-const SmallItemText = styled.div`
+const SmallItemText = styled.div<{ active: boolean }>`
   font-family: "Arial";
   font-style: normal;
   font-weight: 700;
@@ -140,4 +166,11 @@ const SmallItemText = styled.div`
   line-height: 51px;
 
   cursor: pointer;
+
+  ${({ active }) =>
+    active
+      ? css`
+          color: #ee220c !important;
+        `
+      : css``}
 `;

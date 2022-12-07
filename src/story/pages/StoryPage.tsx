@@ -6,7 +6,8 @@ import { Act2Page } from "./Act2Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
-import { TeamPage } from "./TeamPage";
+import { PartnersPage } from "./etc";
+import { TeamPage } from "./etc/TeamPage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { Slide1 } from "@/intro/slides";
@@ -38,18 +39,6 @@ export const StoryPage = observer(({}: StoryPageProps) => {
   const hash = page.substring(1);
   const [ready, setReady] = useState(false);
 
-  useLayoutEffect(() => {
-    if (sideMenuStore.showMenu) {
-      return;
-    }
-
-    setTimeout(() => {
-      pageRefs.current[hash]?.scrollIntoView({
-        behavior: "smooth",
-      });
-    }, 800);
-  }, [hash, sideMenuStore.showMenu]);
-
   useEffect(() => {
     setReady(true);
 
@@ -72,9 +61,11 @@ export const StoryPage = observer(({}: StoryPageProps) => {
 
   useLayoutEffect(() => {
     const run = () => {
-      containerRef.current!.scrollLeft += speed;
+      if (Math.abs(speed) > 0.001) {
+        containerRef.current!.scrollLeft += speed;
 
-      speed = speed * 0.9056;
+        speed = speed * 0.9056;
+      }
 
       requestAnimationFrame(run);
     };
@@ -87,7 +78,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
       <SideMenu />
 
       <DrawerContainer showMenu={sideMenuStore.showMenu}>
-        <MenuPage />
+        <MenuPage pages={pageRefs.current} />
 
         <PageContainer id="page-scroll" ref={containerRef}>
           {ready && (
@@ -106,6 +97,9 @@ export const StoryPage = observer(({}: StoryPageProps) => {
               <BattleFieldPage
                 ref={(x) => (pageRefs.current["battlefield"] = x!)}
               />
+
+              <TeamPage ref={(x) => (pageRefs.current["team"] = x!)} />
+              <PartnersPage ref={(x) => (pageRefs.current["partners"] = x!)} />
             </>
           )}
         </PageContainer>
