@@ -10,10 +10,15 @@ import styled, { css } from "styled-components";
 interface SideMenuProps {}
 export const SideMenu = observer(({}: SideMenuProps) => {
   const { sideMenuStore } = useStores();
-  const history = useHistory();
+  const borderColor =
+    sideMenuStore.backgroundColor === "white" ? "black" : "white";
 
   return (
-    <Container backgroundColor={sideMenuStore.backgroundColor}>
+    <Container
+      id="menu"
+      backgroundColor={sideMenuStore.backgroundColor}
+      borderColor={borderColor}
+    >
       <div style={{ flex: 1 }} />
       <Logo />
       <div style={{ flex: 1 }} />
@@ -26,6 +31,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       <div style={{ flex: 1 }} />
 
       <MenuContainer
+        borderColor={borderColor}
         onClick={() => (sideMenuStore.showMenu = !sideMenuStore.showMenu)}
       >
         <div>
@@ -36,7 +42,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
   );
 });
 
-const Container = styled.div<{ backgroundColor: string }>`
+const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
   position: absolute;
   left: 0px;
   top: 0px;
@@ -46,8 +52,6 @@ const Container = styled.div<{ backgroundColor: string }>`
   width: 100vh;
   height: 70px;
 
-  border-bottom: 1px solid white;
-
   align-items: center;
 
   z-index: 100;
@@ -56,15 +60,12 @@ const Container = styled.div<{ backgroundColor: string }>`
   transform: translateX(calc(-50vh + 34px)) translateY(calc(50vh - 35px))
     rotate(-90deg);
 
-  ${({ backgroundColor }) => css`
+  ${({ backgroundColor, borderColor }) => css`
+    border-bottom: 1px solid ${borderColor};
+
     background-color: ${backgroundColor};
 
-    color: ${() => {
-      if (backgroundColor === "white") {
-        return "black";
-      }
-      return "white";
-    }};
+    color: ${borderColor};
   `}
 `;
 
@@ -80,19 +81,24 @@ const Menu = styled(MenuIcon)`
   transform: rotate(90deg);
 `;
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.div<{ borderColor: string }>`
   display: flex;
 
   width: 182px;
   height: 100%;
 
-  border: 1px solid white;
   border-right: none;
 
   align-items: center;
   justify-content: center;
 
+  transition: all 0.3s ease;
+
   cursor: pointer;
+
+  ${({ borderColor }) => css`
+    border: 1px solid ${borderColor};
+  `}
 `;
 
 const TextApocalypse = styled.div`

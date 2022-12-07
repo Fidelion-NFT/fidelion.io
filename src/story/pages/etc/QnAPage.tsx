@@ -1,14 +1,14 @@
 import { ViewMarker } from "../../components";
-import TeamPageImage from "@/assets/story/etc/team.svg";
+import QnAPageImage from "@/assets/story/etc/team.svg";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 
-interface TeamPageProps {}
-export const TeamPage = forwardRef<HTMLDivElement>(({}: TeamPageProps, ref) => {
+interface QnAPageProps {}
+export const QnAPage = forwardRef<HTMLDivElement>(({}: QnAPageProps, ref) => {
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="team" color="white" />
-      <TeamPageImage />
+      <ViewMarker name="qna" color="white" />
+      <QnAPageImage />
     </SlideContainer>
   );
 });

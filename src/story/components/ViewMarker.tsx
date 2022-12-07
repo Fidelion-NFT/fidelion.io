@@ -8,18 +8,28 @@ interface ViewMarketProps {
   color: string;
 }
 export const ViewMarker = ({ name, color }: ViewMarketProps) => {
-  const { ref, inView } = useInView({
-    threshold: 0.95,
-  });
+  const { ref, inView, entry } = useInView({});
   const history = useHistory();
   const { sideMenuStore } = useStores();
 
   useEffect(() => {
     if (inView) {
+      console.log("inview", name);
       sideMenuStore.backgroundColor = color;
       history.push(`#${name}`);
     }
   }, [inView]);
 
-  return <div ref={ref} />;
+  return (
+    <div
+      ref={ref}
+      style={{
+        pointerEvents: "none",
+        width: "calc(100% - 100vw - 70px)",
+        height: "100%",
+        position: "absolute",
+        left: "calc(100vw - 70px)",
+      }}
+    />
+  );
 };

@@ -1,15 +1,15 @@
 import { ViewMarker } from "../../components";
-import PartnersPageImage from "@/assets/story/etc/partners.svg";
+import GalleryPageImage from "@/assets/story/etc/team.svg";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 
-interface PartnersPageProps {}
-export const PartnersPage = forwardRef<HTMLDivElement>(
-  ({}: PartnersPageProps, ref) => {
+interface GalleryPageProps {}
+export const GalleryPage = forwardRef<HTMLDivElement>(
+  ({}: GalleryPageProps, ref) => {
     return (
       <SlideContainer ref={ref}>
-        <ViewMarker name="partners" color="white" />
-        <PartnersPageImage />
+        <ViewMarker name="gallery" color="white" />
+        <GalleryPageImage />
       </SlideContainer>
     );
   }

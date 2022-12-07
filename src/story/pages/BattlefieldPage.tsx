@@ -21,6 +21,7 @@ export const BattleFieldPage = forwardRef<HTMLDivElement>(
 );
 
 const SlideContainer = styled.div`
+  position: relative;
   width: auto;
   height: 100vh;
 

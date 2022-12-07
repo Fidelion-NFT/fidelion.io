@@ -6,8 +6,10 @@ import { Act2Page } from "./Act2Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
-import { PartnersPage } from "./etc";
+import { GalleryPage, PartnersPage, QnAPage, ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
+import { Year2080Page } from "./prefix";
+import { NoHopePage } from "./prefix/NoHopePage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { Slide1 } from "@/intro/slides";
@@ -83,6 +85,10 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <PageContainer id="page-scroll" ref={containerRef}>
           {ready && (
             <>
+              {/* PREFIX PAGES */}
+              <Year2080Page ref={(x) => (pageRefs.current["p1"] = x!)} />
+              <NoHopePage ref={(x) => (pageRefs.current["p2"] = x!)} />
+
               <Act1Slide2 />
               <Act1Slide3 />
               <Act1Slide3 />
@@ -98,8 +104,12 @@ export const StoryPage = observer(({}: StoryPageProps) => {
                 ref={(x) => (pageRefs.current["battlefield"] = x!)}
               />
 
+              {/* ETC PAGES */}
               <TeamPage ref={(x) => (pageRefs.current["team"] = x!)} />
               <PartnersPage ref={(x) => (pageRefs.current["partners"] = x!)} />
+              <GalleryPage ref={(x) => (pageRefs.current["gallery"] = x!)} />
+              <ToSPage ref={(x) => (pageRefs.current["tos"] = x!)} />
+              <QnAPage ref={(x) => (pageRefs.current["qna"] = x!)} />
             </>
           )}
         </PageContainer>

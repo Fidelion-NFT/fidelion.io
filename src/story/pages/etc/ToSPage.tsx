@@ -1,14 +1,14 @@
 import { ViewMarker } from "../../components";
-import TeamPageImage from "@/assets/story/etc/team.svg";
+import ToSPageImage from "@/assets/story/etc/team.svg";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 
-interface TeamPageProps {}
-export const TeamPage = forwardRef<HTMLDivElement>(({}: TeamPageProps, ref) => {
+interface ToSPageProps {}
+export const ToSPage = forwardRef<HTMLDivElement>(({}: ToSPageProps, ref) => {
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="team" color="white" />
-      <TeamPageImage />
+      <ViewMarker name="tos" color="white" />
+      <ToSPageImage />
     </SlideContainer>
   );
 });
