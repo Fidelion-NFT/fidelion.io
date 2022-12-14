@@ -21,7 +21,7 @@ import styled, { css } from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
-const MaxDistance = 950;
+const MaxDistance = 2000;
 
 let wheelSpeed = 0.092;
 
@@ -45,49 +45,162 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -20,
       width: 100,
-      src: "/intro/1.svg",
+      src: "/intro/0.svg",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -150,
+      width: 50,
+      src: "/intro/1l.png",
     },
     {
       x: 29,
       y: 1,
       z: -150,
       width: 50,
+      src: "/intro/1r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -300,
+      width: 50,
       src: "/intro/2l.png",
     },
     {
-      x: -34,
-      y: 0,
-      z: -110,
-      width: 65,
+      x: 29,
+      y: 1,
+      z: -300,
+      width: 50,
       src: "/intro/2r.png",
     },
     {
-      x: 35,
-      y: 0,
-      z: -230,
-      width: 65,
+      x: -29,
+      y: 1,
+      z: -450,
+      width: 50,
       src: "/intro/3l.png",
     },
     {
-      x: -25,
-      y: 0,
-      z: -190,
-      width: 45,
+      x: 29,
+      y: 1,
+      z: -450,
+      width: 50,
       src: "/intro/3r.png",
     },
     {
-      x: 34,
+      x: 0,
       y: 0,
-      z: -310,
-      width: 65,
+      z: -600,
+      width: 100,
+      fadeOut: true,
+      src: "/intro/3.svg",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -750,
+      width: 50,
       src: "/intro/4l.png",
     },
     {
-      x: -35,
-      y: -2,
-      z: -270,
-      width: 65,
+      x: 29,
+      y: 1,
+      z: -750,
+      width: 50,
       src: "/intro/4r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -900,
+      width: 50,
+      src: "/intro/5l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -900,
+      width: 50,
+      src: "/intro/5r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -1050,
+      width: 50,
+      src: "/intro/6l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -1050,
+      width: 50,
+      src: "/intro/6r.png",
+    },
+    {
+      x: 0,
+      y: 0,
+      z: -1300,
+      width: 100,
+      src: "/intro/6.svg",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -1450,
+      width: 50,
+      src: "/intro/7l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -1450,
+      width: 50,
+      src: "/intro/7r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -1600,
+      width: 50,
+      src: "/intro/8l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -1600,
+      width: 50,
+      src: "/intro/8r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -1750,
+      width: 50,
+      src: "/intro/9l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -1750,
+      width: 50,
+      src: "/intro/9r.png",
+    },
+    {
+      x: -29,
+      y: 1,
+      z: -1900,
+      width: 50,
+      src: "/intro/10l.png",
+    },
+    {
+      x: 29,
+      y: 1,
+      z: -1900,
+      width: 50,
+      src: "/intro/10r.png",
     },
   ]);
 
@@ -143,22 +256,26 @@ export const IntroPage = ({}: IntroPageProps) => {
           <ThreeImage
             width={x.width}
             key={index}
+            fadeOut={x.fadeOut}
             position={new THREE.Vector3(x.x, x.y, x.z)}
             src={x.src}
           />
         ))}
 
+        {/*}
         <ThreeImage
           width={100}
+          fadeOut={false}
           position={new THREE.Vector3(0, 0, -990)}
           src={LogoImage}
         />
         <ThreeImage
           width={100}
+          fadeOut={false}
           position={new THREE.Vector3(0, 0, -1000)}
           src={MaskImage}
         />
-
+        */}
         <Controls pos={new THREE.Vector3(0, 0, -Math.min(MaxDistance, y))} />
       </Canvas>
 

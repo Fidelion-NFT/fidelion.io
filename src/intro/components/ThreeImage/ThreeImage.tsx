@@ -6,9 +6,15 @@ import { MeshBasicMaterial } from "three";
 interface ThreeImageProps {
   position: THREE.Vector3;
   width: number;
+  fadeOut: boolean;
   src: string;
 }
-export const ThreeImage = ({ position, width, src }: ThreeImageProps) => {
+export const ThreeImage = ({
+  fadeOut,
+  position,
+  width,
+  src,
+}: ThreeImageProps) => {
   const texture = useLoader(THREE.TextureLoader, src);
   const camera = useThree((state) => state.camera);
   const ref = useRef<MeshBasicMaterial>(null);
@@ -16,8 +22,12 @@ export const ThreeImage = ({ position, width, src }: ThreeImageProps) => {
 
   useFrame(() => {
     const dist = camera.position.z - position.z;
-    //const opacity = 1; //dist > 250 ? 0 : Math.sin((dist - 50) * 0.02);
-    const opacity = (200 - dist) / 100;
+
+    const opacity = fadeOut
+      ? dist > 250
+        ? 0
+        : Math.sin(dist * 0.02)
+      : (200 - dist) / 100;
 
     if (ref.current) {
       ref.current.opacity = opacity;
