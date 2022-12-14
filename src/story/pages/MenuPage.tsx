@@ -5,7 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface MenuPageProps {
-  pages?: Record<string, HTMLDivElement>;
+  pages: Record<string, HTMLDivElement>;
 }
 export const MenuPage = ({ pages }: MenuPageProps) => {
   const history = useHistory();

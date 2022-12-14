@@ -36,12 +36,14 @@ export const NoHopePage = forwardRef<HTMLDivElement>(
 
     return (
       <div
-        ref={(x) => setOffsetX(x?.offsetLeft)}
+        ref={(x) => setOffsetX(x?.offsetLeft!)}
         style={{ position: "relative" }}
       >
         <SlideContainer
           ref={(x) => {
+            // @ts-ignore
             ref.current = x;
+            // @ts-ignore
             forwardedRef!.current = x;
           }}
         >
