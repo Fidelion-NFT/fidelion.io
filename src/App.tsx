@@ -13,6 +13,7 @@ import "./index.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "inobounce";
 import { StoryPage } from "./story/pages/StoryPage";
+import "animate.css";
 
 const App = () => {
   return (

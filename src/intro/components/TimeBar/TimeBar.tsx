@@ -18,6 +18,7 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
         <YearText
           key={x}
           style={{ top: `${10 + index * 15}px` }}
+          delay={index * 0.035}
           onClick={() => onClick(index)}
         >
           {x}
@@ -28,6 +29,7 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
         <YearText
           key={x}
           style={{ top: `${265 + index * 15}px` }}
+          delay={(index + Years1.length) * 0.035}
           onClick={() => onClick(index + Years1.length)}
         >
           {x}
@@ -62,7 +64,9 @@ const CursorBar = styled.div`
 
   transition: all 0.25s ease;
 `;
-const YearText = styled.div`
+const YearText = styled.div.attrs({
+  className: "animate__animated animate__fadeInDown",
+})<{ delay: number }>`
   position: absolute;
   left: -32px;
 
@@ -71,4 +75,6 @@ const YearText = styled.div`
   font-size: 16px;
 
   cursor: pointer;
+
+  animation-delay: ${({ delay }) => delay}s;
 `;

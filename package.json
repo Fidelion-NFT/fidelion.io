@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-three/fiber": "^8.7.4",
+    "animate.css": "^4.1.1",
     "framer-motion": "^7.3.4",
     "hamburger-react": "^2.5.0",
     "impetus": "^0.8.8",
