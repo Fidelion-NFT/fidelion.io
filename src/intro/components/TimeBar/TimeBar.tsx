@@ -36,7 +36,9 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
         </YearText>
       ))}
 
-      <CursorBar style={{ top: `${Math.max(0, offset) / 10}px` }} />
+      <CursorBar
+        style={{ top: `${Math.min(1, (Math.max(0, offset) / 1550) * 100)}%` }}
+      />
     </Container>
   );
 };

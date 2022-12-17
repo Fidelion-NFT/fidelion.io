@@ -1,40 +1,21 @@
 import { TimeBar } from "../components";
 import { ThreeImage } from "../components/ThreeImage";
-import { ScrollOffsetContext } from "../contexts";
-import { Slide1 } from "../slides";
-import Slide1Text from "@/assets/intro/1.svg";
-import Slide2Left from "@/assets/intro/2l.png";
-import Slide2Right from "@/assets/intro/2r.png";
-import Slide3Left from "@/assets/intro/3l.png";
-import Slide3Right from "@/assets/intro/3r.png";
-import Slide4Left from "@/assets/intro/4l.png";
-import Slide4Right from "@/assets/intro/4r.png";
-import LogoImage from "@/assets/intro/logo.png";
-import MaskImage from "@/assets/intro/mask.png";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
 import FlipNumbers from "react-flip-numbers";
-import { useInView } from "react-intersection-observer";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
-const MaxDistance = 2000;
-
-let wheelSpeed = 0.092;
+let MaxDistance = 1750;
+let WheelSpeed = 0.092;
 
 interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
   const history = useHistory();
   const [y, setY] = useState(-200);
-  const { scrollY } = useScroll();
-  const [ref, inView, entry] = useInView({
-    /* Optional options */
-    threshold: 0.5,
-    triggerOnce: false,
-  });
   const [started, setStarted] = useState(false);
 
   const shouldFadeOut = y >= MaxDistance;
@@ -55,42 +36,42 @@ export const IntroPage = ({}: IntroPageProps) => {
       src: "/intro/0.svg",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -150,
+      z: -200,
       width: 50,
       src: "/intro/1l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -150,
+      z: -250,
       width: 50,
       src: "/intro/1r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
       z: -300,
       width: 50,
       src: "/intro/2l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -300,
+      z: -350,
       width: 50,
       src: "/intro/2r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -450,
+      z: -400,
       width: 50,
       src: "/intro/3l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
       z: -450,
       width: 50,
@@ -99,115 +80,130 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 0,
       y: 0,
-      z: -600,
+      z: -570,
       width: 100,
       fadeOut: true,
       src: "/intro/3.svg",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -750,
+      z: -690,
       width: 50,
       src: "/intro/4l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -750,
+      z: -740,
       width: 50,
       src: "/intro/4r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -900,
+      z: -790,
       width: 50,
       src: "/intro/5l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -900,
+      z: -840,
       width: 50,
       src: "/intro/5r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -1050,
+      z: -890,
       width: 50,
       src: "/intro/6l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -1050,
+      z: -940,
       width: 50,
       src: "/intro/6r.png",
     },
     {
       x: 0,
       y: 0,
-      z: -1300,
+      z: -1060,
       width: 100,
+      fadeOut: true,
       src: "/intro/6.svg",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -1450,
+      z: -1110,
       width: 50,
       src: "/intro/7l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -1450,
+      z: -1160,
       width: 50,
       src: "/intro/7r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -1600,
+      z: -1210,
       width: 50,
       src: "/intro/8l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -1600,
+      z: -1260,
       width: 50,
       src: "/intro/8r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -1750,
+      z: -1310,
       width: 50,
       src: "/intro/9l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -1750,
+      z: -1360,
       width: 50,
       src: "/intro/9r.png",
     },
     {
-      x: -29,
+      x: -27,
       y: 1,
-      z: -1900,
+      z: -1410,
       width: 50,
       src: "/intro/10l.png",
     },
     {
-      x: 29,
+      x: 27,
       y: 1,
-      z: -1900,
+      z: -1460,
       width: 50,
       src: "/intro/10r.png",
+    },
+    {
+      x: 0,
+      y: 0,
+      z: -1600,
+      width: 50,
+      src: "/intro/11.svg",
+    },
+    {
+      x: 0,
+      y: 0,
+      z: -1800,
+      width: 50,
+      src: "/intro/12.svg",
     },
   ]);
 
@@ -225,7 +221,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   };
 
   const onWheel = (e: WheelEvent) => {
-    move(e.deltaY * wheelSpeed);
+    move(e.deltaY * WheelSpeed);
   };
 
   const onSkip = () => {
@@ -240,7 +236,12 @@ export const IntroPage = ({}: IntroPageProps) => {
 
     // @ts-ignore
     window.setSpeed = (speed: number) => {
-      wheelSpeed = speed;
+      WheelSpeed = speed;
+    };
+
+    // @ts-ignore
+    window.setMaxDistance = (speed: number) => {
+      MaxDistance = speed;
     };
 
     const target = document.getElementById("container");
@@ -251,7 +252,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     });
   }, []);
 
-  console.log(Math.floor(y / 50));
+  console.log(slides.length, Math.floor(y / 50));
 
   return (
     <Container id="container" onWheel={onWheel}>

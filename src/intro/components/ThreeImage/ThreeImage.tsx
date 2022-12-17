@@ -26,7 +26,7 @@ export const ThreeImage = ({
     const opacity = fadeOut
       ? dist > 250
         ? 0
-        : Math.sin(dist * 0.02)
+        : Math.sin((dist + 80) * 0.01)
       : (200 - dist) / 100;
 
     if (ref.current) {
