@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Cutmark-Bold";
+  src: url("/font/Cutmark-Bold.ttf");
+}
+
 body {
   margin: 0px;
   padding: 0px;

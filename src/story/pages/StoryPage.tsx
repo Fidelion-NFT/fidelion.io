@@ -8,6 +8,7 @@ import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
 import { GalleryPage, PartnersPage, QnAPage, ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
+import { MainPage } from "./main/MainPage";
 import { Year2080Page } from "./prefix";
 import { NoHopePage } from "./prefix/NoHopePage";
 import Image3 from "@/assets/intro/bg.webp";
@@ -85,15 +86,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <PageContainer id="page-scroll" ref={containerRef}>
           {ready && (
             <>
-              {/* PREFIX PAGES */}
-              <Year2080Page ref={(x) => (pageRefs.current["p1"] = x!)} />
-              <NoHopePage ref={(x) => (pageRefs.current["p2"] = x!)} />
-
-              <Act1Slide2 />
-              <Act1Slide3 />
-              <Act1Slide3 />
-              <Act1Slide3 />
-              <Act1Slide1 />
+              <MainPage />
 
               <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
               <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />

@@ -1,5 +1,6 @@
-import DustLogo from "@/assets/dust.svg";
+import FidelionLogo from "@/assets/dust.svg";
 import MenuIcon from "@/assets/menu.svg";
+import { SideMenuWidth } from "@/story/constants";
 import { useStores } from "@/story/stores";
 import Hamburger from "hamburger-react";
 import { observer } from "mobx-react";
@@ -50,7 +51,7 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
   display: flex;
 
   width: 100vh;
-  height: 70px;
+  height: ${SideMenuWidth}px;
 
   align-items: center;
 
@@ -70,7 +71,7 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
 `;
 
 // @ts-ignore
-const Logo = styled(DustLogo)`
+const Logo = styled(FidelionLogo)`
   width: 5vw;
   max-width: 78px;
   height: auto;
