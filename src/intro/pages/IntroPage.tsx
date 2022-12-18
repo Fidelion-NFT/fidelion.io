@@ -16,6 +16,7 @@ interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
   const history = useHistory();
   const [y, setY] = useState(-200);
+  const [fadeInFinished, setFadeInFinished] = useState(false);
   const [started, setStarted] = useState(false);
 
   const shouldFadeOut = y >= MaxDistance;
@@ -280,6 +281,12 @@ export const IntroPage = ({}: IntroPageProps) => {
     });
   }, []);
 
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      setFadeInFinished(true);
+    }, 2200);
+  }, []);
+
   console.log(slides.length, Math.floor(y));
 
   console.log("y", y);
@@ -329,18 +336,22 @@ export const IntroPage = ({}: IntroPageProps) => {
         />
 
         <AnimatePresence>
-          {!started && (
-            <ScrollToStartText key="scroll_to_start">
-              SCROLL 2 START
-            </ScrollToStartText>
-          )}
+          {fadeInFinished && (
+            <>
+              {!started && (
+                <ScrollToStartText key="scroll_to_start">
+                  SCROLL 2 START
+                </ScrollToStartText>
+              )}
 
-          {started ? (
-            <BottomText>58 YEARS OF Fidelion</BottomText>
-          ) : (
-            <SkipText key="skip_intro" onClick={onSkip}>
-              Skip Intro
-            </SkipText>
+              {started ? (
+                <BottomText>58 YEARS OF Fidelion</BottomText>
+              ) : (
+                <SkipText key="skip_intro" onClick={onSkip}>
+                  Skip Intro
+                </SkipText>
+              )}
+            </>
           )}
         </AnimatePresence>
       </InfoContainer>
@@ -432,6 +443,7 @@ const BottomText = styled(BottomCenterText)`
 `;
 
 const ScrollToStartText = styled(motion.div).attrs({
+  className: "animate__animated animate__flash animate__infinite ",
   initial: {
     opacity: 0,
   },
@@ -457,4 +469,6 @@ const ScrollToStartText = styled(motion.div).attrs({
   line-height: 36px;
 
   text-align: center;
+
+  --animate-duration: 5.5s;
 `;

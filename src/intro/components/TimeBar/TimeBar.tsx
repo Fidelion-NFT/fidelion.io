@@ -22,7 +22,8 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
       {Years1.map((x, index) => (
         <YearText
           key={x}
-          ref={(el) => (offsets.current[x] = el!.offsetTop)}
+          // @ts-ignore
+          ref={(el) => (offsets.current[x] = el?.offsetTop)}
           style={{ top: `${5 + index * 15}px` }}
           delay={index * 0.035}
           onClick={() => onClick(index)}
@@ -34,7 +35,8 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
       {Years2.map((x, index) => (
         <YearText
           key={x}
-          ref={(el) => (offsets.current[x] = el!.offsetTop)}
+          // @ts-ignore
+          ref={(el) => (offsets.current[x] = el?.offsetTop)}
           style={{ top: `${195 + index * 15}px` }}
           delay={(index + Years1.length) * 0.035}
           onClick={() => onClick(index + Years1.length)}
