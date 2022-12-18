@@ -2,11 +2,11 @@ import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
 import { Act1Page } from "./Act1Page";
+import { Year2Page } from "./Act1Page";
 import { Act2Page } from "./Act2Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
-import { Year2Page } from "./Year2";
 import { GalleryPage, PartnersPage, QnAPage, ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
 import { MainPage } from "./main/MainPage";
@@ -89,10 +89,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
             <>
               <MainPage />
 
-              <Year2Page />
-              <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
-
               <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
+              <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
 
               <HarrierRegistrationPage
                 ref={(x) => (pageRefs.current["harrier_registration"] = x!)}

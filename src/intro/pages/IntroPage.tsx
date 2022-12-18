@@ -26,6 +26,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: 150,
       width: 100,
+      special: true,
       src: "/intro/2080.svg",
     },
     {
@@ -33,6 +34,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -20,
       width: 100,
+      special: true,
       src: "/intro/0.svg",
     },
     {
@@ -82,6 +84,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -570,
       width: 100,
+      special: true,
       fadeOut: true,
       src: "/intro/3.svg",
     },
@@ -132,6 +135,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -1060,
       width: 100,
+      special: true,
       fadeOut: true,
       src: "/intro/6.svg",
     },
@@ -196,6 +200,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -1600,
       width: 50,
+      special: true,
       src: "/intro/11.svg",
     },
     {
@@ -203,6 +208,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: -1800,
       width: 50,
+      special: true,
       src: "/intro/12.svg",
     },
   ]);
@@ -252,7 +258,9 @@ export const IntroPage = ({}: IntroPageProps) => {
     });
   }, []);
 
-  console.log(slides.length, Math.floor(y / 50));
+  console.log(slides.length, Math.floor(y));
+
+  console.log("y", y);
 
   return (
     <Container id="container" onWheel={onWheel}>
@@ -289,16 +297,24 @@ export const IntroPage = ({}: IntroPageProps) => {
 
       <InfoContainer fadeOut={shouldFadeOut}>
         <YearTextContainer>
-          <FlipNumbers
-            play
-            color="white"
-            width={20}
-            height={20}
-            numbers={`${Math.floor(y / 50)}`}
-          />
+          {y > 50 && (
+            <FlipNumbers
+              play
+              color="white"
+              width={20}
+              height={20}
+              numbers={`${2021 + Math.floor(y / 50)}`}
+            />
+          )}
         </YearTextContainer>
 
-        <TimeBar offset={y} onClick={(index) => moveTo(index * 50)} />
+        <TimeBar
+          offset={y}
+          onClick={(index) => {
+            console.log(index, slides.filter((x) => !x.special)[index].z);
+            moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
+          }}
+        />
 
         <AnimatePresence>
           {started ? (

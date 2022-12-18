@@ -45,17 +45,11 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
           <NumberText>0</NumberText>
           <LargeItemText>Harrier</LargeItemText>
         </Row>
-        <Row
-          active={pageName === "battlefield"}
-          onClick={() => navigate("#battlefield")}
-        >
+        <Row active={pageName === "act3"} onClick={() => navigate("#act3")}>
           <NumberText>8</NumberText>
           <LargeItemText>Utility</LargeItemText>
         </Row>
-        <Row
-          active={pageName === "harrier_registration"}
-          onClick={() => navigate("#harrier_registration")}
-        >
+        <Row active={pageName === "act4"} onClick={() => navigate("#act4")}>
           <NumberText>0</NumberText>
           <LargeItemText>About us</LargeItemText>
         </Row>

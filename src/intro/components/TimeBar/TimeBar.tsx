@@ -10,6 +10,8 @@ interface TimeBarProps {
   onClick: (index: number) => void;
 }
 export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
+  console.log(offset);
+
   return (
     <Container>
       <VerticalBar />
@@ -37,7 +39,9 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
       ))}
 
       <CursorBar
-        style={{ top: `${Math.min(1, (Math.max(0, offset) / 1550) * 100)}%` }}
+        style={{
+          top: `${Math.min(96.5, Math.max(3.5, (offset / 1550) * 100))}%`,
+        }}
       />
     </Container>
   );
