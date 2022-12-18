@@ -14,7 +14,7 @@ export const ViewMarker = ({ name, color }: ViewMarketProps) => {
 
   useEffect(() => {
     if (inView) {
-      console.log("inview", name);
+      console.log("push", name);
       sideMenuStore.backgroundColor = color;
       history.push(`#${name}`);
     }

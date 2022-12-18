@@ -86,17 +86,19 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         <PageContainer id="page-scroll" ref={containerRef}>
           {ready && (
             <>
-              <MainPage />
+              <MainPage ref={(x) => (pageRefs.current["main"] = x!)} />
 
               <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
               <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
 
+              {/*}
               <HarrierRegistrationPage
                 ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
               />
               <BattleFieldPage
                 ref={(x) => (pageRefs.current["battlefield"] = x!)}
               />
+          */}
 
               {/* ETC PAGES */}
               <TeamPage ref={(x) => (pageRefs.current["team"] = x!)} />
@@ -107,6 +109,27 @@ export const StoryPage = observer(({}: StoryPageProps) => {
             </>
           )}
         </PageContainer>
+
+        <div style={{ position: "fixed", right: "0px", top: "0px" }}>
+          <svg width="300" height="100vh">
+            <defs>
+              <linearGradient id="Gradient1">
+                <stop stopColor="rgba(0,0,0,0)" offset="0%" />
+                <stop stopColor="rgba(0,0,0,0.1)" offset="30%" />
+                <stop stopColor="rgba(0,0,0,0.7)" offset="100%" />
+              </linearGradient>
+            </defs>
+
+            <rect
+              id="rect1"
+              x="0"
+              y="0"
+              width="300"
+              height="100vh"
+              fill="url(#Gradient1)"
+            />
+          </svg>
+        </div>
       </DrawerContainer>
       {/*}
       <Slider

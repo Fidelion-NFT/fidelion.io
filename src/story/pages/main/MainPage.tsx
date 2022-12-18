@@ -1,7 +1,6 @@
 import { ViewMarker } from "../../components";
 import MainPageSvg from "@/assets/story/main.svg";
 import { SideMenuWidth } from "@/story/constants";
-import { useScroll, motion } from "framer-motion";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 
@@ -17,7 +16,7 @@ export const MainPage = forwardRef<HTMLDivElement>(({}: MainPageProps, ref) => {
 
 const SlideContainer = styled.div`
   position: relative;
-  width: 100vw;
+  width: 110vw;
   height: 100vh;
 
   padding-left: ${SideMenuWidth}px;

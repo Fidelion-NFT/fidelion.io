@@ -10,7 +10,7 @@ interface Act2PageProps {}
 export const Act2Page = forwardRef<HTMLDivElement>(({}: Act2PageProps, ref) => {
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="act2" color="rgba(0,0,0,0)" />
+      <ViewMarker name="act2" color="white" />
       <Slide1 />
       <div style={{ width: "48px" }} />
       <Slide2 />
@@ -20,6 +20,7 @@ export const Act2Page = forwardRef<HTMLDivElement>(({}: Act2PageProps, ref) => {
 });
 
 const SlideContainer = styled.div`
+  position: relative;
   display: flex;
 
   width: auto;

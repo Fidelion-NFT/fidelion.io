@@ -9,7 +9,7 @@ interface Act1PageProps {}
 export const Act1Page = forwardRef<HTMLDivElement>(({}: Act1PageProps, ref) => {
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="act1" color="rgba(0,0,0,0)" />
+      <ViewMarker name="act1" color="rgba(0,0,0,1)" />
       <Act1PageSvg />
     </SlideContainer>
   );

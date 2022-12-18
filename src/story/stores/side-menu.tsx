@@ -6,5 +6,5 @@ interface SideMenuStore {
 }
 export const sideMenuStore = observable<SideMenuStore>({
   backgroundColor: "rgba(0,0,0,0)",
-  showMenu: true,
+  showMenu: false,
 });

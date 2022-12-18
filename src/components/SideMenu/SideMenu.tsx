@@ -1,5 +1,6 @@
 import FidelionLogo from "@/assets/dust.svg";
 import MenuIcon from "@/assets/menu.svg";
+import { ViewMarker } from "@/story/components";
 import { SideMenuWidth } from "@/story/constants";
 import { useStores } from "@/story/stores";
 import Hamburger from "hamburger-react";
@@ -11,13 +12,15 @@ import styled, { css } from "styled-components";
 interface SideMenuProps {}
 export const SideMenu = observer(({}: SideMenuProps) => {
   const { sideMenuStore } = useStores();
-  const borderColor =
-    sideMenuStore.backgroundColor === "white" ? "black" : "white";
+  const backgroundColor = sideMenuStore.showMenu
+    ? "rgba(0,0,0,1)"
+    : sideMenuStore.backgroundColor;
+  const borderColor = backgroundColor === "white" ? "black" : "white";
 
   return (
     <Container
       id="menu"
-      backgroundColor={sideMenuStore.backgroundColor}
+      backgroundColor={backgroundColor}
       borderColor={borderColor}
     >
       <div style={{ flex: 1 }} />
