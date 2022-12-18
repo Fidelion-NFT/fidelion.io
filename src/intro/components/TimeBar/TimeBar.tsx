@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
-// 22~37 / 66 ~ 80
-const Years1 = [...new Array(16)].map((_, index) => index + 22);
-const Years2 = [...new Array(15)].map((_, index) => index + 66);
+// 22~32 / 42 ~ 80
+const Years1 = [...new Array(12)].map((_, index) => index + 22);
+const Years2 = [...new Array(20)].map((_, index) => index * 2 + 42);
 
 interface TimeBarProps {
   offset: number;
+  year: number;
   onClick: (index: number) => void;
 }
-export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
-  console.log(offset);
+export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
+  const offsets = useRef<Record<number, number>>({});
+
+  console.log(offsets, year, offsets.current[year]);
 
   return (
     <Container>
@@ -19,7 +22,8 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
       {Years1.map((x, index) => (
         <YearText
           key={x}
-          style={{ top: `${10 + index * 15}px` }}
+          ref={(el) => (offsets.current[x] = el!.offsetTop)}
+          style={{ top: `${5 + index * 15}px` }}
           delay={index * 0.035}
           onClick={() => onClick(index)}
         >
@@ -30,7 +34,8 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
       {Years2.map((x, index) => (
         <YearText
           key={x}
-          style={{ top: `${265 + index * 15}px` }}
+          ref={(el) => (offsets.current[x] = el!.offsetTop)}
+          style={{ top: `${195 + index * 15}px` }}
           delay={(index + Years1.length) * 0.035}
           onClick={() => onClick(index + Years1.length)}
         >
@@ -40,7 +45,10 @@ export const TimeBar = ({ offset, onClick }: TimeBarProps) => {
 
       <CursorBar
         style={{
-          top: `${Math.min(96.5, Math.max(3.5, (offset / 1550) * 100))}%`,
+          top: `${
+            // @ts-ignore
+            Object.entries(offsets.current).find((x) => +x[0] >= year)?.[1] + 7
+          }px`,
         }}
       />
     </Container>

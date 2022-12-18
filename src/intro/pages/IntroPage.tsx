@@ -42,6 +42,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -200,
       width: 50,
+      year: 2023,
       src: "/intro/1l.png",
     },
     {
@@ -49,6 +50,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -250,
       width: 50,
+      year: 2024,
       src: "/intro/1r.png",
     },
     {
@@ -56,6 +58,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -300,
       width: 50,
+      year: 2024,
       src: "/intro/2l.png",
     },
     {
@@ -63,6 +66,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -350,
       width: 50,
+      year: 2024,
       src: "/intro/2r.png",
     },
     {
@@ -70,6 +74,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -400,
       width: 50,
+      year: 2025,
       src: "/intro/3l.png",
     },
     {
@@ -77,6 +82,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -450,
       width: 50,
+      year: 2025,
       src: "/intro/3r.png",
     },
     {
@@ -86,6 +92,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       width: 100,
       special: true,
       fadeOut: true,
+      year: 2025,
       src: "/intro/3.svg",
     },
     {
@@ -93,6 +100,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -690,
       width: 50,
+      year: 2030,
       src: "/intro/4l.png",
     },
     {
@@ -100,6 +108,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -740,
       width: 50,
+      year: 2030,
       src: "/intro/4r.png",
     },
     {
@@ -107,6 +116,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -790,
       width: 50,
+      year: 2031,
       src: "/intro/5l.png",
     },
     {
@@ -114,6 +124,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -840,
       width: 50,
+      year: 2032,
       src: "/intro/5r.png",
     },
     {
@@ -121,6 +132,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -890,
       width: 50,
+      year: 2032,
       src: "/intro/6l.png",
     },
     {
@@ -128,6 +140,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -940,
       width: 50,
+      year: 2032,
       src: "/intro/6r.png",
     },
     {
@@ -144,6 +157,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1110,
       width: 50,
+      year: 2033,
       src: "/intro/7l.png",
     },
     {
@@ -151,6 +165,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1160,
       width: 50,
+      year: 2042,
       src: "/intro/7r.png",
     },
     {
@@ -158,6 +173,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1210,
       width: 50,
+      year: 2054,
       src: "/intro/8l.png",
     },
     {
@@ -165,6 +181,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1260,
       width: 50,
+      year: 2054,
       src: "/intro/8r.png",
     },
     {
@@ -172,6 +189,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1310,
       width: 50,
+      year: 2055,
       src: "/intro/9l.png",
     },
     {
@@ -179,6 +197,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1360,
       width: 50,
+      year: 2059,
       src: "/intro/9r.png",
     },
     {
@@ -186,6 +205,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1410,
       width: 50,
+      year: 2062,
       src: "/intro/10l.png",
     },
     {
@@ -193,6 +213,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -1460,
       width: 50,
+      year: 2068,
       src: "/intro/10r.png",
     },
     {
@@ -201,6 +222,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       z: -1600,
       width: 50,
       special: true,
+      year: 2080,
       src: "/intro/11.svg",
     },
     {
@@ -262,6 +284,9 @@ export const IntroPage = ({}: IntroPageProps) => {
 
   console.log("y", y);
 
+  const currentYear =
+    slides.filter((x) => x.year! > 0).find((x) => x.z <= -y)?.year! - 2000;
+
   return (
     <Container id="container" onWheel={onWheel}>
       <Canvas style={{ width: "100%", height: "100%" }}>
@@ -278,20 +303,6 @@ export const IntroPage = ({}: IntroPageProps) => {
           />
         ))}
 
-        {/*}
-        <ThreeImage
-          width={100}
-          fadeOut={false}
-          position={new THREE.Vector3(0, 0, -990)}
-          src={LogoImage}
-        />
-        <ThreeImage
-          width={100}
-          fadeOut={false}
-          position={new THREE.Vector3(0, 0, -1000)}
-          src={MaskImage}
-        />
-        */}
         <Controls pos={new THREE.Vector3(0, 0, -Math.min(MaxDistance, y))} />
       </Canvas>
 
@@ -301,15 +312,16 @@ export const IntroPage = ({}: IntroPageProps) => {
             <FlipNumbers
               play
               color="white"
-              width={20}
-              height={20}
-              numbers={`${2021 + Math.floor(y / 50)}`}
+              width={40}
+              height={40}
+              numbers={`${currentYear}`}
             />
           )}
         </YearTextContainer>
 
         <TimeBar
           offset={y}
+          year={currentYear}
           onClick={(index) => {
             console.log(index, slides.filter((x) => !x.special)[index].z);
             moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
@@ -317,10 +329,18 @@ export const IntroPage = ({}: IntroPageProps) => {
         />
 
         <AnimatePresence>
+          {!started && (
+            <ScrollToStartText key="scroll_to_start">
+              SCROLL 2 START
+            </ScrollToStartText>
+          )}
+
           {started ? (
-            <BottomText>58 YEARS OF DUST80</BottomText>
+            <BottomText>58 YEARS OF Fidelion</BottomText>
           ) : (
-            <SkipText onClick={onSkip}>Skip Intro</SkipText>
+            <SkipText key="skip_intro" onClick={onSkip}>
+              Skip Intro
+            </SkipText>
           )}
         </AnimatePresence>
       </InfoContainer>
@@ -409,4 +429,32 @@ const BottomText = styled(BottomCenterText)`
   color: white;
 
   font-size: 20px;
+`;
+
+const ScrollToStartText = styled(motion.div).attrs({
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 2.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+  },
+})`
+  position: fixed;
+  left: 0%;
+  bottom: 50vh;
+  width: 100%;
+
+  color: white;
+
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 36px;
+
+  text-align: center;
 `;
