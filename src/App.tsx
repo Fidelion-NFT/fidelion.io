@@ -14,8 +14,28 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "inobounce";
 import { StoryPage } from "./story/pages/StoryPage";
 import "animate.css";
+import MobilePlaceholder from "./MobilePlaceholder";
+
+const isMobile = () => {
+  var UserAgent = navigator.userAgent;
+
+  if (
+    UserAgent.match(
+      /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
+    ) != null ||
+    UserAgent.match(/LG|SAMSUNG|Samsung/) != null
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 const App = () => {
+  if (isMobile()) {
+    return <MobilePlaceholder />;
+  }
+
   return (
     <Router>
       <InnerRouter />
