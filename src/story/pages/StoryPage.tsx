@@ -1,11 +1,13 @@
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
+import { AboutUsPage } from "./AboutUsPage";
 import { Act1Page } from "./Act1Page";
 import { Act2Page } from "./Act2Page";
 import { BattleFieldPage } from "./BattlefieldPage";
 import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
+import { UtilityPage } from "./UtilityPage";
 import { GalleryPage, PartnersPage, QnAPage, ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
 import { MainPage } from "./main/MainPage";
@@ -91,6 +93,10 @@ export const StoryPage = observer(({}: StoryPageProps) => {
               <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
               <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
 
+              <UtilityPage ref={(x) => (pageRefs.current["utility"] = x!)} />
+
+              <AboutUsPage ref={(x) => (pageRefs.current["about-us"] = x!)} />
+
               {/*}
               <HarrierRegistrationPage
                 ref={(x) => (pageRefs.current["harrier_registration"] = x!)}
@@ -99,18 +105,18 @@ export const StoryPage = observer(({}: StoryPageProps) => {
                 ref={(x) => (pageRefs.current["battlefield"] = x!)}
               />
           */}
-
-              {/* ETC PAGES */}
-              <TeamPage ref={(x) => (pageRefs.current["team"] = x!)} />
-              <PartnersPage ref={(x) => (pageRefs.current["partners"] = x!)} />
-              <GalleryPage ref={(x) => (pageRefs.current["gallery"] = x!)} />
-              <ToSPage ref={(x) => (pageRefs.current["tos"] = x!)} />
-              <QnAPage ref={(x) => (pageRefs.current["qna"] = x!)} />
             </>
           )}
         </PageContainer>
 
-        <div style={{ position: "fixed", right: "0px", top: "0px" }}>
+        <div
+          style={{
+            position: "fixed",
+            right: "0px",
+            top: "0px",
+            pointerEvents: "none",
+          }}
+        >
           <svg width="300" height="100vh">
             <defs>
               <linearGradient id="Gradient1">

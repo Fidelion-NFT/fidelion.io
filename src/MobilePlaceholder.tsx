@@ -10,7 +10,7 @@ const MobilePlaceholder = () => {
       <Header />
 
       <div style={{ flex: 1 }} />
-      <LogoImage />
+      <LogoImage style={{ width: "calc(100vw - 80px)" }} />
       <div style={{ flex: 1 }} />
 
       <div style={{ fontSize: "9px" }}>
