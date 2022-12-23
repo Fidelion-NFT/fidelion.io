@@ -49,7 +49,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
 const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
   position: absolute;
   left: 0px;
-  top: 0px;
+  top: -3px;
 
   display: flex;
 
