@@ -10,6 +10,7 @@ const MobilePlaceholder = () => {
       <Header />
 
       <div style={{ flex: 1 }} />
+      {/* @ts-ignore */}
       <LogoImage style={{ width: "calc(100vw - 80px)" }} />
       <div style={{ flex: 1 }} />
 
