@@ -319,7 +319,7 @@ export const IntroPage = ({}: IntroPageProps) => {
             <FlipNumbers
               play
               color="white"
-              width={40}
+              width={30}
               height={40}
               numbers={`${currentYear}`}
             />
@@ -381,6 +381,11 @@ const Container = styled.div`
   height: 100vh;
 
   overflow: hidden;
+
+  div,
+  span {
+    font-family: "Charter";
+  }
 `;
 
 const InfoContainer = styled.div<{ fadeOut: boolean }>`
@@ -406,6 +411,10 @@ const YearTextContainer = styled.div`
   position: fixed;
   left: 24px;
   bottom: 24px;
+
+  span {
+    font-family: "Charter-Bold";
+  }
 `;
 
 const BottomCenterText = styled(motion.div).attrs({

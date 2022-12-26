@@ -48,7 +48,11 @@ const InnerRouter = () => {
 
   return (
     <TransitionGroup className="router">
-      <CSSTransition key={location.pathname} classNames="fade" timeout={3500}>
+      <CSSTransition
+        key={location.pathname}
+        classNames="fade"
+        timeout={10 * 1000}
+      >
         <Switch location={location}>
           <Route exact path="/" component={IntroPage} />
           <Route path="/intro/" component={IntroPage} />

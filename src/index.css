@@ -3,6 +3,14 @@
   font-family: "Cutmark-Bold";
   src: url("/font/Cutmark-Bold.ttf");
 }
+@font-face {
+  font-family: "Charter";
+  src: url("/font/charter_regular.woff2");
+}
+@font-face {
+  font-family: "Charter-Bold";
+  src: url("/font/charter_bold.woff2");
+}
 
 body {
   margin: 0px;

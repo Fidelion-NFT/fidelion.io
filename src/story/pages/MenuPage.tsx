@@ -21,7 +21,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
       history.push(to);
 
       document.getElementById("page-scroll")!.scrollTo({
-        left: pages[to.substring(1)]?.offsetLeft,
+        left: pages[to.substring(1)]?.offsetLeft + 50,
         behavior: "smooth",
       });
     }, 450);
@@ -61,6 +61,11 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
           <LargeItemText>About us</LargeItemText>
         </Row>
       </Acts>
+
+      <ToC>
+        © 2022 Fidelion. | All Rights Reserved | Terms and Conditions |
+        marketing@tidalflats.studio
+      </ToC>
 
       <CloseButton onClick={() => (sideMenuStore.showMenu = false)} />
     </MenuContainer>
@@ -108,6 +113,16 @@ const Row = styled.div<{ active: boolean }>`
           color: #ee220c !important;
         `
       : css``}
+`;
+
+const ToC = styled.div`
+  position: absolute;
+  right: 30px;
+  bottom: 36px;
+
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
 `;
 
 const NumberText = styled.div`

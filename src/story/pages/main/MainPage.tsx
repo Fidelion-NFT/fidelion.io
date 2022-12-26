@@ -8,7 +8,7 @@ interface MainPageProps {}
 export const MainPage = forwardRef<HTMLDivElement>(({}: MainPageProps, ref) => {
   return (
     <SlideContainer ref={ref}>
-      <ViewMarker name="main" color="rgba(0,0,0,0)" />
+      <ViewMarker name="main" color="rgba(0,0,0,1)" />
       <MainPageSvg />
     </SlideContainer>
   );

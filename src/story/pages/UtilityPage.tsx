@@ -9,7 +9,7 @@ export const UtilityPage = forwardRef<HTMLDivElement>(
   ({}: UtilityPageProps, ref) => {
     return (
       <SlideContainer ref={ref}>
-        <ViewMarker name="utility" color="rgba(0,0,0,0)" />
+        <ViewMarker name="utility" color="rgba(0,0,0,1)" />
         <Slide1 />
       </SlideContainer>
     );
