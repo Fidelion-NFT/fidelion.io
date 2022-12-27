@@ -230,7 +230,7 @@ export const IntroPage = ({}: IntroPageProps) => {
       x: 0,
       y: 0,
       z: -1800,
-      width: 50,
+      width: 70,
       special: true,
       src: "/intro/12.svg",
     },

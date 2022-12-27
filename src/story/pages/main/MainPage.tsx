@@ -24,5 +24,16 @@ const SlideContainer = styled.div`
   > svg {
     width: 100vw;
     height: 100%;
+
+    animation: logoFadeIn 5s;
+  }
+
+  @keyframes logoFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;

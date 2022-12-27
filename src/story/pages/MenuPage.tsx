@@ -27,7 +27,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
 
   useEffect(() => {
     setTimeout(() => {
-      let offset = to === "#act2" ? -60 : 5;
+      let offset = page === "#act2" ? -60 : 5;
       document.getElementById("page-scroll")!.scrollTo({
         left: pages[page.substring(1)]?.offsetLeft + offset,
       });

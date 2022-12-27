@@ -24,12 +24,12 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       borderColor={borderColor}
     >
       <div style={{ flex: 1 }} />
-      <Logo />
+      <Logo onClick={() => (window.location.href = "/")} />
       <div style={{ flex: 1 }} />
 
       <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
       <div style={{ flex: 1 }} />
-      <Text80>80</Text80>
+      <Text80 onClick={() => (window.location.href = "/")}>80</Text80>
       <div style={{ flex: 1 }} />
       <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
       <div style={{ flex: 1 }} />
@@ -78,6 +78,8 @@ const Logo = styled(FidelionLogo)`
   width: 5vw;
   max-width: 78px;
   height: auto;
+
+  cursor: pointer;
 `;
 
 // @ts-ignore
@@ -119,4 +121,6 @@ const Text80 = styled.div`
   font-size: min(30px, 1.65rem);
   line-height: 42px;
   letter-spacing: -0.13em;
+
+  cursor: pointer;
 `;
