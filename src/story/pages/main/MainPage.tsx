@@ -16,10 +16,10 @@ export const MainPage = forwardRef<HTMLDivElement>(({}: MainPageProps, ref) => {
 
 const SlideContainer = styled.div`
   position: relative;
-  width: 110vw;
+  width: 100vw;
   height: 100vh;
 
-  padding-left: ${SideMenuWidth}px;
+  padding-left: ${SideMenuWidth / 2}px;
 
   > svg {
     width: 100vw;

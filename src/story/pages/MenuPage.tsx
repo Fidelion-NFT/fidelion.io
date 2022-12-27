@@ -17,20 +17,19 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
   const navigate = (to: string) => {
     sideMenuStore.showMenu = false;
 
-    setTimeout(() => {
-      history.push(to);
+    history.push(to);
 
-      document.getElementById("page-scroll")!.scrollTo({
-        left: pages[to.substring(1)]?.offsetLeft + 50,
-        behavior: "smooth",
-      });
-    }, 450);
+    let offset = to === "#act2" ? -60 : 5;
+    document.getElementById("page-scroll")!.scrollTo({
+      left: pages[to.substring(1)]?.offsetLeft + offset,
+    });
   };
 
   useEffect(() => {
     setTimeout(() => {
+      let offset = to === "#act2" ? -60 : 5;
       document.getElementById("page-scroll")!.scrollTo({
-        left: pages[page.substring(1)]?.offsetLeft,
+        left: pages[page.substring(1)]?.offsetLeft + offset,
       });
     }, 100);
   }, []);
@@ -118,10 +117,10 @@ const Row = styled.div<{ active: boolean }>`
 const ToC = styled.div`
   position: absolute;
   right: 30px;
-  bottom: 36px;
+  bottom: 20px;
 
   font-weight: 400;
-  font-size: 21px;
+  font-size: 16px;
   line-height: 25px;
 `;
 

@@ -111,6 +111,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
 
         <div
           style={{
+            display: "none",
             position: "fixed",
             right: "0px",
             top: "0px",

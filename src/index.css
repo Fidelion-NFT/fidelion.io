@@ -17,6 +17,9 @@ body {
   padding: 0px;
 
   background: black;
+
+  min-height: 1024px;
+  overflow-y: auto;
 }
 html,
 body {
@@ -30,6 +33,7 @@ html {
 }
 
 * {
+  box-sizing: border-box;
   /*
   font-family: "Times New Roman", Times, serif;
   */

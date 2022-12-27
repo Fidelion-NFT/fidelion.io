@@ -53,7 +53,7 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
 
   display: flex;
 
-  width: 100vh;
+  width: 101vh;
   height: ${SideMenuWidth}px;
 
   align-items: center;
@@ -61,7 +61,7 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
   z-index: 100;
 
   transition: all 0.3s ease;
-  transform: translateX(calc(-50vh + 34px)) translateY(calc(50vh - 35px))
+  transform: translateX(calc(-50.5vh + 34px)) translateY(calc(50.5vh - 35px))
     rotate(-90deg);
 
   ${({ backgroundColor, borderColor }) => css`
@@ -101,7 +101,7 @@ const MenuContainer = styled.div<{ borderColor: string }>`
   cursor: pointer;
 
   ${({ borderColor }) => css`
-    border: 1px solid ${borderColor};
+    border-left: 1px solid ${borderColor};
   `}
 `;
 

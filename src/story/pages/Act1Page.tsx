@@ -23,8 +23,6 @@ const SlideContainer = styled.div`
 
   > svg {
     width: auto;
-    height: 111.55vh;
-
-    margin-top: -1.5vh;
+    height: 101vh;
   }
 `;

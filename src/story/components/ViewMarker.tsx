@@ -6,15 +6,15 @@ import { useHistory } from "react-router-dom";
 interface ViewMarketProps {
   name: string;
   color: string;
+  offset?: number;
 }
-export const ViewMarker = ({ name, color }: ViewMarketProps) => {
+export const ViewMarker = ({ name, color, offset }: ViewMarketProps) => {
   const { ref, inView, entry } = useInView({});
   const history = useHistory();
   const { sideMenuStore } = useStores();
 
   useEffect(() => {
     if (inView) {
-      console.log("push", name);
       sideMenuStore.backgroundColor = color;
       history.push(`#${name}`);
     }
