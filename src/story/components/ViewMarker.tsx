@@ -28,7 +28,7 @@ export const ViewMarker = ({ name, color, offset }: ViewMarketProps) => {
         width: "calc(100% - 100vw - 70px)",
         height: "100%",
         position: "absolute",
-        left: "calc(100vw - 70px)",
+        left: "calc(100vw - 0px)",
       }}
     />
   );

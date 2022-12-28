@@ -27,11 +27,15 @@ export const SideMenu = observer(({}: SideMenuProps) => {
       <Logo onClick={() => (window.location.href = "/")} />
       <div style={{ flex: 1 }} />
 
-      <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
+      <TextApocalypse className="text">
+        Apocalypse survival from 2080
+      </TextApocalypse>
       <div style={{ flex: 1 }} />
       <Text80 onClick={() => (window.location.href = "/")}>80</Text80>
       <div style={{ flex: 1 }} />
-      <TextApocalypse>Apocalypse survival from 2080</TextApocalypse>
+      <TextApocalypse className="text">
+        Apocalypse survival from 2080
+      </TextApocalypse>
       <div style={{ flex: 1 }} />
 
       <MenuContainer
@@ -60,7 +64,7 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
 
   z-index: 100;
 
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   transform: translateX(calc(-50.5vh + 34px)) translateY(calc(50.5vh - 35px))
     rotate(-90deg);
 
@@ -71,6 +75,12 @@ const Container = styled.div<{ backgroundColor: string; borderColor: string }>`
 
     color: ${borderColor};
   `}
+
+  @media (max-height: 700px) {
+    .text {
+      display: none;
+    }
+  }
 `;
 
 // @ts-ignore
