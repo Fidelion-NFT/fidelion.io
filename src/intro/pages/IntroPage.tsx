@@ -319,8 +319,8 @@ export const IntroPage = ({}: IntroPageProps) => {
             <FlipNumbers
               play
               color="white"
-              width={30}
-              height={40}
+              width={25}
+              height={27}
               numbers={`${currentYear}`}
             />
           )}
@@ -345,7 +345,7 @@ export const IntroPage = ({}: IntroPageProps) => {
               )}
 
               {started ? (
-                <BottomText>58 YEARS OF Fidelion</BottomText>
+                <BottomText>58 years of Fidelion</BottomText>
               ) : (
                 <SkipText key="skip_intro" onClick={onSkip}>
                   Skip Intro
