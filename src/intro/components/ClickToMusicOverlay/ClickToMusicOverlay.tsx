@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface ClickToMusicOverlayProps {
   onReady: () => void;
 }
-export const ClickToMusicOverlay = ({ onReady }: ClickToMusicOverlay) => {
+export const ClickToMusicOverlay = ({ onReady }: ClickToMusicOverlayProps) => {
   const [show, setShow] = useState(true);
 
   const onClickStart = () => {

@@ -270,11 +270,6 @@ export const IntroPage = ({}: IntroPageProps) => {
       WheelSpeed = speed;
     };
 
-    // @ts-ignore
-    window.setMaxDistance = (speed: number) => {
-      MaxDistance = speed;
-    };
-
     const target = document.getElementById("container");
     const gesture = new TinyGesture(target!, {});
 
