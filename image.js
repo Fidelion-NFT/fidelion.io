@@ -3,10 +3,11 @@ import glob from "glob";
 import sharp from "sharp";
 
 // options is optional
-glob("public/intro/**/*.png", {}, function (er, files) {
+glob("public/story/**/*.png", {}, function (er, files) {
   files.forEach((file) => {
     sharp(file)
       .webp({ quality: 80 })
+      .resize({ width: 1920, withoutEnlargement: true })
       .toFile(file + "_", async (err, info) => {
         console.log(err, info);
 
