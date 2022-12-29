@@ -15,6 +15,7 @@ import "inobounce";
 import { StoryPage } from "./story/pages/StoryPage";
 import "animate.css";
 import MobilePlaceholder from "./MobilePlaceholder";
+import { TocPage } from "./toc/pages/TocPage";
 
 const isMobile = () => {
   var UserAgent = navigator.userAgent;
@@ -57,6 +58,7 @@ const InnerRouter = () => {
           <Route exact path="/" component={IntroPage} />
           <Route path="/intro/" component={IntroPage} />
           <Route path="/story/" component={StoryPage} />
+          <Route path="/toc/" component={TocPage} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

@@ -6,6 +6,7 @@ export const ClickToMusicOverlay = () => {
 
   const onClickStart = () => {
     var audio = new Audio("/music/intro.mp3");
+    audio.loop = true;
     audio.play();
 
     setShow(false);
@@ -26,7 +27,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: black;
+  background: rgba(0, 0, 0, 0.8);
 
   color: white;
 

@@ -1,6 +1,9 @@
 import { ViewMarker } from "../components";
 import { useStores } from "../stores";
 import CloseIcon from "@/assets/close.svg";
+import DiscordIcon from "@/assets/menu/discord.svg";
+import FigmaIcon from "@/assets/menu/figma.svg";
+import TwitterIcon from "@/assets/menu/twitter.svg";
 import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
@@ -61,7 +64,26 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
         </Row>
       </Acts>
 
-      <ToC>
+      <SNSContainer>
+        <TwitterIcon
+          onClick={() =>
+            window.open("https://twitter.com/FidelionNFT", "_blank")
+          }
+        />
+        <DiscordIcon
+          onClick={() => window.open("https://discord.gg/fidelion", "_blank")}
+        />
+        <FigmaIcon
+          onClick={() =>
+            window.open(
+              "https://www.figma.com/file/fbsSob55LT5Ncr81kybT98/Project-Fidelion?node-id=54%3A181&t=MY9mxwgD7O1p1bGD-0",
+              "_blank"
+            )
+          }
+        />
+      </SNSContainer>
+
+      <ToC onClick={() => window.open("/toc", "_blank")}>
         © 2022 Fidelion. | All Rights Reserved | Terms and Conditions |
         marketing@tidalflats.studio
       </ToC>
@@ -103,7 +125,7 @@ const Row = styled.div<{ active: boolean }>`
   cursor: pointer;
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.45;
   }
 
   ${({ active }) =>
@@ -122,6 +144,23 @@ const ToC = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
+
+  cursor: pointer;
+`;
+
+const SNSContainer = styled.div`
+  display: flex;
+  position: absolute;
+  right: 30px;
+  bottom: 70px;
+
+  gap: 20px;
+
+  > svg {
+    width: 97px;
+
+    cursor: pointer;
+  }
 `;
 
 const NumberText = styled.div`
