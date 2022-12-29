@@ -138,30 +138,6 @@ export const StoryPage = observer(({}: StoryPageProps) => {
           </svg>
         </div>
       </DrawerContainer>
-      {/*}
-      <Slider
-        ref={carouselRef}
-        touchMove={false}
-        vertical={false}
-        slidesToShow={1}
-        infinite={false}
-        dots={false}
-        arrows={false}
-      >
-        <MenuContainer>
-          <MenuItemText onClick={() => carouselRef.current?.slickGoTo(1)}>
-            ACT1
-          </MenuItemText>
-          <MenuItemText onClick={() => carouselRef.current?.slickGoTo(2)}>
-            ACT2
-          </MenuItemText>
-          <MenuItemText>ACT3</MenuItemText>
-        </MenuContainer>
-
-        <Act1Page />
-        <BattleFieldPage />
-      </Slider>
-  */}
     </Container>
   );
 });

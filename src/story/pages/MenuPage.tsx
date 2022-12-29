@@ -66,14 +66,17 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
 
       <SNSContainer>
         <TwitterIcon
+          // @ts-ignore
           onClick={() =>
             window.open("https://twitter.com/FidelionNFT", "_blank")
           }
         />
         <DiscordIcon
+          // @ts-ignore
           onClick={() => window.open("https://discord.gg/fidelion", "_blank")}
         />
         <FigmaIcon
+          // @ts-ignore
           onClick={() =>
             window.open(
               "https://www.figma.com/file/fbsSob55LT5Ncr81kybT98/Project-Fidelion?node-id=54%3A181&t=MY9mxwgD7O1p1bGD-0",
