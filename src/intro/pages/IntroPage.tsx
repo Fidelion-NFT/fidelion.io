@@ -10,7 +10,6 @@ import styled, { css } from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
 
-let MaxDistance = 1750;
 let WheelSpeed = 0.092;
 
 interface IntroPageProps {}
@@ -19,8 +18,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   const [y, setY] = useState(-200);
   const [fadeInFinished, setFadeInFinished] = useState(false);
   const [started, setStarted] = useState(false);
-
-  const shouldFadeOut = y >= MaxDistance;
+  const [isReady, setIsReady] = useState(false);
 
   const [slides, setSlides] = useState([
     {
@@ -218,12 +216,13 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 0,
       y: 0,
-      z: -1600,
+      z: -1940,
       width: 50,
       special: true,
       year: 2080,
       src: "/intro/11.svg",
     },
+    /*
     {
       x: 0,
       y: 0,
@@ -232,13 +231,18 @@ export const IntroPage = ({}: IntroPageProps) => {
       special: true,
       src: "/intro/12.svg",
     },
+    */
   ]);
+
+  const MaxDistance = -slides[slides.length - 1].z;
+
+  const shouldFadeOut = y >= MaxDistance;
 
   const move = (amount: number) => {
     setStarted(true);
     setY((prev) => Math.max(-200, prev + amount));
 
-    if (y >= MaxDistance + 200) {
+    if (y >= MaxDistance + 100) {
       history.push("/story");
     }
   };
@@ -311,50 +315,52 @@ export const IntroPage = ({}: IntroPageProps) => {
         <Controls pos={new THREE.Vector3(0, 0, -Math.min(MaxDistance, y))} />
       </Canvas>
 
-      <InfoContainer fadeOut={shouldFadeOut}>
-        <YearTextContainer>
-          {y > 50 && (
-            <FlipNumbers
-              play
-              color="white"
-              width={25}
-              height={27}
-              numbers={`${currentYear}`}
-            />
-          )}
-        </YearTextContainer>
+      {isReady && (
+        <InfoContainer fadeOut={shouldFadeOut}>
+          <YearTextContainer>
+            {y > 50 && (
+              <FlipNumbers
+                play
+                color="white"
+                width={25}
+                height={27}
+                numbers={`${currentYear}`}
+              />
+            )}
+          </YearTextContainer>
 
-        <TimeBar
-          offset={y}
-          year={currentYear}
-          onClick={(index) => {
-            console.log(index, slides.filter((x) => !x.special)[index].z);
-            moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
-          }}
-        />
+          <TimeBar
+            offset={y}
+            year={currentYear}
+            onClick={(index) => {
+              console.log(index, slides.filter((x) => !x.special)[index].z);
+              moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
+            }}
+          />
 
-        <AnimatePresence>
-          {fadeInFinished && (
-            <>
-              {!started && (
-                <ScrollToStartText key="scroll_to_start">
-                  SCROLL 2 START
-                </ScrollToStartText>
-              )}
+          <AnimatePresence>
+            {fadeInFinished && (
+              <>
+                {!started && (
+                  <ScrollToStartText key="scroll_to_start">
+                    SCROLL DOWN
+                  </ScrollToStartText>
+                )}
 
-              {started ? (
-                <BottomText>58 years of Fidelion</BottomText>
-              ) : (
-                <SkipText key="skip_intro" onClick={onSkip}>
-                  Skip Intro
-                </SkipText>
-              )}
-            </>
-          )}
-        </AnimatePresence>
-      </InfoContainer>
+                {started ? (
+                  <BottomText>58 years of Fidelion</BottomText>
+                ) : (
+                  <SkipText key="skip_intro" onClick={onSkip}>
+                    Skip Intro
+                  </SkipText>
+                )}
+              </>
+            )}
+          </AnimatePresence>
+        </InfoContainer>
+      )}
 
-      <ClickToMusicOverlay />
+      <ClickToMusicOverlay onReady={() => setIsReady(true)} />
     </Container>
   );
 };

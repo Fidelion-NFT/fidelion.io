@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-export const ClickToMusicOverlay = () => {
+interface ClickToMusicOverlayProps {
+  onReady: () => void;
+}
+export const ClickToMusicOverlay = ({ onReady }: ClickToMusicOverlay) => {
   const [show, setShow] = useState(true);
 
   const onClickStart = () => {
@@ -10,6 +13,8 @@ export const ClickToMusicOverlay = () => {
     audio.play();
 
     setShow(false);
+
+    onReady();
   };
 
   if (!show) {
