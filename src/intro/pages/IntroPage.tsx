@@ -1,4 +1,5 @@
 import { TimeBar } from "../components";
+import { ClickToMusicOverlay } from "../components/ClickToMusicOverlay";
 import { ThreeImage } from "../components/ThreeImage";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
@@ -27,21 +28,19 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 0,
       z: 150,
       width: 100,
-      special: true,
       src: "/intro/2080.svg",
     },
     {
       x: 0,
       y: 0,
-      z: -20,
+      z: 0,
       width: 100,
-      special: true,
       src: "/intro/0.svg",
     },
     {
       x: -27,
       y: 1,
-      z: -200,
+      z: -180,
       width: 50,
       year: 2023,
       src: "/intro/1l.png",
@@ -49,7 +48,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -250,
+      z: -210,
       width: 50,
       year: 2024,
       src: "/intro/1r.png",
@@ -57,7 +56,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -300,
+      z: -290,
       width: 50,
       year: 2024,
       src: "/intro/2l.png",
@@ -65,7 +64,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -350,
+      z: -320,
       width: 50,
       year: 2024,
       src: "/intro/2r.png",
@@ -81,7 +80,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -450,
+      z: -430,
       width: 50,
       year: 2025,
       src: "/intro/3r.png",
@@ -89,9 +88,8 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 0,
       y: 0,
-      z: -570,
+      z: -610,
       width: 100,
-      special: true,
       fadeOut: true,
       year: 2025,
       src: "/intro/3.svg",
@@ -99,7 +97,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -690,
+      z: -790,
       width: 50,
       year: 2030,
       src: "/intro/4l.png",
@@ -107,7 +105,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -740,
+      z: -820,
       width: 50,
       year: 2030,
       src: "/intro/4r.png",
@@ -115,7 +113,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -790,
+      z: -900,
       width: 50,
       year: 2031,
       src: "/intro/5l.png",
@@ -123,7 +121,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -840,
+      z: -930,
       width: 50,
       year: 2032,
       src: "/intro/5r.png",
@@ -131,7 +129,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -890,
+      z: -1010,
       width: 50,
       year: 2032,
       src: "/intro/6l.png",
@@ -139,7 +137,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -940,
+      z: -1040,
       width: 50,
       year: 2032,
       src: "/intro/6r.png",
@@ -147,7 +145,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 0,
       y: 0,
-      z: -1060,
+      z: -1220,
       width: 100,
       special: true,
       fadeOut: true,
@@ -156,7 +154,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1110,
+      z: -1400,
       width: 50,
       year: 2033,
       src: "/intro/7l.png",
@@ -164,7 +162,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1160,
+      z: -1430,
       width: 50,
       year: 2042,
       src: "/intro/7r.png",
@@ -172,7 +170,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1210,
+      z: -1510,
       width: 50,
       year: 2054,
       src: "/intro/8l.png",
@@ -180,7 +178,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1260,
+      z: -1540,
       width: 50,
       year: 2054,
       src: "/intro/8r.png",
@@ -188,7 +186,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1310,
+      z: -1620,
       width: 50,
       year: 2055,
       src: "/intro/9l.png",
@@ -196,7 +194,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1360,
+      z: -1650,
       width: 50,
       year: 2059,
       src: "/intro/9r.png",
@@ -204,7 +202,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1410,
+      z: -1730,
       width: 50,
       year: 2062,
       src: "/intro/10l.png",
@@ -212,7 +210,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1460,
+      z: -1760,
       width: 50,
       year: 2068,
       src: "/intro/10r.png",
@@ -355,6 +353,8 @@ export const IntroPage = ({}: IntroPageProps) => {
           )}
         </AnimatePresence>
       </InfoContainer>
+
+      <ClickToMusicOverlay />
     </Container>
   );
 };
