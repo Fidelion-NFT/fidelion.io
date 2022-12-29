@@ -7,7 +7,7 @@ glob("public/story/**/*.png", {}, function (er, files) {
   files.forEach((file) => {
     sharp(file)
       .webp({ quality: 80 })
-      .resize({ width: 1920, withoutEnlargement: true })
+      .resize({ width: 1280, withoutEnlargement: true })
       .toFile(file + "_", async (err, info) => {
         console.log(err, info);
 
