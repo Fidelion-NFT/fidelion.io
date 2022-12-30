@@ -3,8 +3,9 @@ import { useStores } from "../stores";
 import CloseIcon from "@/assets/close.svg";
 import DiscordIcon from "@/assets/menu/discord.svg";
 import FigmaIcon from "@/assets/menu/figma.svg";
+import SoundIcon from "@/assets/menu/sound.svg";
 import TwitterIcon from "@/assets/menu/twitter.svg";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 
@@ -16,6 +17,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
   const { hash: page } = useLocation();
   const { sideMenuStore } = useStores();
   const pageName = page.substring(1);
+  const [muted, setMuted] = useState(false);
 
   const navigate = (to: string) => {
     sideMenuStore.showMenu = false;
@@ -86,9 +88,29 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
         />
       </SNSContainer>
 
-      <ToC onClick={() => window.open("/toc", "_blank")}>
-        © 2022 Fidelion. | All Rights Reserved | Terms and Conditions |
-        marketing@tidalflats.studio
+      <ToC>
+        © 2022 Fidelion. | All Rights Reserved |&nbsp;
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={() => window.open("/toc", "_blank")}
+        >
+          Terms and Conditions
+        </span>
+        &nbsp;| marketing@tidalflats.studio
+        <div style={{ width: "30px" }} />
+        <SoundIcon
+          style={{ cursor: "pointer", opacity: muted ? 0.5 : 1 }}
+          onClick={() => {
+            const bgm = document.getElementById("bgm") as HTMLAudioElement;
+            if (bgm.paused) {
+              bgm.play();
+            } else {
+              bgm.pause();
+            }
+
+            setMuted(!muted);
+          }}
+        />
       </ToC>
 
       <CloseButton onClick={() => (sideMenuStore.showMenu = false)} />
@@ -143,19 +165,20 @@ const ToC = styled.div`
   position: absolute;
   right: 30px;
   bottom: 20px;
+  display: flex;
 
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
 
-  cursor: pointer;
+  align-items: center;
 `;
 
 const SNSContainer = styled.div`
   display: flex;
   position: absolute;
   right: 30px;
-  bottom: 70px;
+  bottom: 100px;
 
   gap: 20px;
 
