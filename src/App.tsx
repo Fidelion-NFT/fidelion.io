@@ -39,6 +39,8 @@ const App = () => {
 
   return (
     <Router>
+      <audio id="bgm" src="/music/intro.mp3" loop />
+
       <InnerRouter />
     </Router>
   );

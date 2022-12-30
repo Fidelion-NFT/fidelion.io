@@ -238,11 +238,18 @@ export const IntroPage = ({}: IntroPageProps) => {
 
   const shouldFadeOut = y >= MaxDistance;
 
+  const changeBgm = () => {
+    const audio = document.getElementById("bgm") as HTMLAudioElement;
+    audio.src = "/music/1.mp3";
+    audio.play();
+  };
+
   const move = (amount: number) => {
     setStarted(true);
     setY((prev) => Math.max(-200, prev + amount));
 
     if (y >= MaxDistance + 100) {
+      changeBgm();
       history.push("/story");
     }
   };
@@ -256,6 +263,7 @@ export const IntroPage = ({}: IntroPageProps) => {
   };
 
   const onSkip = () => {
+    changeBgm();
     history.push("/story");
   };
 

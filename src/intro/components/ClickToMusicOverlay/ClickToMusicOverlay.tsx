@@ -8,8 +8,8 @@ export const ClickToMusicOverlay = ({ onReady }: ClickToMusicOverlayProps) => {
   const [show, setShow] = useState(true);
 
   const onClickStart = () => {
-    var audio = new Audio("/music/intro.mp3");
-    audio.loop = true;
+    const audio = document.getElementById("bgm") as HTMLAudioElement;
+    audio.volume = 0.6;
     audio.play();
 
     setShow(false);
