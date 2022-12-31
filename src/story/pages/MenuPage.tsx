@@ -22,6 +22,12 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
   const navigate = (to: string) => {
     sideMenuStore.showMenu = false;
 
+    if (to === "#act2" || to === "#about-us") {
+      sideMenuStore.backgroundColor = "white";
+    } else {
+      sideMenuStore.backgroundColor = "rgba(0,0,0,1)";
+    }
+
     history.push(to);
 
     let offset = to === "#act2" || to === "#about-us" ? -60 : 5;
