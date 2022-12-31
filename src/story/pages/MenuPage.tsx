@@ -99,6 +99,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
         &nbsp;| marketing@tidalflats.studio
         <div style={{ width: "30px" }} />
         <SoundIcon
+          // @ts-ignore
           style={{ cursor: "pointer", opacity: muted ? 0.5 : 1 }}
           onClick={() => {
             const bgm = document.getElementById("bgm") as HTMLAudioElement;
