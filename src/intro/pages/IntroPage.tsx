@@ -80,13 +80,12 @@ export const IntroPage = ({}: IntroPageProps) => {
       y: 1,
       z: -430,
       width: 50,
-      year: 2025,
       src: "/intro/3r.png",
     },
     {
       x: 0,
       y: 0,
-      z: -610,
+      z: -590,
       width: 100,
       fadeOut: true,
       year: 2025,
@@ -95,7 +94,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -790,
+      z: -770,
       width: 50,
       year: 2030,
       src: "/intro/4l.png",
@@ -103,7 +102,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -820,
+      z: -800,
       width: 50,
       year: 2030,
       src: "/intro/4r.png",
@@ -111,7 +110,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -900,
+      z: -880,
       width: 50,
       year: 2031,
       src: "/intro/5l.png",
@@ -119,7 +118,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -930,
+      z: -910,
       width: 50,
       year: 2032,
       src: "/intro/5r.png",
@@ -127,7 +126,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1010,
+      z: -990,
       width: 50,
       year: 2032,
       src: "/intro/6l.png",
@@ -135,7 +134,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1040,
+      z: -1020,
       width: 50,
       year: 2032,
       src: "/intro/6r.png",
@@ -143,7 +142,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 0,
       y: 0,
-      z: -1220,
+      z: -1180,
       width: 100,
       special: true,
       fadeOut: true,
@@ -152,7 +151,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1400,
+      z: -1360,
       width: 50,
       year: 2033,
       src: "/intro/7l.png",
@@ -160,7 +159,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1430,
+      z: -1390,
       width: 50,
       year: 2042,
       src: "/intro/7r.png",
@@ -168,7 +167,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1510,
+      z: -1470,
       width: 50,
       year: 2054,
       src: "/intro/8l.png",
@@ -176,7 +175,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1540,
+      z: -1500,
       width: 50,
       year: 2054,
       src: "/intro/8r.png",
@@ -184,7 +183,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1620,
+      z: -1580,
       width: 50,
       year: 2055,
       src: "/intro/9l.png",
@@ -192,7 +191,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1650,
+      z: -1610,
       width: 50,
       year: 2059,
       src: "/intro/9r.png",
@@ -200,7 +199,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: -27,
       y: 1,
-      z: -1730,
+      z: -1690,
       width: 50,
       year: 2062,
       src: "/intro/10l.png",
@@ -208,7 +207,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     {
       x: 27,
       y: 1,
-      z: -1760,
+      z: -1720,
       width: 50,
       year: 2068,
       src: "/intro/10r.png",
@@ -222,16 +221,6 @@ export const IntroPage = ({}: IntroPageProps) => {
       year: 2080,
       src: "/intro/11.svg",
     },
-    /*
-    {
-      x: 0,
-      y: 0,
-      z: -1800,
-      width: 70,
-      special: true,
-      src: "/intro/12.svg",
-    },
-    */
   ]);
 
   const MaxDistance = -slides[slides.length - 1].z;
