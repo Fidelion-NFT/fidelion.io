@@ -3,7 +3,7 @@ import glob from "glob";
 import sharp from "sharp";
 
 // options is optional
-glob("public/story/**/6.png", {}, function (er, files) {
+glob("public/story/3-2/47.png", {}, function (er, files) {
   files.forEach((file) => {
     sharp(file)
       .webp({ quality: 80 })
