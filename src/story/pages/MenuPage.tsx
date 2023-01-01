@@ -6,20 +6,20 @@ import FigmaIcon from "@/assets/menu/figma.svg";
 import SoundIcon from "@/assets/menu/sound.svg";
 import TwitterIcon from "@/assets/menu/twitter.svg";
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface MenuPageProps {
   pages: Record<string, HTMLDivElement>;
 }
 export const MenuPage = ({ pages }: MenuPageProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { hash: page } = useLocation();
   const { sideMenuStore } = useStores();
   const pageName = page.substring(1);
   const [muted, setMuted] = useState(false);
 
-  const navigate = (to: string) => {
+  const navigateTo = (to: string) => {
     sideMenuStore.showMenu = false;
 
     if (to === "#act2" || to === "#about-us") {
@@ -28,7 +28,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
       sideMenuStore.backgroundColor = "rgba(0,0,0,1)";
     }
 
-    history.push(to);
+    navigate(to);
 
     let offset = to === "#act2" || to === "#about-us" ? -60 : 5;
     document.getElementById("page-scroll")!.scrollTo({
@@ -48,24 +48,24 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
   return (
     <MenuContainer>
       <Acts>
-        <Row active={pageName === "act1"} onClick={() => navigate("#act1")}>
+        <Row active={pageName === "act1"} onClick={() => navigateTo("#act1")}>
           <NumberText>2</NumberText>
           <LargeItemText>Fidelion</LargeItemText>
         </Row>
-        <Row active={pageName === "act2"} onClick={() => navigate("#act2")}>
+        <Row active={pageName === "act2"} onClick={() => navigateTo("#act2")}>
           <NumberText>0</NumberText>
           <LargeItemText>Harrier</LargeItemText>
         </Row>
         <Row
           active={pageName === "utility"}
-          onClick={() => navigate("#utility")}
+          onClick={() => navigateTo("#utility")}
         >
           <NumberText>8</NumberText>
           <LargeItemText>Utility</LargeItemText>
         </Row>
         <Row
           active={pageName === "about-us"}
-          onClick={() => navigate("#about-us")}
+          onClick={() => navigateTo("#about-us")}
         >
           <NumberText>0</NumberText>
           <LargeItemText>About us</LargeItemText>

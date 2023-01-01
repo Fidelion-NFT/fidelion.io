@@ -29,7 +29,7 @@ import React, {
   useState,
   WheelEvent,
 } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Slider from "react-slick";
 import styled, { css } from "styled-components";
 

@@ -1,7 +1,7 @@
 import { useStores } from "../stores";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface ViewMarketProps {
   name: string;
@@ -10,14 +10,14 @@ interface ViewMarketProps {
 }
 export const ViewMarker = ({ name, color, offset }: ViewMarketProps) => {
   const { ref, inView, entry } = useInView({});
-  const history = useHistory();
+  const navigate = useNavigate();
   const { sideMenuStore } = useStores();
 
   useEffect(() => {
     if (inView) {
       sideMenuStore.backgroundColor = color;
 
-      history.push(`#${name}`);
+      navigate(`#${name}`);
     }
   }, [inView]);
 

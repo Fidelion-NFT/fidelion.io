@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
 import React, { useLayoutEffect, useMemo, useState, WheelEvent } from "react";
 import FlipNumbers from "react-flip-numbers";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled, { css } from "styled-components";
 import * as THREE from "three";
 import TinyGesture from "tinygesture";
@@ -14,7 +14,7 @@ let WheelSpeed = 0.092;
 
 interface IntroPageProps {}
 export const IntroPage = ({}: IntroPageProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [y, setY] = useState(-200);
   const [fadeInFinished, setFadeInFinished] = useState(false);
   const [started, setStarted] = useState(false);
@@ -250,7 +250,7 @@ export const IntroPage = ({}: IntroPageProps) => {
 
     if (y >= MaxDistance + 100) {
       changeBgm();
-      history.push("/story");
+      navigate("/story");
     }
   };
 
@@ -264,7 +264,7 @@ export const IntroPage = ({}: IntroPageProps) => {
 
   const onSkip = () => {
     changeBgm();
-    history.push("/story");
+    navigate("/story");
   };
 
   useLayoutEffect(() => {
@@ -291,10 +291,6 @@ export const IntroPage = ({}: IntroPageProps) => {
       setFadeInFinished(true);
     }, 2200);
   }, []);
-
-  console.log(slides.length, Math.floor(y));
-
-  console.log("y", y);
 
   const currentYear =
     slides.filter((x) => x.year! > 0).find((x) => x.z <= -y)?.year! - 2000;
@@ -336,7 +332,6 @@ export const IntroPage = ({}: IntroPageProps) => {
             offset={y}
             year={currentYear}
             onClick={(index) => {
-              console.log(index, slides.filter((x) => !x.special)[index].z);
               moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
             }}
           />

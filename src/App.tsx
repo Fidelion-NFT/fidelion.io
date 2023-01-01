@@ -4,11 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
+  BrowserRouter,
   BrowserRouter as Router,
   Route,
-  Switch,
   useLocation,
 } from "react-router-dom";
+import SlideRoutes from "react-slide-routes";
 import "./index.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "inobounce";
@@ -38,32 +39,16 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <BrowserRouter>
       <audio id="bgm" src="/music/intro.mp3" loop />
 
-      <InnerRouter />
-    </Router>
-  );
-};
-
-const InnerRouter = () => {
-  const location = useLocation();
-
-  return (
-    <TransitionGroup className="router">
-      <CSSTransition
-        key={location.pathname}
-        classNames="fade"
-        timeout={10 * 1000}
-      >
-        <Switch location={location}>
-          <Route exact path="/" component={IntroPage} />
-          <Route path="/intro/" component={IntroPage} />
-          <Route path="/story/" component={StoryPage} />
-          <Route path="/toc/" component={TocPage} />
-        </Switch>
-      </CSSTransition>
-    </TransitionGroup>
+      <SlideRoutes duration={1000} animation="vertical-slide">
+        <Route path="/" element={<IntroPage />} />
+        <Route path="/intro/" element={<IntroPage />} />
+        <Route path="/story/" element={<StoryPage />} />
+        <Route path="/toc/" element={<TocPage />} />
+      </SlideRoutes>
+    </BrowserRouter>
   );
 };
 

@@ -1,12 +1,9 @@
 import FidelionLogo from "@/assets/dust.svg";
 import MenuIcon from "@/assets/menu.svg";
-import { ViewMarker } from "@/story/components";
 import { SideMenuWidth } from "@/story/constants";
 import { useStores } from "@/story/stores";
-import Hamburger from "hamburger-react";
 import { observer } from "mobx-react";
 import React from "react";
-import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 interface SideMenuProps {}
