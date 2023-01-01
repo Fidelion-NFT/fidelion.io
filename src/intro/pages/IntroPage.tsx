@@ -429,6 +429,8 @@ const BottomCenterText = styled(motion.div).attrs({
   bottom: 24px;
   width: 100%;
 
+  font-family: "Helvetica Neue" !important;
+
   text-align: center;
 `;
 const SkipText = styled(BottomCenterText)`
@@ -466,6 +468,7 @@ const ScrollToStartText = styled(motion.div).attrs({
 
   color: white;
 
+  font-family: "Helvetica Neue" !important;
   font-weight: 200;
   font-size: 30px;
   line-height: 36px;
