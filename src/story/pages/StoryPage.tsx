@@ -1,3 +1,4 @@
+import { SoundButton } from "../components";
 import { Act1Slide1, Act1Slide2 } from "../slides/act1";
 import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
@@ -138,6 +139,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
           </svg>
         </div>
       </DrawerContainer>
+
+      <SoundButton />
     </Container>
   );
 });

@@ -3,7 +3,6 @@ import { useStores } from "../stores";
 import CloseIcon from "@/assets/close.svg";
 import DiscordIcon from "@/assets/menu/discord.svg";
 import FigmaIcon from "@/assets/menu/figma.svg";
-import SoundIcon from "@/assets/menu/sound.svg";
 import TwitterIcon from "@/assets/menu/twitter.svg";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -17,7 +16,6 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
   const { hash: page } = useLocation();
   const { sideMenuStore } = useStores();
   const pageName = page.substring(1);
-  const [muted, setMuted] = useState(false);
 
   const navigateTo = (to: string) => {
     sideMenuStore.showMenu = false;
@@ -104,20 +102,6 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
         </span>
         &nbsp;| marketing@tidalflats.studio
         <div style={{ width: "30px" }} />
-        <SoundIcon
-          // @ts-ignore
-          style={{ cursor: "pointer", opacity: muted ? 0.5 : 1 }}
-          onClick={() => {
-            const bgm = document.getElementById("bgm") as HTMLAudioElement;
-            if (bgm.paused) {
-              bgm.play();
-            } else {
-              bgm.pause();
-            }
-
-            setMuted(!muted);
-          }}
-        />
       </ToC>
 
       <CloseButton onClick={() => (sideMenuStore.showMenu = false)} />
@@ -170,7 +154,7 @@ const Row = styled.div<{ active: boolean }>`
 
 const ToC = styled.div`
   position: absolute;
-  right: 30px;
+  right: 80px;
   bottom: 20px;
   display: flex;
 
