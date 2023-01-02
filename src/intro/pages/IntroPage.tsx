@@ -234,6 +234,10 @@ export const IntroPage = ({}: IntroPageProps) => {
   };
 
   const move = (amount: number) => {
+    if (!isReady) {
+      return;
+    }
+
     setStarted(true);
     setY((prev) => Math.max(-200, prev + amount));
 

@@ -35,6 +35,10 @@ const Container = styled.div`
 
   overflow-x: hidden;
   overflow-y: auto;
+
+  > div {
+    font-family: "Times New Roman";
+  }
 `;
 
 const MainText = styled.pre`
