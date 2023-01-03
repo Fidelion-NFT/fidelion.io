@@ -82,6 +82,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
           onClick={() => window.open("https://discord.gg/fidelion", "_blank")}
         />
         <FigmaIcon
+          // @ts-ignore
           style={{ width: "37px" }}
           // @ts-ignore
           onClick={() =>
