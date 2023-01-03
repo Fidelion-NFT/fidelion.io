@@ -1,15 +1,11 @@
 import { SoundButton } from "../components";
-import { Act1Slide1, Act1Slide2 } from "../slides/act1";
-import { Act1Slide3 } from "../slides/act1/Act1Slide3";
 import { useStores } from "../stores";
 import { AboutUsPage } from "./AboutUsPage";
 import { Act1Page } from "./Act1Page";
 import { Act2Page } from "./Act2Page";
-import { BattleFieldPage } from "./BattlefieldPage";
-import { HarrierRegistrationPage } from "./HarrierRegistrationPage";
 import { MenuPage } from "./MenuPage";
 import { UtilityPage } from "./UtilityPage";
-import { GalleryPage, PartnersPage, QnAPage, ToSPage } from "./etc";
+import { ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
 import { MainPage } from "./main/MainPage";
 import { Year2080Page } from "./prefix";
@@ -77,6 +73,25 @@ export const StoryPage = observer(({}: StoryPageProps) => {
     };
 
     requestAnimationFrame(run);
+  }, []);
+
+  useLayoutEffect(() => {
+    let pageHeight = 0;
+
+    pageHeight = window.innerHeight;
+
+    window.addEventListener(
+      "resize",
+      () => {
+        const currentOffset = containerRef.current!.scrollLeft;
+        const newPageHeight = window.innerHeight;
+        const dHeight = newPageHeight / pageHeight;
+
+        containerRef.current!.scrollLeft = currentOffset * dHeight;
+        pageHeight = newPageHeight;
+      },
+      true
+    );
   }, []);
 
   return (
