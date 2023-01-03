@@ -36,7 +36,8 @@ const Container = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 
-  > div {
+  > div,
+  pre {
     font-family: "Times New Roman";
   }
 `;
