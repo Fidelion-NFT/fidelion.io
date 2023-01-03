@@ -1,17 +1,13 @@
-import { Act1Page, MenuPage } from "./story/pages";
 import { IntroPage } from "@/intro/pages/IntroPage";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
   BrowserRouter,
   BrowserRouter as Router,
   Route,
-  useLocation,
 } from "react-router-dom";
 import SlideRoutes from "react-slide-routes";
 import "./index.css";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "inobounce";
 import { StoryPage } from "./story/pages/StoryPage";
 import "animate.css";
@@ -40,7 +36,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <audio id="bgm" src="/music/intro.mp3" loop />
+      <audio id="bgm" src="/music/bgm.mp3" loop />
 
       <SlideRoutes duration={1000} animation="vertical-slide">
         <Route path="/" element={<IntroPage />} />
@@ -50,13 +46,6 @@ const App = () => {
       </SlideRoutes>
     </BrowserRouter>
   );
-};
-
-const mapStyles = (styles: any) => {
-  return {
-    opacity: styles.opacity,
-    transform: `scale(${styles.scale})`,
-  };
 };
 
 export default App;

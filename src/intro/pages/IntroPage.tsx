@@ -227,12 +227,6 @@ export const IntroPage = ({}: IntroPageProps) => {
 
   const shouldFadeOut = y >= MaxDistance;
 
-  const changeBgm = () => {
-    const audio = document.getElementById("bgm") as HTMLAudioElement;
-    audio.src = "/music/1.mp3";
-    audio.play();
-  };
-
   const move = (amount: number) => {
     if (!isReady) {
       return;
@@ -242,7 +236,6 @@ export const IntroPage = ({}: IntroPageProps) => {
     setY((prev) => Math.max(-200, prev + amount));
 
     if (y >= MaxDistance + 100) {
-      changeBgm();
       navigate("/story");
     }
   };
@@ -256,7 +249,6 @@ export const IntroPage = ({}: IntroPageProps) => {
   };
 
   const onSkip = () => {
-    changeBgm();
     navigate("/story");
   };
 
