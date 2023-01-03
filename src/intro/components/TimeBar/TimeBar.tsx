@@ -24,7 +24,7 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
           key={x}
           // @ts-ignore
           ref={(el) => (offsets.current[x] = el?.offsetTop)}
-          style={{ top: `${5 + index * 15}px` }}
+          style={{ top: `${8 + index * 13}px` }}
           delay={index * 0.035}
           onClick={() => onClick(index)}
         >
@@ -37,7 +37,7 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
           key={x}
           // @ts-ignore
           ref={(el) => (offsets.current[x] = el?.offsetTop)}
-          style={{ top: `${195 + index * 15}px` }}
+          style={{ top: `${178 + index * 13}px` }}
           delay={(index + Years1.length) * 0.035}
           onClick={() => onClick(index + Years1.length)}
         >
@@ -60,20 +60,20 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
 const Container = styled.div`
   position: fixed;
   right: 80px;
-  top: calc(50vh - 250px);
+  top: calc(50vh - 200px);
 `;
 
 const VerticalBar = styled.div`
   width: 1px;
-  height: 500px;
+  height: 450px;
 
   background: white;
 `;
 const CursorBar = styled.div`
   position: absolute;
-  left: -15px;
+  left: -14px;
 
-  width: 32px;
+  width: 30px;
   height: 1px;
 
   background: white;
@@ -84,11 +84,11 @@ const YearText = styled.div.attrs({
   className: "animate__animated animate__fadeInDown",
 })<{ delay: number }>`
   position: absolute;
-  left: -32px;
+  left: -28px;
 
   color: white;
 
-  font-size: 16px;
+  font-size: 13px;
 
   cursor: pointer;
 

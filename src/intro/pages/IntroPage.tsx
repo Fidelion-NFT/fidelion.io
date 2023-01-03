@@ -306,7 +306,7 @@ export const IntroPage = ({}: IntroPageProps) => {
               <FlipNumbers
                 play
                 color="white"
-                width={25}
+                width={18}
                 height={27}
                 numbers={`${currentYear}`}
               />
@@ -422,7 +422,7 @@ const BottomCenterText = styled(motion.div).attrs({
 })`
   position: fixed;
   left: 0%;
-  bottom: 24px;
+  bottom: 28px;
   width: 100%;
 
   font-family: "Helvetica Neue" !important;
@@ -432,7 +432,7 @@ const BottomCenterText = styled(motion.div).attrs({
 const SkipText = styled(BottomCenterText)`
   color: white;
 
-  font-size: 20px;
+  font-size: 17px;
 
   cursor: pointer;
 `;
@@ -466,7 +466,7 @@ const ScrollToStartText = styled(motion.div).attrs({
 
   font-family: "Helvetica Neue" !important;
   font-weight: 200;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 36px;
 
   text-align: center;

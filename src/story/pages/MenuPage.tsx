@@ -82,6 +82,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
           onClick={() => window.open("https://discord.gg/fidelion", "_blank")}
         />
         <FigmaIcon
+          style={{ width: "37px" }}
           // @ts-ignore
           onClick={() =>
             window.open(
@@ -168,13 +169,13 @@ const ToC = styled.div`
 const SNSContainer = styled.div`
   display: flex;
   position: absolute;
-  right: 30px;
+  right: 100px;
   bottom: 100px;
 
   gap: 20px;
 
   > svg {
-    width: 97px;
+    width: 60px;
 
     cursor: pointer;
   }
