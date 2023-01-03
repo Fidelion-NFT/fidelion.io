@@ -28,7 +28,7 @@ const ImageButton = styled.img`
   right: 30px;
   bottom: 30px;
 
-  width: 48px;
+  width: 38px;
 
   cursor: pointer;
 

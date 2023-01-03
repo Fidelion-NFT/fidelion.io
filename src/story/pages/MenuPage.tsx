@@ -154,8 +154,8 @@ const Row = styled.div<{ active: boolean }>`
 
 const ToC = styled.div`
   position: absolute;
-  right: 80px;
-  bottom: 20px;
+  right: 60px;
+  bottom: 36px;
   display: flex;
 
   font-weight: 400;
