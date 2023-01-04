@@ -14,6 +14,12 @@ export const SideMenu = observer(({}: SideMenuProps) => {
     : sideMenuStore.backgroundColor;
   const borderColor = backgroundColor === "white" ? "black" : "white";
 
+  const onClickScrollToStart = () => {
+    document.getElementById("page-scroll")!.scrollTo({
+      left: 0,
+    });
+  };
+
   return (
     <Container
       id="menu"
@@ -28,7 +34,7 @@ export const SideMenu = observer(({}: SideMenuProps) => {
         Apocalypse survival from 2080
       </TextApocalypse>
       <div style={{ flex: 1 }} />
-      <Text80 onClick={() => (window.location.href = "/story")}>80</Text80>
+      <Text80 onClick={onClickScrollToStart}>80</Text80>
       <div style={{ flex: 1 }} />
       <TextApocalypse className="text">
         Apocalypse survival from 2080

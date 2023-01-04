@@ -33,5 +33,7 @@ const SlideContainer = styled.div`
   > svg {
     width: auto;
     height: 100vh;
+
+    overflow: hidden;
   }
 `;

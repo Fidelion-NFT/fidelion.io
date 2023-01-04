@@ -26,6 +26,8 @@ const SlideContainer = styled.div`
     height: 100%;
 
     animation: logoFadeIn 5s;
+
+    overflow: hidden;
   }
 
   @keyframes logoFadeIn {

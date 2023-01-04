@@ -71,7 +71,7 @@ const VerticalBar = styled.div`
 `;
 const CursorBar = styled.div`
   position: absolute;
-  left: -14px;
+  left: -15px;
 
   width: 30px;
   height: 1px;

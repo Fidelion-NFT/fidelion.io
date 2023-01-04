@@ -223,6 +223,7 @@ const PageContainer = styled.div`
   display: flex;
 
   overflow: auto;
+  overflow-y: hidden;
 
   &::-webkit-scrollbar {
     display: none;
