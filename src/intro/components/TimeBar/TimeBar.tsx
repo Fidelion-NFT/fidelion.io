@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 // 22~32 / 42 ~ 80
@@ -12,8 +12,11 @@ interface TimeBarProps {
 }
 export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
   const offsets = useRef<Record<number, number>>({});
+  const [, setRerender] = useState(0);
 
-  console.log(offsets, year, offsets.current[year]);
+  useLayoutEffect(() => {
+    setRerender(1);
+  }, []);
 
   return (
     <Container>
@@ -24,7 +27,7 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
           key={x}
           // @ts-ignore
           ref={(el) => (offsets.current[x] = el?.offsetTop)}
-          style={{ top: `${8 + index * 13}px` }}
+          style={{ top: `${8 + index * 12}px` }}
           delay={index * 0.035}
           onClick={() => onClick(index)}
         >
@@ -37,7 +40,7 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
           key={x}
           // @ts-ignore
           ref={(el) => (offsets.current[x] = el?.offsetTop)}
-          style={{ top: `${178 + index * 13}px` }}
+          style={{ top: `${178 + index * 12}px` }}
           delay={(index + Years1.length) * 0.035}
           onClick={() => onClick(index + Years1.length)}
         >
@@ -60,12 +63,12 @@ export const TimeBar = ({ offset, year, onClick }: TimeBarProps) => {
 const Container = styled.div`
   position: fixed;
   right: 80px;
-  top: calc(50vh - 200px);
+  top: calc(50vh - (435px / 2));
 `;
 
 const VerticalBar = styled.div`
   width: 1px;
-  height: 450px;
+  height: 435px;
 
   background: white;
 `;

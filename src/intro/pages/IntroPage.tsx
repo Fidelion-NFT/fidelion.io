@@ -233,10 +233,12 @@ export const IntroPage = ({}: IntroPageProps) => {
     }
 
     setStarted(true);
-    setY((prev) => Math.max(-200, prev + amount));
+    setY((prev) => Math.min(MaxDistance + 100, Math.max(-200, prev + amount)));
 
     if (y >= MaxDistance + 100) {
-      navigate("/story");
+      setTimeout(() => {
+        navigate("/story");
+      }, 2500);
     }
   };
 
