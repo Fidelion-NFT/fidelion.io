@@ -8,15 +8,10 @@ import { UtilityPage } from "./UtilityPage";
 import { ToSPage } from "./etc";
 import { TeamPage } from "./etc/TeamPage";
 import { MainPage } from "./main/MainPage";
-import { Year2080Page } from "./prefix";
-import { NoHopePage } from "./prefix/NoHopePage";
 import Image3 from "@/assets/intro/bg.webp";
 import { SideMenu } from "@/components/SideMenu";
 import { Slide1 } from "@/intro/slides";
 import { isMac } from "@/utils";
-import { useScroll, motion } from "framer-motion";
-// @ts-ignore
-import Impetus from "impetus";
 import { observer } from "mobx-react";
 import React, {
   MutableRefObject,
