@@ -93,7 +93,5 @@ const YearText = styled.div.attrs({
 
   font-size: 13px;
 
-  cursor: pointer;
-
   animation-delay: ${({ delay }) => delay}s;
 `;

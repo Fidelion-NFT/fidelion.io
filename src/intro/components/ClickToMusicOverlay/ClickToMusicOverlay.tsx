@@ -25,6 +25,7 @@ export const ClickToMusicOverlay = ({ onReady }: ClickToMusicOverlayProps) => {
 };
 
 const Container = styled.div`
+  cursor: pointer;
   display: flex;
   position: fixed;
   left: 0px;

@@ -1,10 +1,14 @@
 import SoundOffIcon from "@/assets/menu/speaker_off.png";
 import SoundOnIcon from "@/assets/menu/speaker_on.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export const SoundButton = () => {
   const [muted, setMuted] = useState(false);
+  useEffect(() => {
+    const bgm = document.getElementById("bgm") as HTMLAudioElement;
+    setMuted(bgm.paused);
+  }, []);
 
   return (
     <ImageButton
@@ -13,11 +17,11 @@ export const SoundButton = () => {
         const bgm = document.getElementById("bgm") as HTMLAudioElement;
         if (bgm.paused) {
           bgm.play();
+          setMuted(false);
         } else {
           bgm.pause();
+          setMuted(true);
         }
-
-        setMuted(!muted);
       }}
     />
   );

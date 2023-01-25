@@ -319,7 +319,8 @@ export const IntroPage = ({}: IntroPageProps) => {
             offset={y}
             year={currentYear}
             onClick={(index) => {
-              moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
+              // moveTo(-slides.filter((x) => !x.special)[index].z - 52.5);
+              // setStarted(true);
             }}
           />
 
