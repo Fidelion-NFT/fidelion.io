@@ -15,7 +15,7 @@ export const TocPage = () => {
       <div
         style={{ fontSize: "16px", fontWeight: "normal", textAlign: "center" }}
       >
-        Last updated: December 7th, 2022
+        Last updated: September 20th, 2023
       </div>
       <div style={{ height: "80px" }} />
       <MainText>{TocText}</MainText>
