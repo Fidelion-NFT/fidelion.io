@@ -1,4 +1,5 @@
 import { SoundButton } from "../components";
+import { TranslationButton } from "../components";
 import { useStores } from "../stores";
 import { AboutUsPage } from "./AboutUsPage";
 import { Act1Page } from "./Act1Page";
@@ -149,7 +150,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
           </svg>
         </div>
       </DrawerContainer>
-
+      
+      <TranslationButton />
       <SoundButton />
     </Container>
   );

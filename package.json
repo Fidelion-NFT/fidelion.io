@@ -23,16 +23,18 @@
     "react-dom": "^18.2.0",
     "react-flip-numbers": "^3.0.7",
     "react-intersection-observer": "^9.4.0",
+    "react-redux": "^8.1.3",
     "react-router-dom": "6.6.1",
     "react-router-transition": "^2.1.0",
     "react-scroll-parallax": "^3.3.1",
     "react-slick": "^0.29.0",
+    "react-slide-routes": "3.0.3",
     "react-transition-group": "^4.4.5",
+    "redux": "^4.2.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
     "three": "^0.144.0",
-    "tinygesture": "^2.0.0",
-    "react-slide-routes": "3.0.3"
+    "tinygesture": "^2.0.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "3.7.1",
