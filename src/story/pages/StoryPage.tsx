@@ -52,7 +52,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
       if (isTouchPad) {
         containerRef.current!.scrollLeft += e.deltaY * 0.6;
       } else {
-        speed = e.deltaY * (isMac ? 0.06 : 0.243);
+        speed = e.deltaY * (isMac ? 0.36 : 0.243);
       }
     });
   }, []);
