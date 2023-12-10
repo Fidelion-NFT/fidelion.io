@@ -16,6 +16,19 @@
   src: url("/font/charter_bold.woff2");
 }
 
+@font-face {
+  font-family: "Charter-Bold";
+  src: url("/font/charter_bold.woff2");
+}
+@font-face {
+  font-family: 'NotoSerif-ExtraLight-KR';
+  src: url("/font/NotoSerifKR-ExtraLight.otf");
+}
+@font-face {
+  font-family: 'NotoSerif-ExtraLight-JP';
+  src: url("/font/NotoSerifJP-ExtraLight.otf");
+}
+
 rect {
   shape-rendering: crispedges;
 }

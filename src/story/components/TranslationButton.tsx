@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 export const TranslationButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const state = useSelector((state: string) => state);
-
+const settingLanguage = localStorage.getItem('language');
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -37,13 +37,13 @@ const DropdownContainer = styled.div`
   right: 90px;
   bottom: 30px;
 
-  width: 60px;
-  height: 38px;
+  width: 70px;
+  height: 40px;
 
   cursor: pointer;
-  color: #fff;
-  background: #ff1223;
-
+  color: rgb(255,255,255,0.66);
+  background: rgb(0,0,0,0.22);
+  border-radius: 4px;
   z-index: 10;
 `;
 

@@ -1,16 +1,31 @@
 import { ViewMarker } from "../components";
 import { SideMenuWidth } from "../constants";
-import Slide1 from "@/assets/story/5.svg";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
+import Slide1EN from "@/assets/story/5-en.svg";
+import Slide1KR from "@/assets/story/5-kr.svg";
+import Slide1JP from "@/assets/story/5-jp.svg";
+import {useSelector} from "react-redux";
 
 interface AboutUsPageProps {}
 export const AboutUsPage = forwardRef<HTMLDivElement>(
   ({}: AboutUsPageProps, ref) => {
+      const state = useSelector((state: string) => state);
+
+      const getLanguage = () => {
+          switch(state){
+              case 'EN':
+                  return <Slide1EN />;
+              case "KR":
+                  return <Slide1KR />;
+              case 'JP':
+                  return <Slide1JP />;
+          }
+      };
     return (
       <SlideContainer ref={ref}>
         <ViewMarker name="about-us" color="white" />
-        <Slide1 />
+          {getLanguage()}
       </SlideContainer>
     );
   }

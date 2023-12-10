@@ -1,7 +1,8 @@
 import { ViewMarker } from "../components";
-import Act1PageSvg from "@/assets/story/2.svg";
+import Act1PageEN from "@/assets/story/2-en.svg";
+import Act1PageKR from "@/assets/story/2-kr.svg";
+import Act1PageJP from "@/assets/story/2-jp.svg";
 import { SideMenuWidth } from "@/story/constants";
-import { useScroll, motion } from "framer-motion";
 import React, { forwardRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
@@ -10,21 +11,21 @@ interface Act1PageProps {}
 export const Act1Page = forwardRef<HTMLDivElement>(({}: Act1PageProps, ref) => {
   const state = useSelector((state: string) => state);
 
-  const getlanguege = () => {
+  const getLanguage = () => {
     switch(state){
       case 'EN':
-        return <Act1PageSvg />;
+        return <Act1PageEN />;
       case "KR":
-        return <Act1PageSvg />;
+        return <Act1PageKR />;
       case 'JP':
-        return <Act1PageSvg />;
+        return <Act1PageJP />;
     }
   };
   
   return (
     <SlideContainer ref={ref}>
       <ViewMarker name="act1" color="rgba(0,0,0,1)" />
-      {getlanguege()}
+      {getLanguage()}
     </SlideContainer>
   );
 });
