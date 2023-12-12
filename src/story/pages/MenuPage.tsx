@@ -95,7 +95,7 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
       </SNSContainer>
 
       <ToC>
-        © 2022 Fidelion. | All Rights Reserved |&nbsp;
+        © 2024 Fidelion. | All Rights Reserved |&nbsp;
         <span
           style={{ cursor: "pointer" }}
           onClick={() => window.open("/toc", "_blank")}
@@ -156,8 +156,8 @@ const Row = styled.div<{ active: boolean }>`
 
 const ToC = styled.div`
   position: absolute;
-  right: 60px;
-  bottom: 36px;
+  right: 110px;
+  bottom: 30px;
   display: flex;
 
   font-weight: 400;

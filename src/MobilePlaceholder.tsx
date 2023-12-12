@@ -53,7 +53,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica";
+  font-weight: 700;
 
   color: white;
 
