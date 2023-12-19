@@ -39,7 +39,7 @@ const slideIn = keyframes`
 
 const DropdownContainer = styled.div`
   position: fixed;
-  right: 90px;
+  right: 110px;
   bottom: 25px;
 
   width: 34px;

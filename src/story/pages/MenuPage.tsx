@@ -81,17 +81,17 @@ export const MenuPage = ({ pages }: MenuPageProps) => {
           // @ts-ignore
           onClick={() => window.open("https://discord.gg/officialfidelion", "_blank")}
         />
-        <FigmaIcon
-          // @ts-ignore
-          style={{ width: "37px" }}
-          // @ts-ignore
-          onClick={() =>
-            window.open(
-              "https://www.figma.com/file/fbsSob55LT5Ncr81kybT98/Project-Fidelion?node-id=54%3A181&t=MY9mxwgD7O1p1bGD-0",
-              "_blank"
-            )
-          }
-        />
+        {/*<FigmaIcon*/}
+        {/*  // @ts-ignore*/}
+        {/*  style={{ width: "37px" }}*/}
+        {/*  // @ts-ignore*/}
+        {/*  onClick={() =>*/}
+        {/*    window.open(*/}
+        {/*      "https://www.figma.com/file/fbsSob55LT5Ncr81kybT98/Project-Fidelion?node-id=54%3A181&t=MY9mxwgD7O1p1bGD-0",*/}
+        {/*      "_blank"*/}
+        {/*    )*/}
+        {/*  }*/}
+        {/*/>*/}
       </SNSContainer>
 
       <ToC>
@@ -156,7 +156,7 @@ const Row = styled.div<{ active: boolean }>`
 
 const ToC = styled.div`
   position: absolute;
-  right: 110px;
+  right: 140px;
   bottom: 30px;
   display: flex;
 
@@ -170,10 +170,10 @@ const ToC = styled.div`
 const SNSContainer = styled.div`
   display: flex;
   position: absolute;
-  right: 100px;
+  right: 46px;
   bottom: 100px;
 
-  gap: 20px;
+  gap: 30px;
 
   > svg {
     width: 60px;

@@ -29,7 +29,7 @@ export const SoundButton = () => {
 
 const ImageButton = styled.img`
   position: fixed;
-  right: 30px;
+  right: 46px;
   bottom: 30px;
 
   width: 38px;
