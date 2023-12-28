@@ -3,7 +3,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
   BrowserRouter,
-  BrowserRouter as Router,
   Route,
 } from "react-router-dom";
 import SlideRoutes from "react-slide-routes";
@@ -11,28 +10,23 @@ import "./index.css";
 import "inobounce";
 import { StoryPage } from "./story/pages/StoryPage";
 import "animate.css";
-import MobilePlaceholder from "./MobilePlaceholder";
 import { TocPage } from "./toc/pages/TocPage";
+import {useMediaQuery} from "react-responsive";
 
-const isMobile = () => {
-  var UserAgent = navigator.userAgent;
-
-  if (
-    UserAgent.match(
-      /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
-    ) != null ||
-    UserAgent.match(/LG|SAMSUNG|Samsung/) != null
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
 
 const App = () => {
-  if (isMobile()) {
-    return <MobilePlaceholder />;
-  }
+    const UserAgent = navigator.userAgent;
+    const isDesktopOrLaptop = useMediaQuery({
+        query: '(min-width: 1025px)'
+    });
+    if (
+        UserAgent.match(
+            /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
+        ) != null ||
+        UserAgent.match(/LG|SAMSUNG|Samsung/) != null || !isDesktopOrLaptop
+    ) {
+        window.open('https://d0f6-220-117-153-65.ngrok-free.app','_self');
+    }
 
   return (
     <BrowserRouter>
