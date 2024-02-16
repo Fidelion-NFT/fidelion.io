@@ -10,6 +10,7 @@ export const MainPage = forwardRef<HTMLDivElement>(({}: MainPageProps, ref) => {
     <SlideContainer ref={ref}>
       <ViewMarker name="main" color="rgba(0,0,0,1)" />
       <MainPageSvg />
+        <MainPageSvg />
     </SlideContainer>
   );
 });

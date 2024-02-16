@@ -11,15 +11,16 @@ import Slide3KR from "@/assets/story/harrier-3-kr.svg";
 import Slide3JP from "@/assets/story/harrier-3-jp.svg";
 import React, {forwardRef} from "react";
 import {useSelector} from "react-redux";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
-interface Act2PageProps {
+interface HarrierPageProps {
 }
 
-export const Act2Page = forwardRef<HTMLDivElement>(({}: Act2PageProps, ref) => {
+export const HarrierPage = forwardRef<HTMLDivElement>(({}: HarrierPageProps, ref) => {
     const state = useSelector((state: string) => state);
 
     const getLanguage = (slideNumber: number) => {
+        const Name = `Slide${slideNumber+state}`;
         switch (state) {
             case 'EN':
                 if (slideNumber === 1) return <Slide1EN/>;
@@ -40,7 +41,7 @@ export const Act2Page = forwardRef<HTMLDivElement>(({}: Act2PageProps, ref) => {
     };
     return (
         <SlideContainer ref={ref}>
-            <ViewMarker name="act2" color="white"/>
+            <ViewMarker name="harrier" color="white"/>
             {getLanguage(1)}
             <div style={{width: "48px"}}/>
             {getLanguage(2)}

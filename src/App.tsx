@@ -31,7 +31,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <audio id="bgm" src="/music/bgm.mp3" loop />
-
       <SlideRoutes duration={1000} animation="vertical-slide">
         <Route path="/" element={<IntroPage />} />
         <Route path="/intro/" element={<IntroPage />} />

@@ -2,9 +2,9 @@ import { ViewMarker } from "../components";
 import { SideMenuWidth } from "../constants";
 import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
-import Slide1EN from "@/assets/story/5-en.svg";
-import Slide1KR from "@/assets/story/5-kr.svg";
-import Slide1JP from "@/assets/story/5-jp.svg";
+import Slide1EN from "@/assets/story/about-us-en.svg";
+import Slide1KR from "@/assets/story/about-us-kr.svg";
+import Slide1JP from "@/assets/story/about-us-jp.svg";
 import {useSelector} from "react-redux";
 
 interface AboutUsPageProps {}

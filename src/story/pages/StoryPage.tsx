@@ -2,8 +2,8 @@ import { SoundButton } from "../components";
 import { TranslationButton } from "../components";
 import { useStores } from "../stores";
 import { AboutUsPage } from "./AboutUsPage";
-import { Act1Page } from "./Act1Page";
-import { Act2Page } from "./Act2Page";
+import { FidelionPage } from "./FidelionPage";
+import { HarrierPage } from "./HarrierPage";
 import { MenuPage } from "./MenuPage";
 import { UtilityPage } from "./UtilityPage";
 import { ToSPage } from "./etc";
@@ -102,8 +102,8 @@ export const StoryPage = observer(({}: StoryPageProps) => {
             <>
               <MainPage ref={(x) => (pageRefs.current["main"] = x!)} />
 
-              <Act1Page ref={(x) => (pageRefs.current["act1"] = x!)} />
-              <Act2Page ref={(x) => (pageRefs.current["act2"] = x!)} />
+              <FidelionPage ref={(x) => (pageRefs.current["fidelion"] = x!)} />
+              <HarrierPage ref={(x) => (pageRefs.current["harrier"] = x!)} />
 
               <UtilityPage ref={(x) => (pageRefs.current["utility"] = x!)} />
 

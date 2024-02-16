@@ -23,6 +23,7 @@ export const ViewMarker = ({ name, color, offset }: ViewMarketProps) => {
 
   return (
     <div
+        className={'viewMarker'}
       ref={ref}
       style={{
         pointerEvents: "none",
