@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 @font-face {
   font-family: "Cutmark-Bold";
   src: url("/font/Cutmark-Bold.ttf");
@@ -21,14 +23,48 @@
   src: url("/font/charter_bold.woff2");
 }
 @font-face {
-  font-family: 'NotoSerif-ExtraLight-KR';
+  font-family: "NotoSerif-ExtraLight-KR";
   src: url("/font/NotoSerifKR-ExtraLight.otf");
 }
 @font-face {
-  font-family: 'NotoSerif-ExtraLight-JP';
+  font-family: "NotoSerif-ExtraLight-JP";
   src: url("/font/NotoSerifJP-ExtraLight.otf");
 }
 
+@font-face {
+  font-family: "Pretendard";
+  src: url("/font/Pretendard-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Light";
+  src: url("/font/Pretendard-Light.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Bold";
+  src: url("/font/Pretendard-Bold.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Thin";
+  src: url("/font/Pretendard-Thin.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("/font/Pretendard-SemiBold.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Black";
+  src: url("/font/Pretendard-Black.woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Black";
+  src: url("/font/Pretendard-Black.woff2");
+}
 rect {
   shape-rendering: crispedges;
 }
