@@ -13,20 +13,21 @@ import "animate.css";
 import { TocPage } from "./toc/pages/TocPage";
 import {useMediaQuery} from "react-responsive";
 
-
 const App = () => {
+  if (!location.pathname.startsWith('/toc')) {
     const UserAgent = navigator.userAgent;
     const isDesktopOrLaptop = useMediaQuery({
-        query: '(min-width: 1025px)'
+      query: '(min-width: 1025px)'
     });
     if (
-        UserAgent.match(
-            /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
-        ) != null ||
-        UserAgent.match(/LG|SAMSUNG|Samsung/) != null || !isDesktopOrLaptop
+      !(UserAgent.match(
+          /iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i
+        ) === null &&
+        UserAgent.match(/LG|SAMSUNG|Samsung/) === null && isDesktopOrLaptop)
     ) {
-        window.open('https://d0f6-220-117-153-65.ngrok-free.app','_self');
+      window.open('https://fidelion.io/m','_self');
     }
+  }
 
   return (
     <BrowserRouter>
