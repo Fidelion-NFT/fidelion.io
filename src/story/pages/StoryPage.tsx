@@ -50,9 +50,11 @@ export const StoryPage = observer(({}: StoryPageProps) => {
         : e.deltaMode === 0;
 
       if (isTouchPad) {
-        containerRef.current!.scrollLeft += e.deltaY * 0.6;
+        console.log("isTouchPad", isTouchPad, e.deltaY * 1.2);
+        containerRef.current!.scrollLeft += e.deltaY * 1.2;
       } else {
-        speed = e.deltaY * (isMac ? 0.36 : 0.243);
+        console.log("isMac", isMac);
+        speed = e.deltaY * (isMac ? 0.38 : 0.243);
       }
     });
   }, []);
@@ -73,7 +75,6 @@ export const StoryPage = observer(({}: StoryPageProps) => {
 
   useLayoutEffect(() => {
     let pageHeight = 0;
-
     pageHeight = window.innerHeight;
 
     window.addEventListener(
@@ -150,7 +151,7 @@ export const StoryPage = observer(({}: StoryPageProps) => {
           </svg>
         </div>
       </DrawerContainer>
-      
+
       <TranslationButton />
       <SoundButton />
     </Container>

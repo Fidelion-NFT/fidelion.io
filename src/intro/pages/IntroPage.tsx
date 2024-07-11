@@ -269,7 +269,7 @@ export const IntroPage = ({}: IntroPageProps) => {
     const gesture = new TinyGesture(target!, {});
 
     gesture.on("panmove", (event) => {
-      move(-gesture.velocityY! * 0.65);
+      move(-gesture.velocityY! * 0.5);
     });
   }, []);
 

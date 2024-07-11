@@ -78,6 +78,7 @@ export const FidelionPage = forwardRef<HTMLDivElement>(
                 <Slide6KR/>
                 <Slide7_1KR />
                 <Slide7_2KR />
+
             </>
           );
         case "JP":
@@ -100,7 +101,7 @@ export const FidelionPage = forwardRef<HTMLDivElement>(
 
     return (
       <SlideContainer ref={ref}>
-        <ViewMarker name="fidelion" color="rgba(0,0,0,1)" />
+        <ViewMarker name="fidelion" color="rgba(0,0,0,1)"  />
         {getLanguage()}
       </SlideContainer>
     );
@@ -114,7 +115,7 @@ const SlideContainer = styled.div`
   width: auto;
   height: 100vh;
 
-  padding-left: ${SideMenuWidth}px;
+  margin-left: ${SideMenuWidth}px;
 
   > svg {
     width: auto;
