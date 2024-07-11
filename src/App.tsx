@@ -25,7 +25,7 @@ const App = () => {
         ) != null ||
         UserAgent.match(/LG|SAMSUNG|Samsung/) != null || !isDesktopOrLaptop
     ) {
-        window.open('https://d0f6-220-117-153-65.ngrok-free.app','_self');
+        window.open('https://story.fidelion.io/m','_self');
     }
 
   return (
